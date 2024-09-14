@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://30p747w8edx"]
+
+[ext_resource type="Texture2D" uid="uid://hti4l8usu1ke" path="res://Assets/Theme/Frame.png" id="1_iykbo"]
+[ext_resource type="FontFile" uid="uid://bxs80ed7fv0kn" path="res://Assets/Theme/smallest_pixel-7.ttf" id="2_lk6r7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2yed"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_crn08"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mr6wo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwqfj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6sgo"]
+texture = ExtResource("1_iykbo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("2_lk6r7")
+default_font_size = 10
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_focus_color = Color(0.94902, 0.94902, 0, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_f2yed")
+Button/styles/hover = SubResource("StyleBoxEmpty_crn08")
+Button/styles/normal = SubResource("StyleBoxEmpty_mr6wo")
+Button/styles/pressed = SubResource("StyleBoxEmpty_pwqfj")
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_m6sgo")
