@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=2 format=3 uid="uid://d0esxyrc85cms"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_vvm14"]
+
+[resource]
+script = ExtResource("1_vvm14")
+name = "Bongo"
+hp_max = 8

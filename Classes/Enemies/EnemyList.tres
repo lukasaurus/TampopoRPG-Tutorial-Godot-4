@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyList" load_steps=6 format=3 uid="uid://b2dhfyguqovim"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_6qale"]
+[ext_resource type="Script" path="res://Classes/enemy_list.gd" id="2_e6sc6"]
+[ext_resource type="Resource" uid="uid://bkf4o5hpnos5i" path="res://Classes/Enemies/EnemyCentaur.tres" id="2_j1nrd"]
+[ext_resource type="Resource" uid="uid://6et13eqk3rwk" path="res://Classes/Enemies/EnemyWorm.tres" id="3_y2p1t"]
+[ext_resource type="Resource" uid="uid://bj3xay16bolj1" path="res://Classes/Enemies/EnemyGoblin.tres" id="4_b08q8"]
+
+[resource]
+script = ExtResource("2_e6sc6")
+enemy_list = Array[ExtResource("1_6qale")]([ExtResource("2_j1nrd"), ExtResource("3_y2p1t"), ExtResource("4_b08q8")])

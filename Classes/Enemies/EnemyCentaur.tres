@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://bkf4o5hpnos5i"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_balr7"]
+[ext_resource type="Texture2D" uid="uid://cvv2iun5rgjk7" path="res://Battle/Art/img/enemies/En3_047Centaur_C05_S3.png" id="2_342lh"]
+
+[resource]
+script = ExtResource("1_balr7")
+name = "Centaur"
+hp_max = 3
+texture = ExtResource("2_342lh")

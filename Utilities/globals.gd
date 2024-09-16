@@ -11,5 +11,13 @@ var camera : Camera2D = null
 var cell_size : Vector2 = Vector2.ZERO
 var event_log : Label = null
 
+var enemy_list = load("res://Classes/Enemies/EnemyList.tres")
+var player : BattleActor= preload("res://Classes/Party/PlayerTest.tres")
+var party = [player]
 func _ready():
 	randomize()
+	#for enemy in enemy_list.enemy_list:
+		#print(enemy.name, enemy.hp_max) #check if custom values are working
+		
+	
+	

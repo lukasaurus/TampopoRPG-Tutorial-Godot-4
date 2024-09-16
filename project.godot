@@ -19,11 +19,12 @@ config/icon="res://icon.svg"
 
 Globals="*res://Utilities/globals.gd"
 Debug="*res://Utilities/debug.gd"
+Utils="*res://Utilities/utils.gd"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=180
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/borderless=true
 window/size/window_width_override=960
 window/size/window_height_override=540

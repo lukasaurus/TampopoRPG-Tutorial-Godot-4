@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=6 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
+[ext_resource type="Texture2D" uid="uid://c6fi5euc4ewn1" path="res://Battle/Art/img/battlebacks1/Wasteland.png" id="3_d3wcf"]
 [ext_resource type="PackedScene" uid="uid://dcol3wpdm24s8" path="res://Battle/enemy_button.tscn" id="4_5fufq"]
 [ext_resource type="Script" path="res://GUI/menu.gd" id="4_hjlfr"]
 
@@ -16,7 +17,7 @@ theme = ExtResource("1_15ij3")
 script = ExtResource("1_0h580")
 metadata/_edit_lock_ = true
 metadata/_edit_horizontal_guides_ = [-71.0]
-metadata/_edit_vertical_guides_ = [230.0, 90.0]
+metadata/_edit_vertical_guides_ = [446.0, 195.0]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -27,6 +28,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 metadata/_edit_lock_ = true
+
+[node name="Wasteland" type="Sprite2D" parent="."]
+position = Vector2(344, 518)
+texture = ExtResource("3_d3wcf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,7 +47,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="Top" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(250, 37.835)
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -159,25 +164,25 @@ script = ExtResource("4_hjlfr")
 menu_type = 1
 
 [node name="EnemyButton" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="EnemyButton2" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="EnemyButton3" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="EnemyButton4" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 ignore_texture_size = true
 stretch_mode = 5
@@ -203,6 +208,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("4_hjlfr")
+focus_on_start = true
 
 [node name="BtnFight" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
@@ -230,9 +236,9 @@ text = "RUN"
 alignment = 0
 
 [node name="EnemyInfo" type="PanelContainer" parent="MarginContainer/VBoxContainer/Bottom"]
-custom_minimum_size = Vector2(96, 37.535)
+custom_minimum_size = Vector2(184, 37.535)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo"]

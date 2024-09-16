@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://6et13eqk3rwk"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_wsj4n"]
+[ext_resource type="Texture2D" uid="uid://ceo1bn84fp75h" path="res://Battle/Art/img/enemies/En3_042PoisonCentipede_C03_S3.png" id="2_kdjwo"]
+
+[resource]
+script = ExtResource("1_wsj4n")
+name = "Death Worm"
+hp_max = 1
+texture = ExtResource("2_kdjwo")

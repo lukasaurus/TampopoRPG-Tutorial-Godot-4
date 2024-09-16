@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://bj3xay16bolj1"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_bqh7u"]
+[ext_resource type="Texture2D" uid="uid://dnscpjk17qx3g" path="res://Battle/Art/img/enemies/En3_002Goblin_C05_S1.png" id="2_ovcxw"]
+
+[resource]
+script = ExtResource("1_bqh7u")
+name = "Goblin"
+hp_max = 5
+texture = ExtResource("2_ovcxw")
