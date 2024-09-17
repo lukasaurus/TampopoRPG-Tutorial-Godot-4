@@ -39,11 +39,11 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 	#await enemy_button.battle_actor.heal_hurt(-1)
 	match type:
 		event_type.FIGHT:
-			print (actor.name + " hits "+ target.name + "!")
+			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await target.heal_hurt(-1)
 			
 		event_type.DEFEND:
-			print(actor.name + " Defends")
+			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			
 	pass
 	
