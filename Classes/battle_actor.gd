@@ -24,4 +24,5 @@ func heal_hurt(value:int)->void:
 	emit_signal("hp_changed",hp,value)
 	if animation_player: #get animation player from owner reference so animation plays full before returning control to player
 		await animation_player.animation_finished
+		
 	#need to fix this to wait until animation is finished

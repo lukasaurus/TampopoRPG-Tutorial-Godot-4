@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=13 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
+[ext_resource type="Texture2D" uid="uid://ddv7xtbliy1cs" path="res://Battle/Art/img/battlebacks2/Cliff.png" id="3_2p8o8"]
 [ext_resource type="Texture2D" uid="uid://c6fi5euc4ewn1" path="res://Battle/Art/img/battlebacks1/Wasteland.png" id="3_d3wcf"]
 [ext_resource type="PackedScene" uid="uid://dcol3wpdm24s8" path="res://Battle/enemy_button.tscn" id="4_5fufq"]
 [ext_resource type="Script" path="res://GUI/menu.gd" id="4_hjlfr"]
+[ext_resource type="Texture2D" uid="uid://34mjl5xd5j86" path="res://Battle/Art/img/battlebacks2/01out_xBridge01.png" id="5_um4kg"]
+[ext_resource type="Texture2D" uid="uid://bngin0s2snyu3" path="res://Battle/Art/img/enemies/En3_064Ramuh_C20_S4.png" id="6_00nc4"]
+[ext_resource type="PackedScene" uid="uid://71k8pvo5dkn2" path="res://GUI/dialogue.tscn" id="6_3xi8x"]
+[ext_resource type="Texture2D" uid="uid://7jx25s22s4xb" path="res://Battle/Art/img/enemies/En3_010Mummy_C07_S2.png" id="7_m5j5l"]
+[ext_resource type="Texture2D" uid="uid://c7740d7oaqopk" path="res://Battle/Art/img/enemies/En3_033Kraken_C05_S3.png" id="8_5tg6y"]
+[ext_resource type="Texture2D" uid="uid://cm05renvt8oty" path="res://Battle/Art/img/enemies/En3_046Minotaur_C08_S2.png" id="9_x7832"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -29,9 +36,17 @@ grow_vertical = 2
 color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 metadata/_edit_lock_ = true
 
+[node name="Cliff" type="Sprite2D" parent="."]
+position = Vector2(484, 605)
+texture = ExtResource("3_2p8o8")
+
 [node name="Wasteland" type="Sprite2D" parent="."]
-position = Vector2(344, 518)
+position = Vector2(482, 702)
 texture = ExtResource("3_d3wcf")
+
+[node name="01OutXBridge01" type="Sprite2D" parent="."]
+position = Vector2(483, 636)
+texture = ExtResource("5_um4kg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -40,16 +55,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_constants/separation = 10
 
 [node name="Top" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 37.835)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Top"]
 layout_mode = 2
@@ -155,47 +175,59 @@ layout_mode = 2
 text = "00"
 horizontal_alignment = 2
 
-[node name="EnemiesMenu" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 290)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="EnemiesMenu" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("4_hjlfr")
+menu_type = 1
+
+[node name="EnemyButton" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("6_00nc4")
+stretch_mode = 5
+
+[node name="EnemyButton2" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("7_m5j5l")
+stretch_mode = 5
+
+[node name="EnemyButton3" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("8_5tg6y")
+stretch_mode = 5
+
+[node name="EnemyButton4" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("9_x7832")
+stretch_mode = 5
+
+[node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("4_hjlfr")
-menu_type = 1
-
-[node name="EnemyButton" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="EnemyButton2" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="EnemyButton3" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="EnemyButton4" parent="MarginContainer/VBoxContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
 alignment = 1
 
 [node name="Options" type="PanelContainer" parent="MarginContainer/VBoxContainer/Bottom"]
 custom_minimum_size = Vector2(40, 48)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/Options"]
@@ -236,6 +268,7 @@ text = "RUN"
 alignment = 0
 
 [node name="EnemyInfo" type="PanelContainer" parent="MarginContainer/VBoxContainer/Bottom"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(184, 37.535)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -262,3 +295,19 @@ size_flags_vertical = 0
 text = "4
 "
 horizontal_alignment = 2
+
+[node name="DialogContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 50
+
+[node name="Dialog" parent="MarginContainer/DialogContainer" instance=ExtResource("6_3xi8x")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[connection signal="pre_sort_children" from="MarginContainer" to="." method="_on_margin_container_pre_sort_children"]
+[connection signal="sort_children" from="MarginContainer" to="." method="_on_margin_container_sort_children"]

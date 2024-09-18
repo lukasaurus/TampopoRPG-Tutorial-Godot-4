@@ -33,8 +33,11 @@ func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
 
 		animation_player.play("exit")
 		await animation_player.animation_finished
-		emit_signal("hit_finished")
 		queue_free()
+		await tree_exited
+		emit_signal("hit_finished")
+		
+		
 		
 	elif value < 0:
 		#set_process(true)

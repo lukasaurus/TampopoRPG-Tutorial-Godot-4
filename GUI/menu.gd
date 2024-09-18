@@ -1,6 +1,7 @@
 class_name Menu extends Container
 
 var index : int = 0
+var tween : Tween
 
 @export var focus_on_start : bool = false
 @export var disable_on_focus_exit:bool = true
@@ -12,6 +13,7 @@ enum layout {VERTICAL,HORIZONTAL}
 signal button_pressed(button)
 signal button_focused(button)
 signal button_deleted(button)
+
 
 func _ready() -> void:
 
