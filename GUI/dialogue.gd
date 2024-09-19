@@ -7,7 +7,7 @@ var is_typing : bool = false
 
 func _ready() -> void:
 	show()
-
+	#text_box.clear()
 	modulate.a = 0
 
 signal battle_dialog_done
@@ -29,7 +29,9 @@ func _input(event):
 			print_rich("[color = orange]DIALOG FINISHED[/color]")
 			#get_viewport().set_input_as_handled()
 			#get_tree().paused = false
+			text_box.clear()
 			emit_signal("battle_dialog_done")
+			
 			
 			
 			
@@ -48,9 +50,10 @@ func type_dialog(bbcode):
 	#await get_tree().process_frame #must wait for character total count to be accurate
 	var total_characters = text_box.text.length()
 	var duration = total_characters *character_duration
-	
+	text_box.visible_characters = 0
 	typer = create_tween()
 	typer.tween_method(set_visible_characters, 0, total_characters, duration)
 	await typer.finished
 	is_typing = false
+	
 	
