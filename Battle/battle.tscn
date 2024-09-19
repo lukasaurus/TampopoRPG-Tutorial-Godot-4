@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://GUI/menu.gd" id="4_hjlfr"]
 [ext_resource type="Texture2D" uid="uid://34mjl5xd5j86" path="res://Battle/Art/img/battlebacks2/01out_xBridge01.png" id="5_um4kg"]
 [ext_resource type="Texture2D" uid="uid://bngin0s2snyu3" path="res://Battle/Art/img/enemies/En3_064Ramuh_C20_S4.png" id="6_00nc4"]
-[ext_resource type="PackedScene" path="res://GUI/dialogue.tscn" id="6_3xi8x"]
+[ext_resource type="PackedScene" uid="uid://71k8pvo5dkn2" path="res://GUI/dialogue.tscn" id="6_3xi8x"]
 [ext_resource type="Texture2D" uid="uid://7jx25s22s4xb" path="res://Battle/Art/img/enemies/En3_010Mummy_C07_S2.png" id="7_m5j5l"]
 [ext_resource type="Texture2D" uid="uid://c7740d7oaqopk" path="res://Battle/Art/img/enemies/En3_033Kraken_C05_S3.png" id="8_5tg6y"]
 [ext_resource type="Texture2D" uid="uid://cm05renvt8oty" path="res://Battle/Art/img/enemies/En3_046Minotaur_C08_S2.png" id="9_x7832"]
@@ -300,11 +300,10 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 35
 
 [node name="Dialog" parent="MarginContainer/DialogContainer" instance=ExtResource("6_3xi8x")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

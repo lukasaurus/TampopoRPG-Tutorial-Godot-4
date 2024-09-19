@@ -14,10 +14,11 @@ var event_log : Label = null
 var dialog_box : DialogBox
 
 var enemy_list = load("res://Classes/Enemies/EnemyList.tres")
-var player : BattleActor= preload("res://Classes/Party/PlayerTest.tres")
+var player : BattleActor= load("res://Classes/Party/PlayerTest.tres") 
 var party = [player]
 func _ready():
 	randomize()
+	player._initialize()
 	#for enemy in enemy_list.enemy_list:
 		#print(enemy.name, enemy.hp_max) #check if custom values are working
 		

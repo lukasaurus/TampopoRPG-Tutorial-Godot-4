@@ -3,8 +3,10 @@ class_name EnemyButton extends TextureButton
 
 var battle_actor : BattleActor
 
-signal hit_finished
+const HIT_TEXT = preload("res://Utilities/hit_text.tscn")
 
+signal hit_finished
+signal dead
 func _ready():
 	set_battle_actor(Globals.enemy_list.random_enemy())
 	texture_normal = battle_actor.texture
@@ -29,11 +31,20 @@ func _on_focus_exited() -> void:
 		animation_player.play("RESET")
 
 func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
+	if hp == 0:
+		focus_mode = FOCUS_NONE
+		
+	Util.create_hit_text(value, self)
+	#var inst  :HitText = HIT_TEXT.instantiate()
+	#add_child(inst)
+	#inst.init(value, self, HitText.BOUNCING)
+	#await inst.fade_out()
 	if hp <= 0:
 
 		animation_player.play("exit")
 		await animation_player.animation_finished
 		queue_free()
+		emit_signal("dead")
 		await tree_exited
 		emit_signal("hit_finished")
 		

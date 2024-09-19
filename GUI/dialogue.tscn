@@ -5,13 +5,13 @@
 
 [node name="Dialog" type="NinePatchRect"]
 process_mode = 3
-custom_minimum_size = Vector2(500, 120)
+custom_minimum_size = Vector2(500, 60)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -250.0
 offset_right = 250.0
-offset_bottom = 120.0
+offset_bottom = 60.0
 grow_horizontal = 2
 texture = ExtResource("1_yfgn6")
 patch_margin_left = 6

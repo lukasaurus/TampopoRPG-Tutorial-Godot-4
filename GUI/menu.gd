@@ -22,6 +22,7 @@ func _ready() -> void:
 		button.focus_exited.connect(on_button_focus_exited.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
 		button.tree_exiting.connect(on_button_deleted.bind(button))
+
 		
 	if focus_on_start:
 		button_focus()
@@ -34,7 +35,7 @@ func on_button_deleted(button):
 	buttons.erase(button)
 	#await get_tree().process_frame
 	index = 0
-	print(buttons)
+	
 	
 func set_button_focus_mode(mode:int)->void:
 	#can_focus = on

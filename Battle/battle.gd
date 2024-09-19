@@ -52,39 +52,43 @@ func run_through_event_queue() ->void:
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	#await enemy_button.battle_actor.heal_hurt(-1)
-	
+	if actor.hp <= 0 or target.hp <= 0:
+		print("actor or target dead")
+		return
 	match type:
 		event_type.FIGHT:
-			dialog_box.type_dialog(actor.name + " hits " + target.name + "!\n" +target.name + " takes 1 damage")
+			dialog_box.type_dialog(actor.name + " hits " + target.name + "!")
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
-			target.heal_hurt(-1)
-			
-			
-			
+			dialog_box.hide()
+			await target.heal_hurt(-1)
+			dialog_box.show()
+			dialog_box.type_dialog(target.name + " takes 1 damage")
+			await dialog_box.battle_dialog_done
+			if target.hp <= 0:
+				dialog_box.type_dialog(target.name + " is defeated!!")
+				await dialog_box.battle_dialog_done
+		
 		event_type.DEFEND:
 			dialog_box.type_dialog(actor.name + " defends against attacks.")
 			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			await dialog_box.battle_dialog_done
 			
-	pass
+
 	
 func menu_exit_tween(menu):
-
 	tween = create_tween()
-	
 	#tween.tween_property(bottom,"position:y",300,0.2).as_relative().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(menu,"modulate:a",0.0,0.2)
 	await tween.finished
-	#bottom.hide()
+
 
 func menu_enter_tween(menu):
-	#bottom.show()
+	dialog_box.clear()
+	await dialog_box.ready_for_text
 	tween.kill()
 	tween = create_tween()
-
 	#tween.tween_property(bottom,"position:y",300, 0).as_relative().set_trans(Tween.TRANS_CUBIC)
-
 	tween.tween_property(menu,"modulate:a",1.0,0.2)
 	#tween.tween_property(bottom,"position:y",-300, 0.2).as_relative().set_trans(Tween.TRANS_CUBIC)
 	await tween.finished
@@ -113,4 +117,3 @@ func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 		await menu_exit_tween(dialog_box)
 		await menu_enter_tween(bottom)
 		battle_menu.button_focus()	
-	#enemies_menu.get_neighbours()
