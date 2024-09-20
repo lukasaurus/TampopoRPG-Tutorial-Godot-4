@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=19 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
@@ -12,6 +12,48 @@
 [ext_resource type="Texture2D" uid="uid://7jx25s22s4xb" path="res://Battle/Art/img/enemies/En3_010Mummy_C07_S2.png" id="7_m5j5l"]
 [ext_resource type="Texture2D" uid="uid://c7740d7oaqopk" path="res://Battle/Art/img/enemies/En3_033Kraken_C05_S3.png" id="8_5tg6y"]
 [ext_resource type="Texture2D" uid="uid://cm05renvt8oty" path="res://Battle/Art/img/enemies/En3_046Minotaur_C08_S2.png" id="9_x7832"]
+[ext_resource type="AudioStream" uid="uid://ct3adujr762cc" path="res://Battle/SFX/55_Encounter_02.wav" id="13_1eoyd"]
+[ext_resource type="AudioStream" uid="uid://dkfarmsfx72oa" path="res://Music/Decisive Battle/xDeviruchi - Decisive Battle (Loop).wav" id="13_bjo67"]
+
+[sub_resource type="Animation" id="Animation_vscek"]
+resource_name = "BattleStart"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenAnimator/DamageFlash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScreenAnimator/55Encounter02:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScreenAnimator/XDeviruchi-DecisiveBattle(loop):playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_gk7xn"]
 resource_name = "DamageFlash"
@@ -19,7 +61,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageFlash:color")
+tracks/0/path = NodePath("ScreenAnimator/DamageFlash:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +76,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageFlash:color")
+tracks/0/path = NodePath("ScreenAnimator/DamageFlash:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,9 +85,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("ScreenAnimator/55Encounter02:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("ScreenAnimator/XDeviruchi-DecisiveBattle(loop):playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_soap6"]
 _data = {
+"BattleStart": SubResource("Animation_vscek"),
 "DamageFlash": SubResource("Animation_gk7xn"),
 "RESET": SubResource("Animation_82gss")
 }
@@ -103,7 +170,7 @@ theme_override_constants/separation = 10
 
 [node name="Top" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 37.835)
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -227,28 +294,28 @@ script = ExtResource("4_hjlfr")
 menu_type = 1
 
 [node name="EnemyButton" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("6_00nc4")
 stretch_mode = 5
 
 [node name="EnemyButton2" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("7_m5j5l")
 stretch_mode = 5
 
 [node name="EnemyButton3" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("8_5tg6y")
 stretch_mode = 5
 
 [node name="EnemyButton4" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("9_x7832")
@@ -345,16 +412,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="DamageFlash" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 963.0
-offset_bottom = 552.0
-color = Color(1, 1, 1, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ScreenAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_soap6")
 }
+autoplay = "BattleStart"
+
+[node name="XDeviruchi-DecisiveBattle(loop)" type="AudioStreamPlayer" parent="ScreenAnimator"]
+stream = ExtResource("13_bjo67")
+
+[node name="55Encounter02" type="AudioStreamPlayer" parent="ScreenAnimator"]
+stream = ExtResource("13_1eoyd")
+
+[node name="DamageFlash" type="ColorRect" parent="ScreenAnimator"]
+offset_right = 963.0
+offset_bottom = 552.0
+color = Color(1, 1, 1, 0)
 
 [connection signal="pre_sort_children" from="MarginContainer" to="." method="_on_margin_container_pre_sort_children"]
 [connection signal="sort_children" from="MarginContainer" to="." method="_on_margin_container_sort_children"]

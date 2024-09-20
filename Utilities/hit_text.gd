@@ -52,6 +52,7 @@ func bounce():
 	vspeed = -vspeed
 	bounce_count+=1
 	if bounce_count >= BOUNCE_COUNT_MAX:
+		set_process(false)
 		fade_out()
 		
 func fade_out():

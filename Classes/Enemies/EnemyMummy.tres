@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://b8tm7rar52w72"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_gtanb"]
+[ext_resource type="Texture2D" uid="uid://nn3slll680fu" path="res://Battle/Art/img/enemies/En3_010Mummy_C05_S2.png" id="2_1ry8u"]
+
+[resource]
+script = ExtResource("1_gtanb")
+name = "Mr. Mean Mummy"
+hp_max = 4
+texture = ExtResource("2_1ry8u")

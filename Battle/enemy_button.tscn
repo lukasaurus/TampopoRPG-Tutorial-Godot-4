@@ -99,7 +99,9 @@ _data = {
 }
 
 [node name="EnemyButton" type="TextureButton"]
+custom_minimum_size = Vector2(180, 0)
 texture_normal = ExtResource("1_o0fmm")
+stretch_mode = 3
 script = ExtResource("2_3mtdh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

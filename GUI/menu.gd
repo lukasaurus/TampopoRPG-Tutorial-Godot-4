@@ -78,7 +78,11 @@ func on_button_focus_exited(button:BaseButton):
 		set_button_focus_mode(FOCUS_NONE)
 	
 	
-	
+func get_random_enemy():
+	return buttons.pick_random().battle_actor
 func on_button_pressed(button:BaseButton):
 	emit_signal("button_pressed",button)
+	
+func get_buttons() -> Array:
+	return buttons
 	

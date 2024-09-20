@@ -1,4 +1,5 @@
 extends Control
+class_name BattleDialogBox
 var typer  : Tween
 var is_typing : bool = false
 

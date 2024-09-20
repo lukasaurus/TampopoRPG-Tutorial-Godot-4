@@ -12,7 +12,7 @@ var current_action : int = -1
 var current_player_index : int = 1
 #var party_size = 1
 
-@onready var camera_2d: Camera2D = $Camera2D
+
 
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
@@ -25,12 +25,12 @@ var current_player_index : int = 1
 @onready var top: PanelContainer = %Top
 @onready var tween : Tween
 
-@onready var dialog_box : NinePatchRect = %Dialog
+@onready var dialog_box : BattleDialogBox = %Dialog
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $ScreenAnimator
 
 func _ready() -> void:
-	animation_player.play("RESET")
+#	animation_player.play("RESET")
 	#tween.tween_property(bottom,"position:y",900,30)
 	#enemies_menu.connect_buttons(self)
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
@@ -38,6 +38,7 @@ func _ready() -> void:
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
 	#battle_menu.focus_button()
 	#dialog_box.hide()
+	Globals.player.hp_changed.connect(damage_flash)
 
 
 func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
@@ -49,16 +50,38 @@ func run_through_event_queue() ->void:
 		await run_event(event[0], event[1], event[2])
 		#print("waiting")
 		#await get_tree().create_timer(1).timeout #this is a temporary solution
+	
+	
 	event_queue.clear()
+	#check for defeat
+	var defeated = true
+	for p in Globals.party:
+		if p.hp > 0:
+			defeated = false
+	if defeated:
+		print_rich("[color=red]!!!DEFEATED!!![/color]")
+	#check for victory
+	if enemies_menu.get_buttons().size() == 0:
+		print_rich("[color=pink]!!!VICTORY!!![/color]")
+		dialog_box.type_dialog("You are victorious!!\nYou gain XP and Gold!")
+		await dialog_box.battle_dialog_done
+		get_tree().quit()
+		
 	#await get_tree().process_frame
 	
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	#await enemy_button.battle_actor.heal_hurt(-1)
-	if actor.hp <= 0 or target.hp <= 0:
-		print("actor or target dead")
-		
+	if actor.hp <= 0:
+		print("actor  dead")
 		return
+	if target.hp <= 0:
+		if actor.type == "Player":
+			target = enemies_menu.get_buttons().pick_random()
+			print("target dead, targeting someone else")
+		if actor.type == "Enemy":
+			print("Player already dead")
+			return
 	match type:
 		event_type.FIGHT:
 			#camera_2d.add_trauma(5)
@@ -66,9 +89,9 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
 			dialog_box.hide()
-			if target in Globals.party:
-				animation_player.play("DamageFlash")
-				await animation_player.animation_finished
+			#if target in Globals.party:
+				#animation_player.play("DamageFlash")
+				#await animation_player.animation_finished
 			await target.heal_hurt(-1)
 			dialog_box.show()
 			dialog_box.type_dialog(target.name + " takes 1 damage")
@@ -119,9 +142,35 @@ func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 		for enemy in enemies_menu.buttons:
 			add_event(enemy.battle_actor, [event_type.FIGHT, event_type.DEFEND].pick_random(), Globals.party.pick_random())
 			enemy.animation_player.play("RESET")
+		
+		
+		#shuffle event queue and sort defense to the top
+		event_queue.shuffle()
+		event_queue.sort_custom(sort_defends_to_top)
+	
+		#sort by speed	
+		
 		get_viewport().gui_get_focus_owner().release_focus()
+		
+		#animate bottom menus and events
 		await menu_exit_tween(bottom)
 		await run_through_event_queue()
 		await menu_exit_tween(dialog_box)
 		await menu_enter_tween(bottom)
 		battle_menu.button_focus()	
+
+func damage_flash(hp:int, value_change: int = 0):
+	if value_change < 0:
+		animation_player.play("DamageFlash")
+
+
+	
+	
+func sort_defends_to_top(a,b)->bool:
+	if a[1] == event_type.DEFEND:
+		if b[1] == event_type.DEFEND:
+			return false
+		else:
+			return true
+	else:
+		return false

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BattleActor" load_steps=3 format=3 uid="uid://duyfo4ybhnf7i"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_semw7"]
+[ext_resource type="Texture2D" uid="uid://b2xaknu63mdu5" path="res://Battle/Art/img/enemies/En3_046Minotaur_C24_S2.png" id="2_nq6b4"]
+
+[resource]
+script = ExtResource("1_semw7")
+name = "HammerTaur"
+hp_max = 7
+texture = ExtResource("2_nq6b4")

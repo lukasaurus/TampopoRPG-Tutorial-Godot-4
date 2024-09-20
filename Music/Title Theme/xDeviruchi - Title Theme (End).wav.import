@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbg0a7bkovrss"
+path="res://.godot/imported/xDeviruchi - Title Theme (End).wav-6d396f05c86435e5f0c6acc5b18c2930.sample"
+
+[deps]
+
+source_file="res://Music/Title Theme/xDeviruchi - Title Theme (End).wav"
+dest_files=["res://.godot/imported/xDeviruchi - Title Theme (End).wav-6d396f05c86435e5f0c6acc5b18c2930.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

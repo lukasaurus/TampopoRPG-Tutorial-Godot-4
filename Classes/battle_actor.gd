@@ -1,17 +1,32 @@
 class_name BattleActor extends Resource
 
+@export_enum("Enemy","Player") var type :String = "Enemy"
 @export var name : String = ""
-@export var hp_max : int = 1
+@export var hp_max : int = 1:
+	set(value):
+		hp_max = value
+		hp = value
 @export var texture : Texture2D
-var hp : int = hp_max
-var animation_player
+@export var speed : int = 1
+@export var level : int = 1
+@export var xp : int = 0:
+	set(value):
+		xp = level * value
+@export var gold : int = 0:
+	set(value):
+		gold = level * value
+		
+var hp : int = 1
+var animation_player =null
+
 signal hp_changed(hp,value)
+signal defeated
 
 func _init() ->void:
-	_initialize()
+	pass
+	#_initialize() #doesn't work, make sure to manually run after duplicating or loading Resource
 	
 func _initialize(_animation_player = null)->void:
-	hp = hp_max
 	animation_player = _animation_player
 
 #func _init(_hp : int = hp_max) -> void:
@@ -21,6 +36,7 @@ func _initialize(_animation_player = null)->void:
 
 func heal_hurt(value:int)->void:
 	hp = clampi(hp+value,0,hp_max)
+	print("player hit")
 	emit_signal("hp_changed",hp,value)
 	if animation_player: #get animation player from owner reference so animation plays full before returning control to player
 		await animation_player.animation_finished
