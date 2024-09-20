@@ -12,6 +12,7 @@ var current_action : int = -1
 var current_player_index : int = 1
 #var party_size = 1
 
+@onready var camera_2d: Camera2D = $Camera2D
 
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
@@ -26,8 +27,10 @@ var current_player_index : int = 1
 
 @onready var dialog_box : NinePatchRect = %Dialog
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	animation_player.play("RESET")
 	#tween.tween_property(bottom,"position:y",900,30)
 	#enemies_menu.connect_buttons(self)
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
@@ -54,13 +57,18 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 	#await enemy_button.battle_actor.heal_hurt(-1)
 	if actor.hp <= 0 or target.hp <= 0:
 		print("actor or target dead")
+		
 		return
 	match type:
 		event_type.FIGHT:
+			#camera_2d.add_trauma(5)
 			dialog_box.type_dialog(actor.name + " hits " + target.name + "!")
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
 			dialog_box.hide()
+			if target in Globals.party:
+				animation_player.play("DamageFlash")
+				await animation_player.animation_finished
 			await target.heal_hurt(-1)
 			dialog_box.show()
 			dialog_box.type_dialog(target.name + " takes 1 damage")
