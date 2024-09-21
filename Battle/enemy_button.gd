@@ -37,7 +37,7 @@ func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
 	if hp == 0:
 		focus_mode = FOCUS_NONE
 		
-	Util.create_hit_text(value, self)
+	Util.create_hit_text(value, self, HitText.BOUNCING)
 	#var inst  :HitText = HIT_TEXT.instantiate()
 	#add_child(inst)
 	#inst.init(value, self, HitText.BOUNCING)
@@ -65,7 +65,7 @@ func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
 		
 	else:
 		#await get_tree().process_frame ###Tried to add this but somewhere the signal is emitting before other signals so added the animation for now
-		animation_player.play("hit")
+		animation_player.play("miss")
 		await animation_player.animation_finished
 		emit_signal("hit_finished")
 	

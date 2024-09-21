@@ -42,6 +42,11 @@ func _ready() -> void:
 	enemies_menu.enemy_dead.connect(add_rewards)
 	#dialog_box.hide()
 	Globals.player.hp_changed.connect(damage_flash)
+	
+	for enemy in enemies_menu.get_buttons():
+		pass
+		#add enemy info to card on right, and link with signals
+		#make an enemy info scene
 
 
 func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
@@ -107,14 +112,14 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 				#animation_player.play("DamageFlash")
 				#await animation_player.animation_finished
 			print("stuck here")
-			await target.heal_hurt(-1)
+			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
 			print("Not stuck")
 			dialog_box.show()
 			
 			if target.is_defending:
-				dialog_box.type_dialog(target.name + " is defending and only take takes 1 damage")
+				dialog_box.type_dialog(target.name + " is defending and takes "+ str(abs(dmg))+" damage")
 			else:
-				dialog_box.type_dialog(target.name + " takes 1 damage")
+				dialog_box.type_dialog(target.name + " takes "+str(abs(dmg))+" damage")
 			await dialog_box.battle_dialog_done
 			if target.hp <= 0:
 				dialog_box.type_dialog(target.name + " is defeated!!")
@@ -180,7 +185,7 @@ func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 		await menu_enter_tween(bottom)
 		battle_menu.button_focus()	
 
-func damage_flash(hp:int, value_change: int = 0):
+func damage_flash(_hp:int, value_change: int = 0):
 	if value_change < 0:
 		animation_player.play("DamageFlash")
 

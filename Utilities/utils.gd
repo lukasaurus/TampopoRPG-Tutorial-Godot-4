@@ -6,7 +6,7 @@ static func set_keys_to_names(dict:Dictionary)-> void:
 		for key in keys:
 			dict[key].name = key
 
-static func create_hit_text(value, node:Control, type = HitText.FLOATING) -> void:
+static func create_hit_text(value, node:Control, type = HitText.BOUNCING) -> void:
 	var inst  :HitText = HIT_TEXT.instantiate()
 	node.owner.add_child(inst)
-	inst.init(value, node, HitText.BOUNCING)
+	inst.init(value, node, type)

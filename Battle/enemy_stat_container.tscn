@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://jch2w4n7gelx"]
+
+[node name="EnemyStatsLabels" type="HBoxContainer"]
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "GODOT BOT  "
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+text = "4
+"
+horizontal_alignment = 2

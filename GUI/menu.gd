@@ -76,7 +76,7 @@ func on_button_focused(button:BaseButton):
 	index = button.get_index()
 	emit_signal("button_focused",button)
 	
-func on_button_focus_exited(button:BaseButton):
+func on_button_focus_exited(_button:BaseButton):
 	await get_tree().process_frame
 	if disable_on_focus_exit and not get_viewport().gui_get_focus_owner() in buttons:
 		set_button_focus_mode(FOCUS_NONE)

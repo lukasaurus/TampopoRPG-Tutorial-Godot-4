@@ -16,6 +16,8 @@ class_name BattleActor extends Resource
 	set(value):
 		gold = level * value
 		
+@export var strength : int = 1
+		
 var hp : int = 1
 var animation_player =null
 var is_defending = false
@@ -33,10 +35,17 @@ func _initialize(_animation_player = null)->void:
 	#print("init hp_max: ", hp_max, "  hp = ", hp)
 	#hp = _hp
 
+func damage_roll()->int:
+	var dmg = strength + randi_range(-2,2)
+	dmg = clampi(dmg,1,100000)
+	return dmg
+	
+
+
 func defend():
 	is_defending = true
 
-func heal_hurt(value:int)->void:
+func heal_hurt(value:int)->int:
 	#if value == 0:
 		#return
 	
@@ -48,5 +57,5 @@ func heal_hurt(value:int)->void:
 	emit_signal("hp_changed",hp,value)
 	if animation_player: #get animation player from owner reference so animation plays full before returning control to player
 		await animation_player.animation_finished
-		
+	return value	
 	#need to fix this to wait until animation is finished

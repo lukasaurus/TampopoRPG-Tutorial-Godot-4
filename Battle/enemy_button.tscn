@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcol3wpdm24s8"]
+[gd_scene load_steps=9 format=3 uid="uid://dcol3wpdm24s8"]
 
 [ext_resource type="Texture2D" uid="uid://iqo8cnw761qd" path="res://icon.svg" id="1_o0fmm"]
 [ext_resource type="Script" path="res://Battle/enemy_button.gd" id="2_3mtdh"]
@@ -90,12 +90,29 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_kfwbg"]
+resource_name = "miss"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.176471), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b7v55"]
 _data = {
 "RESET": SubResource("Animation_rnufh"),
 "exit": SubResource("Animation_qtjik"),
 "highlight": SubResource("Animation_bytvk"),
-"hit": SubResource("Animation_pntsf")
+"hit": SubResource("Animation_pntsf"),
+"miss": SubResource("Animation_kfwbg")
 }
 
 [node name="EnemyButton" type="TextureButton"]

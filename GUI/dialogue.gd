@@ -56,7 +56,7 @@ func clear():
 	emit_signal("ready_for_text")			
 
 func set_visible_characters (index):
-	var is_new_character = index > text_box.visible_characters
+	var _is_new_character = index > text_box.visible_characters
 	text_box.visible_characters = index
 	
 func type_dialog(bbcode):
