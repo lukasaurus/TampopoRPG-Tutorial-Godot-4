@@ -18,7 +18,7 @@ class_name BattleActor extends Resource
 		
 var hp : int = 1
 var animation_player =null
-
+var is_defending = false
 signal hp_changed(hp,value)
 signal defeated
 
@@ -33,10 +33,18 @@ func _initialize(_animation_player = null)->void:
 	#print("init hp_max: ", hp_max, "  hp = ", hp)
 	#hp = _hp
 
+func defend():
+	is_defending = true
 
 func heal_hurt(value:int)->void:
+	#if value == 0:
+		#return
+	
+	if value < 0:
+		if is_defending:
+			value = ceili(value * (0.4 + randf_range(-0.2,0.2)))
 	hp = clampi(hp+value,0,hp_max)
-	print("player hit")
+	print("actor hit")
 	emit_signal("hp_changed",hp,value)
 	if animation_player: #get animation player from owner reference so animation plays full before returning control to player
 		await animation_player.animation_finished

@@ -13,7 +13,7 @@ enum layout {VERTICAL,HORIZONTAL}
 signal button_pressed(button)
 signal button_focused(button)
 signal button_deleted(button)
-
+signal enemy_dead(button)
 
 func _ready() -> void:
 
@@ -31,10 +31,14 @@ func _ready() -> void:
 	#get_neighbours()
 	
 func on_button_deleted(button):
-	
-	buttons.erase(button)
+
+	buttons.erase(button) #remove button from list
+	index = 0 #reset focus index to 0
+	if not button.visible: #if the button was removed because of loading visible, don't emit dead enemy
+		return
+	emit_signal("enemy_dead",button) #send details to battle script
 	#await get_tree().process_frame
-	index = 0
+	
 	
 	
 func set_button_focus_mode(mode:int)->void:
@@ -59,7 +63,7 @@ func set_button_focus_mode(mode:int)->void:
 			#buttons[i].focus_neighbor_left = buttons[(i-1) % i_size].get_path()
 		
 func connect_buttons(object : Object)-> void:
-	for button in buttons:
+	for button in buttons: #this will be called from the battle script
 		button.pressed.connect(Callable(object,"on_"+name+"_button_pressed").bind(button))
 	
 func button_focus(btn : int = index)-> void:

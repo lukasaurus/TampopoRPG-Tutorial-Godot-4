@@ -3,7 +3,7 @@ class_name BattleDialogBox
 var typer  : Tween
 var is_typing : bool = false
 
-@export var character_duration = 0.02
+@export var character_duration = 0.03
 @onready var text_box = %TextBox
 
 func _ready() -> void:
@@ -21,8 +21,8 @@ signal ready_for_text
 #
 func _unhandled_input(event):
 	if not visible:return
-	if typer is Tween: 
-		if typer.is_running():return
+	#if typer is Tween: 
+		#if typer.is_running():return ###MIGHT NEED THIS IF EMPTY BOXES HAPPEN
 	if event.is_action_pressed("ui_accept"):
 		
 		
@@ -41,8 +41,8 @@ func _unhandled_input(event):
 			#get_tree().paused = false
 			
 	
-			set_process_unhandled_input(false)
-			#get_tree().paused = false
+			#set_process_unhandled_input(false) 
+			#get_tree().paused = false ###MIGHT NEED THIS IF EMPTY BOXES HAPPEN
 			
 			emit_signal("battle_dialog_done")
 			
@@ -63,7 +63,7 @@ func type_dialog(bbcode):
 	#text_box.clear()
 	is_typing = true
 
-	set_process_unhandled_input(false)
+	#set_process_unhandled_input(false) ###MIGHT NEED THIS IF EMPTY BOXES HAPPEN
 	#portrait.texture = character.portrait
 	#get_tree().paused = true
 	#show()
@@ -78,7 +78,7 @@ func type_dialog(bbcode):
 	print("typer finished")
 	is_typing = false
 	
-	set_process_unhandled_input(true)
+	#set_process_unhandled_input(true) ###MIGHT NEED THIS IF EMPTY BOXES HAPPEN
 	#get_tree().paused = false
 	
 	

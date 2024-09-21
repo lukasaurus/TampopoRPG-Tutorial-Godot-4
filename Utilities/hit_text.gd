@@ -15,7 +15,7 @@ var bounce_count : int = 0
 var ystart : float = 0.0
 var float_distance : float = 32
 
-@onready var tween : Tween = create_tween()
+@onready var tween : Tween 
 
 func _process(delta:float) -> void:
 	vspeed += gravity
@@ -64,4 +64,5 @@ func fade_out():
 	tween = create_tween()
 	tween.tween_property(self,"modulate:a", 0, 0.5)
 	await tween.finished
+	print("text bye bye")
 	queue_free()

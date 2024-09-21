@@ -5,6 +5,11 @@
 
 [resource]
 script = ExtResource("1_wsj4n")
+type = "Enemy"
 name = "Death Worm"
 hp_max = 1
 texture = ExtResource("2_kdjwo")
+speed = 1
+level = 1
+xp = 3
+gold = 4

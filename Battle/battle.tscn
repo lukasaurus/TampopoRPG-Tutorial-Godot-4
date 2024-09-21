@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=20 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
@@ -37,7 +37,7 @@ tracks/1/path = NodePath("ScreenAnimator/55Encounter02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [true]
@@ -49,10 +49,10 @@ tracks/2/path = NodePath("ScreenAnimator/XDeviruchi-DecisiveBattle(loop):playing
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_gk7xn"]
@@ -110,10 +110,26 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_sqv33"]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScreenAnimator/DamageFlash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_soap6"]
 _data = {
 "BattleStart": SubResource("Animation_vscek"),
 "DamageFlash": SubResource("Animation_gk7xn"),
+"FadeToBlack": SubResource("Animation_sqv33"),
 "RESET": SubResource("Animation_82gss")
 }
 
@@ -294,6 +310,7 @@ script = ExtResource("4_hjlfr")
 menu_type = 1
 
 [node name="EnemyButton" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+visible = false
 custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
@@ -301,6 +318,7 @@ texture_normal = ExtResource("6_00nc4")
 stretch_mode = 5
 
 [node name="EnemyButton2" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
+visible = false
 custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
@@ -404,10 +422,11 @@ horizontal_alignment = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_bottom = 35
+theme_override_constants/margin_bottom = 62
 
 [node name="Dialog" parent="MarginContainer/DialogContainer" instance=ExtResource("6_3xi8x")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 72)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

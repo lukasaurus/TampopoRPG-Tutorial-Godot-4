@@ -10,6 +10,8 @@ enum event_type
 var event_queue : Array = []
 var current_action : int = -1
 var current_player_index : int = 1
+var gold_gained : int = 0
+var xp_gained : int = 0
 #var party_size = 1
 
 
@@ -37,13 +39,19 @@ func _ready() -> void:
 	#battle_menu.connect_buttons(self)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
 	#battle_menu.focus_button()
+	enemies_menu.enemy_dead.connect(add_rewards)
 	#dialog_box.hide()
 	Globals.player.hp_changed.connect(damage_flash)
 
 
 func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
 	event_queue.append([actor,type,target])
-	
+
+
+func add_rewards(button):
+	xp_gained += button.battle_actor.xp
+	gold_gained += button.battle_actor.gold
+		
 func run_through_event_queue() ->void:
 	await menu_enter_tween(dialog_box)
 	for event in event_queue:
@@ -60,10 +68,16 @@ func run_through_event_queue() ->void:
 			defeated = false
 	if defeated:
 		print_rich("[color=red]!!!DEFEATED!!![/color]")
+		dialog_box.type_dialog("You are defeated.\nYou lose the will to continue...\nThe world fades to black...")
+		await dialog_box.battle_dialog_done
+		animation_player.play("FadeToBlack")
+		await animation_player.animation_finished
+		await get_tree().create_timer(3).timeout
+		get_tree().quit()
 	#check for victory
 	if enemies_menu.get_buttons().size() == 0:
 		print_rich("[color=pink]!!!VICTORY!!![/color]")
-		dialog_box.type_dialog("You are victorious!!\nYou gain XP and Gold!")
+		dialog_box.type_dialog("You are victorious!!\nYou gain "+str(xp_gained)+" XP and "+str(gold_gained)+" Gold!")
 		await dialog_box.battle_dialog_done
 		get_tree().quit()
 		
@@ -92,9 +106,15 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			#if target in Globals.party:
 				#animation_player.play("DamageFlash")
 				#await animation_player.animation_finished
+			print("stuck here")
 			await target.heal_hurt(-1)
+			print("Not stuck")
 			dialog_box.show()
-			dialog_box.type_dialog(target.name + " takes 1 damage")
+			
+			if target.is_defending:
+				dialog_box.type_dialog(target.name + " is defending and only take takes 1 damage")
+			else:
+				dialog_box.type_dialog(target.name + " takes 1 damage")
 			await dialog_box.battle_dialog_done
 			if target.hp <= 0:
 				dialog_box.type_dialog(target.name + " is defeated!!")
@@ -103,6 +123,7 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 		event_type.DEFEND:
 			dialog_box.type_dialog(actor.name + " defends against attacks.")
 			print_rich('[color=blue]'+actor.name + " Defends[/color]")
+			actor.defend()
 			await dialog_box.battle_dialog_done
 			
 
