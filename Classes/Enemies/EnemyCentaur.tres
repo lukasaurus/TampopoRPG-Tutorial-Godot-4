@@ -7,7 +7,7 @@
 script = ExtResource("1_balr7")
 type = "Enemy"
 name = "Centaur"
-hp_max = 1
+hp_max = 3
 texture = ExtResource("2_342lh")
 speed = 1
 level = 1

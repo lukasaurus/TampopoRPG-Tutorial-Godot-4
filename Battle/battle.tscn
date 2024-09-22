@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=21 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://34mjl5xd5j86" path="res://Battle/Art/img/battlebacks2/01out_xBridge01.png" id="5_um4kg"]
 [ext_resource type="Texture2D" uid="uid://bngin0s2snyu3" path="res://Battle/Art/img/enemies/En3_064Ramuh_C20_S4.png" id="6_00nc4"]
 [ext_resource type="PackedScene" uid="uid://71k8pvo5dkn2" path="res://GUI/dialogue.tscn" id="6_3xi8x"]
+[ext_resource type="Script" path="res://Battle/enemies_menu.gd" id="6_g4whj"]
 [ext_resource type="Texture2D" uid="uid://7jx25s22s4xb" path="res://Battle/Art/img/enemies/En3_010Mummy_C07_S2.png" id="7_m5j5l"]
 [ext_resource type="Texture2D" uid="uid://c7740d7oaqopk" path="res://Battle/Art/img/enemies/En3_033Kraken_C05_S3.png" id="8_5tg6y"]
 [ext_resource type="Texture2D" uid="uid://cm05renvt8oty" path="res://Battle/Art/img/enemies/En3_046Minotaur_C08_S2.png" id="9_x7832"]
@@ -306,7 +307,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-script = ExtResource("4_hjlfr")
+script = ExtResource("6_g4whj")
 menu_type = 1
 
 [node name="EnemyButton" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
@@ -318,7 +319,6 @@ texture_normal = ExtResource("6_00nc4")
 stretch_mode = 5
 
 [node name="EnemyButton2" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-visible = false
 custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 8
@@ -401,22 +401,10 @@ layout_mode = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo/MarginContainer"]
+[node name="EnemyStatBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "GODOT BOT  "
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-text = "4
-"
-horizontal_alignment = 2
+theme_override_constants/separation = 0
 
 [node name="DialogContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -426,6 +414,7 @@ theme_override_constants/margin_bottom = 62
 
 [node name="Dialog" parent="MarginContainer/DialogContainer" instance=ExtResource("6_3xi8x")]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(500, 72)
 layout_mode = 2
 size_flags_horizontal = 4

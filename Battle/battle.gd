@@ -15,7 +15,7 @@ var xp_gained : int = 0
 #var party_size = 1
 
 
-
+##REFERENCES
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
 @onready var battle_menu = %BattleMenu
@@ -31,6 +31,9 @@ var xp_gained : int = 0
 
 @onready var animation_player: AnimationPlayer = $ScreenAnimator
 
+@onready var enemy_stat_box: VBoxContainer = %EnemyStatBox
+const ENEMY_STAT_LABELS = preload("res://Battle/enemy_stat_labels.tscn")
+
 func _ready() -> void:
 #	animation_player.play("RESET")
 	#tween.tween_property(bottom,"position:y",900,30)
@@ -43,11 +46,24 @@ func _ready() -> void:
 	#dialog_box.hide()
 	Globals.player.hp_changed.connect(damage_flash)
 	
+	add_enemy_stat_boxes()
 	for enemy in enemies_menu.get_buttons():
 		pass
 		#add enemy info to card on right, and link with signals
 		#make an enemy info scene
 
+func add_enemy_stat_boxes():
+	for enemy in enemies_menu.get_buttons():
+		if !enemy.visible:
+			continue
+		var new_enemy_label = ENEMY_STAT_LABELS.instantiate()
+		var battle_actor :BattleActor = enemy.battle_actor
+		print(battle_actor.name)
+		new_enemy_label.battle_actor = battle_actor
+		enemy_stat_box.add_child(new_enemy_label)
+		battle_actor.hp_changed.connect(new_enemy_label.update_stats)
+		
+	
 
 func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
 	event_queue.append([actor,type,target])
@@ -92,14 +108,14 @@ func run_through_event_queue() ->void:
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	#await enemy_button.battle_actor.heal_hurt(-1)
 	if actor.hp <= 0:
-		print("actor  dead")
+		#print("actor  dead")
 		return
 	if target.hp <= 0:
 		if actor.type == "Player":
 			target = enemies_menu.get_buttons().pick_random()
-			print("target dead, targeting someone else")
+			#print("target dead, targeting someone else")
 		if actor.type == "Enemy":
-			print("Player already dead")
+			#print("Player already dead")
 			return
 	match type:
 		event_type.FIGHT:
@@ -111,9 +127,9 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			#if target in Globals.party:
 				#animation_player.play("DamageFlash")
 				#await animation_player.animation_finished
-			print("stuck here")
+			#print("stuck here")
 			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
-			print("Not stuck")
+			#print("Not stuck")
 			dialog_box.show()
 			
 			if target.is_defending:

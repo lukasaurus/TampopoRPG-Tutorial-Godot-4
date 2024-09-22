@@ -4,5 +4,5 @@ class_name EnemyList
 
 func random_enemy():
 	var enemy = enemy_list.pick_random()
-	print(enemy.name, enemy.hp, enemy.hp_max)
+	#print(enemy.name, enemy.hp, enemy.hp_max)
 	return enemy.duplicate()

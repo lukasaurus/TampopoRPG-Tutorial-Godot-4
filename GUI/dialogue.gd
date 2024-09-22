@@ -75,7 +75,7 @@ func type_dialog(bbcode):
 	typer = create_tween()
 	typer.tween_method(set_visible_characters, 0, total_characters, duration)
 	await typer.finished
-	print("typer finished")
+	#print("typer finished")
 	is_typing = false
 	
 	#set_process_unhandled_input(true) ###MIGHT NEED THIS IF EMPTY BOXES HAPPEN
