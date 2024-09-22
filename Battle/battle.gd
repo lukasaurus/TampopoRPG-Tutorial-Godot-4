@@ -1,57 +1,50 @@
 extends Control
 class_name Battle
 
+
+#event types
 enum event_type
 {
 	FIGHT,
 	DEFEND,
+	ITEM,
+	TALK,
+	MAGIC,
 	RUN
 }
+
+#variables
 var event_queue : Array = []
 var current_action : int = -1
 var current_player_index : int = 1
 var gold_gained : int = 0
 var xp_gained : int = 0
-#var party_size = 1
+
 
 
 ##REFERENCES
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
 @onready var battle_menu = %BattleMenu
-####
 @onready var bottom: HBoxContainer = %Bottom
 @onready var bottom_pos : int = 188
-####
 @onready var enemy_info: PanelContainer = %EnemyInfo
 @onready var top: PanelContainer = %Top
 @onready var tween : Tween
-
 @onready var dialog_box : BattleDialogBox = %Dialog
-
 @onready var animation_player: AnimationPlayer = $ScreenAnimator
-
 @onready var enemy_stat_box: VBoxContainer = %EnemyStatBox
+
+#PRELOADS
 const ENEMY_STAT_LABELS = preload("res://Battle/enemy_stat_labels.tscn")
 
 func _ready() -> void:
-#	animation_player.play("RESET")
-	#tween.tween_property(bottom,"position:y",900,30)
-	#enemies_menu.connect_buttons(self)
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
-	#battle_menu.connect_buttons(self)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
-	#battle_menu.focus_button()
 	enemies_menu.enemy_dead.connect(add_rewards)
-	#dialog_box.hide()
 	Globals.player.hp_changed.connect(damage_flash)
+	add_enemy_stat_boxes() #add the stat boxes to the scene
 	
-	add_enemy_stat_boxes()
-	for enemy in enemies_menu.get_buttons():
-		pass
-		#add enemy info to card on right, and link with signals
-		#make an enemy info scene
-
 func add_enemy_stat_boxes():
 	for enemy in enemies_menu.get_buttons():
 		if !enemy.visible:
@@ -61,15 +54,15 @@ func add_enemy_stat_boxes():
 		print(battle_actor.name)
 		new_enemy_label.battle_actor = battle_actor
 		enemy_stat_box.add_child(new_enemy_label)
+		#connect hp changed so that it updates when hp changes
 		battle_actor.hp_changed.connect(new_enemy_label.update_stats)
 		
-	
-
 func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
+	#add event to the event queue
 	event_queue.append([actor,type,target])
 
-
 func add_rewards(button):
+	#add rewards when an enemy is defeated
 	xp_gained += button.battle_actor.xp
 	gold_gained += button.battle_actor.gold
 		
@@ -78,14 +71,11 @@ func run_through_event_queue() ->void:
 	await menu_enter_tween(dialog_box)
 	for event in event_queue:
 		await run_event(event[0], event[1], event[2])
-		#print("waiting")
-		#await get_tree().create_timer(1).timeout #this is a temporary solution
-	
 	
 	event_queue.clear()
 	#clear status effects
 	for node in get_tree().get_nodes_in_group("StatusEffect"):
-		node.queue_free()
+		node.queue_free() 
 	#check for defeat
 	var defeated = true
 	for p in Globals.party:
@@ -99,6 +89,7 @@ func run_through_event_queue() ->void:
 		await animation_player.animation_finished
 		await get_tree().create_timer(3).timeout
 		get_tree().quit()
+		
 	#check for victory
 	if enemies_menu.get_buttons().size() == 0:
 		print_rich("[color=pink]!!!VICTORY!!![/color]")
@@ -106,37 +97,28 @@ func run_through_event_queue() ->void:
 		await dialog_box.battle_dialog_done
 		get_tree().quit()
 		
-	#await get_tree().process_frame
+
 	
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
-	#await enemy_button.battle_actor.heal_hurt(-1)
 
 	if actor.hp <= 0:
-		#print("actor  dead")
 		return
 	if target.hp <= 0:
 		if actor.type == "Player":
 			target = enemies_menu.get_buttons().pick_random()
-			#print("target dead, targeting someone else")
+			#this might cause crash if it picks another random enemy that is also dead
+			#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING
 		if actor.type == "Enemy":
-			#print("Player already dead")
 			return
 	match type:
 		event_type.FIGHT:
-			#camera_2d.add_trauma(5)
 			dialog_box.type_dialog(actor.name + " hits " + target.name + "!")
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
 			dialog_box.hide()
-			#if target in Globals.party:
-				#animation_player.play("DamageFlash")
-				#await animation_player.animation_finished
-			#print("stuck here")
 			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
-			#print("Not stuck")
 			dialog_box.show()
-			
 			if target.is_defending:
 				dialog_box.type_dialog(target.name + " is defending and takes "+ str(abs(dmg))+" damage")
 			else:
@@ -155,24 +137,24 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 
 	
 func menu_exit_tween(menu):
+	#NOTE : Probably change this to individual animations later
 	tween = create_tween()
-	#tween.tween_property(bottom,"position:y",300,0.2).as_relative().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(menu,"modulate:a",0.0,0.2)
 	await tween.finished
 
 
 func menu_enter_tween(menu):
+	#NOTE : Probably change this to individual animations later
 	dialog_box.clear()
 	await dialog_box.ready_for_text
 	tween.kill()
 	tween = create_tween()
-	#tween.tween_property(bottom,"position:y",300, 0).as_relative().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(menu,"modulate:a",1.0,0.2)
-	#tween.tween_property(bottom,"position:y",-300, 0.2).as_relative().set_trans(Tween.TRANS_CUBIC)
 	await tween.finished
 	
 
 func on_BattleMenu_button_pressed(button:BaseButton) -> void:
+	#NOTE : Need to add other button functions
 	match button.text:
 		"FIGHT":
 			current_action = event_type.FIGHT
@@ -195,11 +177,10 @@ func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 		event_queue.shuffle()
 		event_queue.sort_custom(sort_defends_to_top)
 	
-		#sort by speed	
-		
 		get_viewport().gui_get_focus_owner().release_focus()
 		
 		#animate bottom menus and events
+		#NOTE : Probably do custom animations later
 		await menu_exit_tween(bottom)
 		await run_through_event_queue()
 		await menu_exit_tween(dialog_box)
@@ -210,9 +191,6 @@ func damage_flash(_hp:int, value_change: int = 0):
 	if value_change < 0:
 		animation_player.play("DamageFlash")
 
-
-	
-	
 func sort_defends_to_top(a,b)->bool:
 	if a[1] == event_type.DEFEND:
 		if b[1] == event_type.DEFEND:

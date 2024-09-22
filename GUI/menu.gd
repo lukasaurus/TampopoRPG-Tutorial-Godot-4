@@ -57,22 +57,6 @@ func set_button_focus_mode(mode:int)->void:
 	for button in buttons:
 		button.focus_mode = mode
 		
-#func get_neighbours():
-	#var i_size = buttons.size()
-	#if menu_type == layout.VERTICAL:
-		#for i in range(0,i_size):
-			#buttons[i].focus_neighbor_bottom = buttons[(i+1) % i_size].get_path()
-			#buttons[i].focus_neighbor_left = buttons[i].get_path() #disable left right navigation of menus
-			#buttons[i].focus_neighbor_right = buttons[i] .get_path()
-			#buttons[i].focus_neighbor_top = buttons[(i-1) % i_size].get_path()
-	#elif menu_type == layout.HORIZONTAL:
-		#print(name)
-		#for i in range(0,i_size):
-			#buttons[i].focus_neighbor_right = buttons[(i+1) % i_size].get_path()
-			#buttons[i].focus_neighbor_bottom = buttons[i].get_path() #disable left right navigation of menus
-			#buttons[i].focus_neighbor_top = buttons[i] .get_path()
-			#buttons[i].focus_neighbor_left = buttons[(i-1) % i_size].get_path()
-		
 func connect_buttons(object : Object)-> void:
 	for button in buttons: #this will be called from the battle script
 		button.pressed.connect(Callable(object,"on_"+name+"_button_pressed").bind(button))
@@ -92,9 +76,9 @@ func on_button_focus_exited(_button:BaseButton):
 	if disable_on_focus_exit and not get_viewport().gui_get_focus_owner() in buttons:
 		set_button_focus_mode(FOCUS_NONE)
 	
-	
 func get_random_enemy():
 	return buttons.pick_random().battle_actor
+	
 func on_button_pressed(button:BaseButton):
 	emit_signal("button_pressed",button)
 	

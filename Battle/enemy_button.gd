@@ -26,11 +26,10 @@ func set_battle_actor(actor:BattleActor)->void:
 
 func shield_up():
 	Util.create_shield_effect(self)
-	
 	pass
+	
 func _on_focus_entered() -> void:
 	animation_player.play("highlight")
-
 
 func _on_focus_exited() -> void:
 	if animation_player.current_animation in  ["hit","exit"]:
@@ -44,34 +43,20 @@ func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
 		focus_mode = FOCUS_NONE
 		
 	Util.create_hit_text(value, self, HitText.BOUNCING)
-	#var inst  :HitText = HIT_TEXT.instantiate()
-	#add_child(inst)
-	#inst.init(value, self, HitText.BOUNCING)
-	#await inst.fade_out()
+
 	if hp <= 0:
-		
 		animation_player.play("exit")
 		await animation_player.animation_finished
-		#queue_free()
 		emit_signal("dead")
-		#await animation_player.animation_finished
-		#await tree_exited
-		emit_signal("hit_finished")
-		
-		
+		emit_signal("hit_finished")	
 		
 	elif value < 0:
-		#set_process(true)
 		print_rich('[color=cyan]###ENEMY HIT[/color]')
 		animation_player.play("hit")
 		await animation_player.animation_finished
 		emit_signal("hit_finished")
-		#hide()
-		#await get_tree().create_timer(0.5)
-		#set_process(false)
-		
+
 	else:
-		#await get_tree().process_frame ###Tried to add this but somewhere the signal is emitting before other signals so added the animation for now
 		animation_player.play("miss")
 		await animation_player.animation_finished
 		emit_signal("hit_finished")

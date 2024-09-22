@@ -8,6 +8,6 @@ var battle_actor:BattleActor
 func _ready():
 	update_stats(0,0)
 	
-func update_stats(_a,_b): #placeholder variables, unused but needed because of signal
+func update_stats(_a,_b): #ALERT:placeholder variables, unused but needed because of signal
 	enemy_name.text = battle_actor.name
 	hp.text = str(battle_actor.hp)

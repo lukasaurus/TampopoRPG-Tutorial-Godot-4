@@ -19,9 +19,7 @@ var party = [player]
 func _ready():
 	randomize()
 	print(player.hp,"   ", player.hp_max)
-	#player._initialize()
-	#for enemy in enemy_list.enemy_list:
-		#print(enemy.name, enemy.hp_max) #check if custom values are working
+
 		
 	
 	
