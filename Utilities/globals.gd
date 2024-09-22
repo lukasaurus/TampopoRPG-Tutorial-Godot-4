@@ -15,7 +15,7 @@ var dialog_box : DialogBox
 
 var enemy_list = preload("res://Classes/Enemies/EnemyList.tres")
 var player : BattleActor= preload("res://Classes/Party/PlayerTest.tres") 
-var party = [player]
+var party = preload("res://Classes/Party/PartyMembers.tres")
 func _ready():
 	randomize()
 	print(player.hp,"   ", player.hp_max)
