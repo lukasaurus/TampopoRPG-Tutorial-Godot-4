@@ -27,13 +27,20 @@ func set_buttons() ->void:
 		button.focus_exited.connect(on_button_focus_exited.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
 		button.tree_exiting.connect(on_button_deleted.bind(button))
+		if button.has_signal("dead"):
+			button.dead.connect(on_button_hidden.bind(button))
 
 		
 	if focus_on_start:
 		button_focus()
 	elif disable_on_focus_exit:
 		set_button_focus_mode(FOCUS_NONE)
-		
+
+func on_button_hidden(button):
+	buttons.erase(button)
+	index = 0
+	emit_signal("enemy_dead",button)
+
 func on_button_deleted(button):
 
 	buttons.erase(button) #remove button from list

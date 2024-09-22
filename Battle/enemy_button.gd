@@ -7,6 +7,7 @@ const HIT_TEXT = preload("res://Utilities/hit_text.tscn")
 
 signal hit_finished
 signal dead
+
 func _ready():
 	if !visible:
 		queue_free()
@@ -46,9 +47,10 @@ func on_battle_actor_hp_changed(hp:int, value:int = 1)-> void:
 		
 		animation_player.play("exit")
 		await animation_player.animation_finished
-		queue_free()
+		#queue_free()
 		emit_signal("dead")
-		await tree_exited
+		#await animation_player.animation_finished
+		#await tree_exited
 		emit_signal("hit_finished")
 		
 		
