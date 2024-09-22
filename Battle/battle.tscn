@@ -140,7 +140,7 @@ theme = ExtResource("1_15ij3")
 script = ExtResource("1_0h580")
 metadata/_edit_lock_ = true
 metadata/_edit_horizontal_guides_ = [-71.0]
-metadata/_edit_vertical_guides_ = [446.0, 195.0]
+metadata/_edit_vertical_guides_ = [446.0, 195.0, 480.0]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -164,229 +164,130 @@ texture = ExtResource("3_d3wcf")
 position = Vector2(483, 636)
 texture = ExtResource("5_um4kg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PartyArea" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -108.0
+offset_right = 241.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PartyArea"]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 10
 
-[node name="PartyArea" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="EnemiesMenu" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PartyArea"]
-layout_mode = 2
-
-[node name="Top" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(250, 80)
-layout_mode = 2
+layout_mode = 0
+offset_left = 205.0
+offset_top = 110.0
+offset_right = 757.0
+offset_bottom = 398.0
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("6_g4whj")
+menu_type = 1
+metadata/_edit_group_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Top"]
+[node name="EnemyInfo" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(184, 22.595)
+layout_mode = 2
+offset_left = 697.0
+offset_top = 36.0
+offset_right = 881.0
+offset_bottom = 58.595
+size_flags_horizontal = 8
+size_flags_vertical = 0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="EnemyInfo"]
 layout_mode = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Top/MarginContainer"]
-layout_mode = 2
-
-[node name="Names" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 7
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Names"]
-layout_mode = 2
-text = "ERIN"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Names"]
-layout_mode = 2
-text = "IVAN"
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Names"]
-layout_mode = 2
-text = "RICA"
-
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Names"]
-layout_mode = 2
-text = "ORIN"
-
-[node name="Levels" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Levels"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Levels"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Levels"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/Levels"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="HPs" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/HPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/HPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/HPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/HPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="MPs" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/MPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/MPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/MPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/Top/MarginContainer/HBoxContainer/MPs"]
-layout_mode = 2
-text = "00"
-horizontal_alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 290)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-
-[node name="EnemiesMenu" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="EnemyStatBox" type="VBoxContainer" parent="EnemyInfo/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-script = ExtResource("6_g4whj")
-menu_type = 1
+theme_override_constants/separation = 0
 
-[node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Bottom" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 17.0
+offset_top = 14.0
+offset_right = 108.0
+offset_bottom = 122.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
+metadata/_edit_group_ = true
 
-[node name="Options" type="PanelContainer" parent="MarginContainer/VBoxContainer/Bottom"]
+[node name="Options" type="PanelContainer" parent="Bottom"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/Options"]
+[node name="MarginContainer" type="MarginContainer" parent="Bottom/Options"]
 layout_mode = 2
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="BattleMenu" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer"]
+[node name="BattleMenu" type="VBoxContainer" parent="Bottom/Options/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("4_hjlfr")
 focus_on_start = true
 
-[node name="BtnFight" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
+[node name="BtnFight" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
 text = "FIGHT"
 alignment = 0
 
-[node name="BtnTech" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
+[node name="BtnTech" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
 text = "TECH"
 alignment = 0
 
-[node name="BtnItem" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
+[node name="BtnItem" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
 text = "ITEM"
 alignment = 0
 
-[node name="BtnTalk" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
+[node name="BtnTalk" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
 text = "TALK"
 alignment = 0
 
-[node name="BtnRun" type="Button" parent="MarginContainer/VBoxContainer/Bottom/Options/MarginContainer/BattleMenu"]
+[node name="BtnRun" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
 text = "RUN"
 alignment = 0
 
-[node name="EnemyInfo" type="PanelContainer" parent="MarginContainer/VBoxContainer/Bottom"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(184, 22.595)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo"]
-layout_mode = 2
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="EnemyStatBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bottom/EnemyInfo/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="DialogContainer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="DialogContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 62
 
-[node name="Dialog" parent="MarginContainer/DialogContainer" instance=ExtResource("6_3xi8x")]
+[node name="Dialog" parent="DialogContainer" instance=ExtResource("6_3xi8x")]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(500, 72)
@@ -411,6 +312,4 @@ stream = ExtResource("13_1eoyd")
 offset_right = 963.0
 offset_bottom = 552.0
 color = Color(1, 1, 1, 0)
-
-[connection signal="pre_sort_children" from="MarginContainer" to="." method="_on_margin_container_pre_sort_children"]
-[connection signal="sort_children" from="MarginContainer" to="." method="_on_margin_container_sort_children"]
+metadata/_edit_lock_ = true

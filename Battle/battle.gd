@@ -29,7 +29,7 @@ var xp_gained : int = 0
 @onready var bottom: HBoxContainer = %Bottom
 @onready var bottom_pos : int = 188
 @onready var enemy_info: PanelContainer = %EnemyInfo
-@onready var top: PanelContainer = %Top
+#@onready var top: PanelContainer = %Top
 @onready var tween : Tween
 @onready var dialog_box : BattleDialogBox = %Dialog
 @onready var animation_player: AnimationPlayer = $ScreenAnimator

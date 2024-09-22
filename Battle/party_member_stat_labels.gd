@@ -19,7 +19,7 @@ func _ready() -> void:
 	mp_value.text = str(battle_actor.mp).pad_zeros(2)	
 	mp_max_value.text = str(battle_actor.mp_max).pad_zeros(2)	
 	
-func update_stats(a,b):
+func update_stats(_a,_b):
 	hp_value.text = str(battle_actor.hp).pad_zeros(2)	
 	hp_max_value.text = str(battle_actor.hp_max).pad_zeros(2)	
 	mp_value.text = str(battle_actor.mp).pad_zeros(2)	
