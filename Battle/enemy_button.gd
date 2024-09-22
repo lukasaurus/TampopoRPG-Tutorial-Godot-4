@@ -16,13 +16,18 @@ func _ready():
 	texture_normal = battle_actor.texture
 	if animation_player:
 		animation_player.play("RESET")
+		
+	battle_actor.shield_up.connect(shield_up)
 
 func set_battle_actor(actor:BattleActor)->void:
 	actor._initialize(animation_player) #needs to refresh stats, won't initialise properly otherwise
 	battle_actor = actor	
 	battle_actor.hp_changed.connect(on_battle_actor_hp_changed)
 
-
+func shield_up():
+	Util.create_shield_effect(self)
+	
+	pass
 func _on_focus_entered() -> void:
 	animation_player.play("highlight")
 

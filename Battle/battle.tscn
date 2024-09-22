@@ -394,6 +394,7 @@ autoplay = "BattleStart"
 
 [node name="XDeviruchi-DecisiveBattle(loop)" type="AudioStreamPlayer" parent="ScreenAnimator"]
 stream = ExtResource("13_bjo67")
+volume_db = -80.0
 
 [node name="55Encounter02" type="AudioStreamPlayer" parent="ScreenAnimator"]
 stream = ExtResource("13_1eoyd")

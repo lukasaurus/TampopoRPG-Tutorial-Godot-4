@@ -74,6 +74,7 @@ func add_rewards(button):
 	gold_gained += button.battle_actor.gold
 		
 func run_through_event_queue() ->void:
+
 	await menu_enter_tween(dialog_box)
 	for event in event_queue:
 		await run_event(event[0], event[1], event[2])
@@ -82,6 +83,9 @@ func run_through_event_queue() ->void:
 	
 	
 	event_queue.clear()
+	#clear status effects
+	for node in get_tree().get_nodes_in_group("StatusEffect"):
+		node.queue_free()
 	#check for defeat
 	var defeated = true
 	for p in Globals.party:
@@ -107,6 +111,7 @@ func run_through_event_queue() ->void:
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	#await enemy_button.battle_actor.heal_hurt(-1)
+
 	if actor.hp <= 0:
 		#print("actor  dead")
 		return
@@ -182,7 +187,7 @@ func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 	else:
 		current_player_index = 1 #reset party index and move to enemy actions
 		for enemy in enemies_menu.buttons:
-			add_event(enemy.battle_actor, [event_type.FIGHT, event_type.DEFEND].pick_random(), Globals.party.pick_random())
+			add_event(enemy.battle_actor, [event_type.DEFEND, event_type.FIGHT].pick_random(), Globals.party.pick_random())
 			enemy.animation_player.play("RESET")
 		
 		

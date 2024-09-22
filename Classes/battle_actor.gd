@@ -17,12 +17,15 @@ class_name BattleActor extends Resource
 		gold = level * value
 		
 @export var strength : int = 1
+
+
 		
 var hp : int = 1
 var animation_player =null
 var is_defending = false
 signal hp_changed(hp,value)
 signal defeated
+signal shield_up
 
 func _init() ->void:
 	pass
@@ -44,6 +47,10 @@ func damage_roll()->int:
 
 func defend():
 	is_defending = true
+	emit_signal("shield_up")
+	
+	
+	
 
 func heal_hurt(value:int)->int:
 	#if value == 0:
