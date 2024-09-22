@@ -1,18 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=16 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
 [ext_resource type="Texture2D" uid="uid://ddv7xtbliy1cs" path="res://Battle/Art/img/battlebacks2/Cliff.png" id="3_2p8o8"]
 [ext_resource type="Texture2D" uid="uid://c6fi5euc4ewn1" path="res://Battle/Art/img/battlebacks1/Wasteland.png" id="3_d3wcf"]
-[ext_resource type="PackedScene" uid="uid://dcol3wpdm24s8" path="res://Battle/enemy_button.tscn" id="4_5fufq"]
 [ext_resource type="Script" path="res://GUI/menu.gd" id="4_hjlfr"]
 [ext_resource type="Texture2D" uid="uid://34mjl5xd5j86" path="res://Battle/Art/img/battlebacks2/01out_xBridge01.png" id="5_um4kg"]
-[ext_resource type="Texture2D" uid="uid://bngin0s2snyu3" path="res://Battle/Art/img/enemies/En3_064Ramuh_C20_S4.png" id="6_00nc4"]
 [ext_resource type="PackedScene" uid="uid://71k8pvo5dkn2" path="res://GUI/dialogue.tscn" id="6_3xi8x"]
 [ext_resource type="Script" path="res://Battle/enemies_menu.gd" id="6_g4whj"]
-[ext_resource type="Texture2D" uid="uid://7jx25s22s4xb" path="res://Battle/Art/img/enemies/En3_010Mummy_C07_S2.png" id="7_m5j5l"]
-[ext_resource type="Texture2D" uid="uid://c7740d7oaqopk" path="res://Battle/Art/img/enemies/En3_033Kraken_C05_S3.png" id="8_5tg6y"]
-[ext_resource type="Texture2D" uid="uid://cm05renvt8oty" path="res://Battle/Art/img/enemies/En3_046Minotaur_C08_S2.png" id="9_x7832"]
 [ext_resource type="AudioStream" uid="uid://ct3adujr762cc" path="res://Battle/SFX/55_Encounter_02.wav" id="13_1eoyd"]
 [ext_resource type="AudioStream" uid="uid://dkfarmsfx72oa" path="res://Music/Decisive Battle/xDeviruchi - Decisive Battle (Loop).wav" id="13_bjo67"]
 
@@ -309,35 +304,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 script = ExtResource("6_g4whj")
 menu_type = 1
-
-[node name="EnemyButton" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-visible = false
-custom_minimum_size = Vector2(120, 80)
-layout_mode = 2
-size_flags_vertical = 8
-texture_normal = ExtResource("6_00nc4")
-stretch_mode = 5
-
-[node name="EnemyButton2" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(120, 80)
-layout_mode = 2
-size_flags_vertical = 8
-texture_normal = ExtResource("7_m5j5l")
-stretch_mode = 5
-
-[node name="EnemyButton3" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(120, 80)
-layout_mode = 2
-size_flags_vertical = 8
-texture_normal = ExtResource("8_5tg6y")
-stretch_mode = 5
-
-[node name="EnemyButton4" parent="MarginContainer/VBoxContainer/MarginContainer/EnemiesMenu" instance=ExtResource("4_5fufq")]
-custom_minimum_size = Vector2(120, 80)
-layout_mode = 2
-size_flags_vertical = 8
-texture_normal = ExtResource("9_x7832")
-stretch_mode = 5
 
 [node name="Bottom" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

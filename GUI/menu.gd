@@ -16,8 +16,13 @@ signal button_deleted(button)
 signal enemy_dead(button)
 
 func _ready() -> void:
-
+	
+	set_buttons()
+	#get_neighbours()
+func set_buttons() ->void:
+	buttons = get_children()
 	for button in buttons:
+		print(name)
 		button.focus_entered.connect(on_button_focused.bind(button))
 		button.focus_exited.connect(on_button_focus_exited.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
@@ -28,8 +33,7 @@ func _ready() -> void:
 		button_focus()
 	elif disable_on_focus_exit:
 		set_button_focus_mode(FOCUS_NONE)
-	#get_neighbours()
-	
+		
 func on_button_deleted(button):
 
 	buttons.erase(button) #remove button from list
