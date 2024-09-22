@@ -6,6 +6,11 @@ class_name BattleActor extends Resource
 	set(value):
 		hp_max = value
 		hp = value
+		
+@export var mp_max : int = 1:
+	set(value):
+		mp_max = value
+		mp = value
 @export var texture : Texture2D
 @export var speed : int = 1
 @export var level : int = 1
@@ -19,8 +24,11 @@ class_name BattleActor extends Resource
 @export var strength : int = 1
 
 
+
+
 		
 var hp : int = 1
+var mp : int = 1
 var animation_player =null
 var is_defending = false
 signal hp_changed(hp,value)

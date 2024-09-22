@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=3 format=3 uid="uid://c1lmp74devv4b"]
+
+[ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_mnb3t"]
+[ext_resource type="Texture2D" uid="uid://b558q88lmxk6f" path="res://Assets/Art/Faces/partyface (3).png" id="1_octfe"]
+
+[resource]
+script = ExtResource("1_mnb3t")
+face_texture = ExtResource("1_octfe")
+type = "Enemy"
+name = "Ivan"
+hp_max = 14
+mp_max = 0
+speed = 1
+level = 1
+xp = 0
+gold = 0
+strength = 5
