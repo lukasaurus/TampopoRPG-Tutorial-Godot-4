@@ -1,13 +1,12 @@
 extends PanelContainer
 
-@onready var texture_rect: TextureRect = $MarginContainer/PlayerStatLabels/Name/TextureRect
-@onready var name_label: Label = $MarginContainer/PlayerStatLabels/Name/NameLabel
+@onready var texture_rect: TextureRect = $MarginContainer/HBoxContainer/TextureRect
+@onready var name_label: Label = $MarginContainer/HBoxContainer/PlayerStatLabels/Name/NameLabel
+@onready var hp_value: Label = $MarginContainer/HBoxContainer/PlayerStatLabels/HP/HPValue
+@onready var hp_max_value: Label = $MarginContainer/HBoxContainer/PlayerStatLabels/HP/HPMaxValue
+@onready var mp_value: Label = $MarginContainer/HBoxContainer/PlayerStatLabels/MP/MPValue
+@onready var mp_max_value: Label = $MarginContainer/HBoxContainer/PlayerStatLabels/MP/MPMaxValue
 
-@onready var hp_value: Label = $MarginContainer/PlayerStatLabels/HP/HPValue
-@onready var mp_max_value: Label = $MarginContainer/PlayerStatLabels/MP/MPMaxValue
-
-@onready var mp_value: Label = $MarginContainer/PlayerStatLabels/MP/MPValue
-@onready var hp_max_value: Label = $MarginContainer/PlayerStatLabels/HP/HPMaxValue
 
 var battle_actor : PartyBattleActor = preload("res://Classes/Party/PartyMemberErin.tres")
 

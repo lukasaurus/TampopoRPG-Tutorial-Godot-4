@@ -136,7 +136,7 @@ func set_all_active_party_members(visible : bool) -> void:
 		
 func set_active_party_member():
 	for stat_box : PanelContainer in party_area.get_children():
-		stat_box.modulate.a = 0.5
+		stat_box.modulate.a = 0.3
 		if stat_box.battle_actor == party_members_alive[current_player_index]:
 			stat_box.modulate.a = 1
 	

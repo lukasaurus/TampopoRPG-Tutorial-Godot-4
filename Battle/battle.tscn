@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://u5yie0eed7ex"]
+[gd_scene load_steps=19 format=3 uid="uid://u5yie0eed7ex"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_0h580"]
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_15ij3"]
@@ -129,6 +129,139 @@ _data = {
 "RESET": SubResource("Animation_82gss")
 }
 
+[sub_resource type="Animation" id="Animation_bj4tp"]
+resource_name = "BattleStart"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 279)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-113, 54), Vector2(7, 54)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyInfo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(417, -106), Vector2(417, 54)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemiesMenu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(650, 140), Vector2(2, 140)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PartyArea:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 484), Vector2(0, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_byuom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 279)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 54)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyInfo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(417, 54)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemiesMenu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 140)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PartyArea:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 300)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0xal"]
+_data = {
+"BattleStart": SubResource("Animation_bj4tp"),
+"RESET": SubResource("Animation_byuom")
+}
+
 [node name="Battle" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -139,8 +272,6 @@ grow_vertical = 2
 theme = ExtResource("1_15ij3")
 script = ExtResource("1_0h580")
 metadata/_edit_lock_ = true
-metadata/_edit_horizontal_guides_ = [-71.0, 522.0]
-metadata/_edit_vertical_guides_ = [446.0, 195.0, 480.0]
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -152,16 +283,20 @@ grow_vertical = 2
 color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 metadata/_edit_lock_ = true
 
-[node name="Cliff" type="Sprite2D" parent="."]
-position = Vector2(484, 573)
+[node name="BackgroundSprites" type="Node2D" parent="."]
+position = Vector2(322, 417)
+scale = Vector2(0.665, 0.665)
+metadata/_edit_group_ = true
+
+[node name="Cliff" type="Sprite2D" parent="BackgroundSprites"]
 texture = ExtResource("3_2p8o8")
 
-[node name="Wasteland" type="Sprite2D" parent="."]
-position = Vector2(482, 670)
+[node name="Wasteland" type="Sprite2D" parent="BackgroundSprites"]
+position = Vector2(-2, 97)
 texture = ExtResource("3_d3wcf")
 
-[node name="01OutXBridge01" type="Sprite2D" parent="."]
-position = Vector2(483, 604)
+[node name="01OutXBridge01" type="Sprite2D" parent="BackgroundSprites"]
+position = Vector2(-1, 31)
 texture = ExtResource("5_um4kg")
 
 [node name="PartyArea" type="MarginContainer" parent="."]
@@ -172,11 +307,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -241.0
-offset_top = -108.0
-offset_right = 241.0
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 318.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PartyArea"]
@@ -188,8 +326,9 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 140.0
-offset_right = 959.0
-offset_bottom = 374.0
+offset_right = 321.0
+offset_bottom = 206.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 0
@@ -202,10 +341,10 @@ metadata/_edit_group_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(184, 22.595)
 layout_mode = 2
-offset_left = 697.0
-offset_top = 36.0
-offset_right = 881.0
-offset_bottom = 58.595
+offset_left = 417.0
+offset_top = 54.0
+offset_right = 601.0
+offset_bottom = 77.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 metadata/_edit_group_ = true
@@ -223,10 +362,10 @@ theme_override_constants/separation = 0
 [node name="Bottom" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 156.0
-offset_top = 412.0
-offset_right = 247.0
-offset_bottom = 520.0
+offset_left = 7.0
+offset_top = 54.0
+offset_right = 98.0
+offset_bottom = 162.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
@@ -316,3 +455,9 @@ offset_right = 963.0
 offset_bottom = 552.0
 color = Color(1, 1, 1, 0)
 metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j0xal")
+}
+autoplay = "BattleStart"
