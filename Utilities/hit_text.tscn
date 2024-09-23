@@ -5,6 +5,6 @@
 [node name="HitText" type="Label"]
 offset_right = 88.0
 offset_bottom = 31.0
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 10
 text = "999"
 script = ExtResource("1_moatu")

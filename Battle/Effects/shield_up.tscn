@@ -6,5 +6,5 @@
 [node name="ShieldUp" type="Sprite2D" groups=["Effect", "StatusEffect"]]
 texture = ExtResource("1_3khe1")
 region_enabled = true
-region_rect = Rect2(0, 255, 33, 34)
+region_rect = Rect2(0, 86, 10, 10)
 script = ExtResource("2_5pwt8")

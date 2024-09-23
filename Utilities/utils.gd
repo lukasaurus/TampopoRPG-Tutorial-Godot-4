@@ -12,9 +12,10 @@ static func create_hit_text(value, node:Control, type = HitText.BOUNCING) -> voi
 	print(node)
 	node.add_child(inst)
 	inst.init(value, node, type)
+	inst.global_position = node.global_position + Vector2(node.size.x,0)
 	
-static func create_shield_effect(node:Control) -> void:
+static func create_shield_effect(node:TextureButton) -> void:
 	var shield_effect = SHIELD_UP.instantiate()
 	
 	node.add_child(shield_effect)
-	shield_effect.global_position = node.global_position + Vector2(90,30)
+	shield_effect.global_position = node.global_position + Vector2(node.size.x,node.texture_normal.get_height()*2)

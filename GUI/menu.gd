@@ -50,7 +50,15 @@ func on_button_deleted(button):
 	emit_signal("enemy_dead",button) #send details to battle script
 	#await get_tree().process_frame
 	
+func is_focused() -> bool:
+	for button : Control in buttons:
+		if button.has_focus():
+			return true
+		else:
+			return false
 	
+	get_viewport().set_input_as_handled()
+	return false	
 	
 func set_button_focus_mode(mode:int)->void:
 	#can_focus = on

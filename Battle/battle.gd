@@ -55,7 +55,26 @@ func _ready() -> void:
 	add_enemy_stat_boxes() #add the stat boxes to the scene
 	set_active_party_member()
 	
-	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if battle_menu.is_focused():
+			if event_queue.size() > 0:
+				go_to_next_player(-1)
+				event_queue.pop_back()
+		if enemies_menu.is_focused():
+			go_to_next_player(0)
+			pass
+	else:
+		return
+	get_viewport().set_input_as_handled()
+
+func go_to_next_player(dir: int = 1):
+	print(current_player_index)
+	if current_player_index > 0 or current_player_index < party_members_alive.size()-1:
+		current_player_index+=dir
+	print(current_player_index)
+	set_active_party_member()
+	battle_menu.button_focus()
 	
 func add_party_stat_boxes(player : PartyBattleActor)-> void:
 	var stats_box = PARTY_MEMBER_STAT_LABELS.instantiate()
@@ -214,9 +233,7 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 	add_event(party_members_alive[current_player_index], current_action,enemy_button.battle_actor) #add action to list
 	if current_player_index < party_members_alive.size()-1: # if there are still party members
-		current_player_index+=1
-		set_active_party_member()
-		battle_menu.button_focus()
+		go_to_next_player()
 	else:
 		#set_all_active_party_members(true)
 		current_player_index = 0 #reset party index and move to enemy actions
