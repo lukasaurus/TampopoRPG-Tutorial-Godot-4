@@ -64,7 +64,7 @@ func connect_buttons(object : Object)-> void:
 func button_focus(btn : int = index)-> void:
 	if disable_on_focus_exit:
 		set_button_focus_mode(FOCUS_ALL)
-	index = clampi(btn,0,get_child_count()-1)
+	index = clampi(btn,0,buttons.size()-1)#get_child_count()-1)
 	buttons[index].grab_focus()
 
 func on_button_focused(button:BaseButton):

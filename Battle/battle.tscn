@@ -139,7 +139,7 @@ grow_vertical = 2
 theme = ExtResource("1_15ij3")
 script = ExtResource("1_0h580")
 metadata/_edit_lock_ = true
-metadata/_edit_horizontal_guides_ = [-71.0]
+metadata/_edit_horizontal_guides_ = [-71.0, 522.0]
 metadata/_edit_vertical_guides_ = [446.0, 195.0, 480.0]
 
 [node name="Background" type="ColorRect" parent="."]
@@ -153,15 +153,15 @@ color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 metadata/_edit_lock_ = true
 
 [node name="Cliff" type="Sprite2D" parent="."]
-position = Vector2(484, 605)
+position = Vector2(484, 573)
 texture = ExtResource("3_2p8o8")
 
 [node name="Wasteland" type="Sprite2D" parent="."]
-position = Vector2(482, 702)
+position = Vector2(482, 670)
 texture = ExtResource("3_d3wcf")
 
 [node name="01OutXBridge01" type="Sprite2D" parent="."]
-position = Vector2(483, 636)
+position = Vector2(483, 604)
 texture = ExtResource("5_um4kg")
 
 [node name="PartyArea" type="MarginContainer" parent="."]
@@ -177,17 +177,19 @@ offset_top = -108.0
 offset_right = 241.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PartyArea"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="EnemiesMenu" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 205.0
-offset_top = 110.0
-offset_right = 757.0
-offset_bottom = 398.0
+offset_left = 2.0
+offset_top = 140.0
+offset_right = 959.0
+offset_bottom = 374.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 0
@@ -221,10 +223,10 @@ theme_override_constants/separation = 0
 [node name="Bottom" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 17.0
-offset_top = 14.0
-offset_right = 108.0
-offset_bottom = 122.0
+offset_left = 156.0
+offset_top = 412.0
+offset_right = 247.0
+offset_bottom = 520.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
@@ -280,16 +282,17 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -66.0
+offset_top = -201.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = 62
+metadata/_edit_group_ = true
 
 [node name="Dialog" parent="DialogContainer" instance=ExtResource("6_3xi8x")]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(500, 72)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -57,7 +57,8 @@ func heal_hurt(value:int)->int:
 		if is_defending:
 			value = ceili(value * (0.4 + randf_range(-0.2,0.2)))
 	hp = clampi(hp+value,0,hp_max)
-
+	if hp <= 0:
+		emit_signal("defeated",self)
 	emit_signal("hp_changed",hp,value)
 	if animation_player: #get animation player from owner reference so animation plays full before returning control to player
 		await animation_player.animation_finished
