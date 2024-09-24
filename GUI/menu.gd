@@ -55,7 +55,7 @@ func is_focused() -> bool:
 		if button.has_focus():
 			return true
 		else:
-			return false
+			continue
 	
 	get_viewport().set_input_as_handled()
 	return false	

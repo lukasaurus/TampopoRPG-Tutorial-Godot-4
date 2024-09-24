@@ -63,14 +63,19 @@ func _ready() -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
+		print("cancelling character select")
 		if battle_menu.is_focused():
+			print("player battle menu is focused")
 			if event_queue.size() > 0:
+				print("going to previous player")
 				go_to_next_player(-1)
+				print("removing previous event")
 				event_queue.pop_back()
 		if enemies_menu.is_focused():
 			go_to_next_player(0)
 			pass
 	else:
+
 		return
 	get_viewport().set_input_as_handled()
 
@@ -182,12 +187,13 @@ func enemy_attack_animation(enemy):
 			enemy_button = button
 			
 	var tween_attack : Tween = create_tween()
+	var original_position = enemy_button.position
 	tween_attack.tween_property(enemy_button, "scale", Vector2(0.3,0.3),0.2)
-	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y - 10, 0.2)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",original_position.y - 10, 0.2)
 	tween_attack.tween_property(enemy_button, "scale", Vector2(1.4,1.4),0.1)
-	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y + 20, 0.2)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",original_position.y + 20, 0.2)
 	tween_attack.tween_property(enemy_button, "scale", Vector2(1,1),0.2)
-	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y, 0.2)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",original_position.y, 0.2)
 	await tween_attack.finished
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
