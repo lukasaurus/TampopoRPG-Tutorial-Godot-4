@@ -59,7 +59,7 @@ func _ready() -> void:
 		if player.hp > 0:
 			party_members_alive.append(player)
 	add_enemy_stat_boxes() #add the stat boxes to the scene
-	set_active_party_member()
+	set_active_party_member(party_members_alive[current_player_index])
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -84,7 +84,7 @@ func go_to_next_player(dir: int = 1):
 	if current_player_index > 0 or current_player_index < party_members_alive.size()-1:
 		current_player_index+=dir
 	print(current_player_index)
-	set_active_party_member()
+	set_active_party_member(party_members_alive[current_player_index])
 	battle_menu.button_focus()
 	
 func add_party_stat_boxes(player : PartyBattleActor)-> void:
@@ -169,23 +169,24 @@ func run_through_event_queue() ->void:
 func set_all_active_party_members(visible : bool) -> void:
 	if not visible:
 		for stat_box : PanelContainer in party_area.get_children():
-			stat_box.modulate.a = 0.5
+			stat_box.modulate.a = 0.1
 	else:
 		for stat_box : PanelContainer in party_area.get_children():
 			stat_box.modulate.a = 1
 		
-func set_active_party_member():
+func set_active_party_member(party_member):
 	for stat_box : PanelContainer in party_area.get_children():
-		stat_box.modulate.a = 0.3
-		if stat_box.battle_actor == party_members_alive[current_player_index]:
+		stat_box.modulate.a = 0.1
+		if stat_box.battle_actor == party_member:
 			stat_box.modulate.a = 1
 
-func enemy_attack_animation(enemy):
+func enemy_attack_animation(enemy, target):
 	var enemy_button : TextureButton = null
 	for button in enemies_menu.buttons:
 		if enemy == button.battle_actor:
 			enemy_button = button
-			
+	
+	
 	var tween_attack : Tween = create_tween()
 	var original_position = enemy_button.position
 	tween_attack.tween_property(enemy_button, "scale", Vector2(0.3,0.3),0.2)
@@ -194,7 +195,9 @@ func enemy_attack_animation(enemy):
 	tween_attack.parallel().tween_property(enemy_button,"position:y",original_position.y + 20, 0.2)
 	tween_attack.tween_property(enemy_button, "scale", Vector2(1,1),0.2)
 	tween_attack.parallel().tween_property(enemy_button,"position:y",original_position.y, 0.2)
+	
 	await tween_attack.finished
+	
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	if target != null: #target would be null where no target is required
@@ -223,12 +226,16 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 				return
 	match type:
 		event_type.FIGHT:
+			if actor.type == "Enemy":
+				set_active_party_member(target)
+			else:
+				set_active_party_member(actor)
 			dialog_box.type_dialog(actor.name + " hits " + target.name + "!")
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
 			dialog_box.hide()
 			if actor.type == "Enemy":
-				await enemy_attack_animation(actor)
+				await enemy_attack_animation(actor,target)
 			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
 			dialog_box.show()
 			if target.is_defending:
@@ -236,9 +243,11 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			else:
 				dialog_box.type_dialog(target.name + " takes "+str(abs(dmg))+" damage")
 			await dialog_box.battle_dialog_done
+			
 			if target.hp <= 0:
 				dialog_box.type_dialog(target.name + " is defeated!!")
 				await dialog_box.battle_dialog_done
+			set_all_active_party_members(true)
 		
 		event_type.DEFEND:
 			dialog_box.type_dialog(actor.name + " defends against attacks.")
@@ -310,7 +319,7 @@ func run_battle_round():
 	scene_animator.play_backwards("EventsStart")
 	await scene_animator.animation_finished
 	await menu_enter_tween(bottom)
-	set_active_party_member()
+	set_active_party_member(party_members_alive[current_player_index])
 	battle_menu.button_focus()		
 	
 func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
