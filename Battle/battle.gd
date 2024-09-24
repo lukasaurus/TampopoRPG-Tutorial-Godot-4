@@ -7,6 +7,7 @@ enum event_type
 {
 	FIGHT,
 	DEFEND,
+	PARRY,
 	ITEM,
 	TALK,
 	MAGIC,
@@ -40,7 +41,7 @@ var battle_result : int = -1
 @onready var animation_player: AnimationPlayer = $ScreenAnimator
 @onready var enemy_stat_box: VBoxContainer = %EnemyStatBox
 @onready var party_area: HBoxContainer = %PartyArea/HBoxContainer
-
+@onready var scene_animator : AnimationPlayer = $AnimationPlayer
 var party_members_alive : Array
 var active_party_member : BattleActor
 #PRELOADS
@@ -117,13 +118,14 @@ func add_rewards(button):
 	gold_gained += button.battle_actor.gold
 		
 func run_through_event_queue() ->void:
+
 	print("--->start of queue",party_members_alive)
 	await menu_enter_tween(dialog_box)
 	for event in event_queue:
 		await run_event(event[0], event[1], event[2])
 	
 	event_queue.clear()
-	#clear status effects
+
 	for node in get_tree().get_nodes_in_group("StatusEffect"):
 		node.queue_free() 
 	#check for battle state
@@ -174,29 +176,30 @@ func set_active_party_member():
 			stat_box.modulate.a = 1
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
-	print_rich("[color=cyan]"+actor.name+" targets " + target.name+ " [/color]")
-	if actor.hp <= 0:
-		print_rich("[color=red]Alert : Actor already dead[/color]")
-		return
-	if target.hp <= 0:
-		print_rich("[color=orange]Alert : Target already dead[/color]")
-		if actor.type == "Player":
-			print("Finding New Target")
-			if enemies_menu.get_buttons().size() > 0:
-				while true:
-					print("Randomizing Target")
-					target = enemies_menu.get_buttons().pick_random().battle_actor
-					if target.hp > 0:
-						print("New Target Found")
-						break
-			else:
-				return
-			#target = enemies_menu.get_buttons().pick_random().battle_actor
-			#this might cause crash if it picks another random enemy that is also dead
-			#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING
-		if actor.type == "Enemy":
-			target = party_members_alive.pick_random()
+	if target != null: #target would be null where no target is required
+		print_rich("[color=cyan]"+actor.name+" targets " + target.name+ " [/color]")
+		if actor.hp <= 0:
+			print_rich("[color=red]Alert : Actor already dead[/color]")
 			return
+		if target.hp <= 0:
+			print_rich("[color=orange]Alert : Target already dead[/color]")
+			if actor.type == "Player":
+				print("Finding New Target")
+				if enemies_menu.get_buttons().size() > 0:
+					while true:
+						print("Randomizing Target")
+						target = enemies_menu.get_buttons().pick_random().battle_actor
+						if target.hp > 0:
+							print("New Target Found")
+							break
+				else:
+					return
+				#target = enemies_menu.get_buttons().pick_random().battle_actor
+				#this might cause crash if it picks another random enemy that is also dead
+				#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING#WARNING
+			if actor.type == "Enemy":
+				target = party_members_alive.pick_random()
+				return
 	match type:
 		event_type.FIGHT:
 			dialog_box.type_dialog(actor.name + " hits " + target.name + "!")
@@ -218,6 +221,12 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			dialog_box.type_dialog(actor.name + " defends against attacks.")
 			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			actor.defend()
+			await dialog_box.battle_dialog_done
+			
+		event_type.PARRY:
+			actor.defend()
+			dialog_box.type_dialog(actor.name + " defends against attacks.")
+			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			await dialog_box.battle_dialog_done
 			
 
@@ -246,33 +255,49 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 			current_action = event_type.FIGHT
 			enemies_menu.button_focus()
 			pass
-		
+		"PARRY":
+			current_action = event_type.PARRY
+			event_queue.append([party_members_alive[current_player_index],current_action,null])
+			if current_player_index < party_members_alive.size()-1: # if there are still party members
+				go_to_next_player()
+			else:
+				await run_battle_round()
+			
+
+func run_battle_round():
+	current_player_index = 0 #reset party index and move to enemy actions
+	for enemy in enemies_menu.buttons:
+		add_event(enemy.battle_actor, [event_type.DEFEND, event_type.FIGHT].pick_random(), party_members_alive.pick_random())
+		enemy.animation_player.play("RESET")
+	
+	
+	#shuffle event queue and sort defense to the top
+	event_queue.shuffle()
+	event_queue.sort_custom(sort_defends_to_top)
+
+	get_viewport().gui_get_focus_owner().release_focus()
+	set_all_active_party_members(true)
+	#animate bottom menus and events
+	#NOTE : Probably do custom animations later
+	await menu_exit_tween(bottom)
+	scene_animator.play("EventsStart")
+	await scene_animator.animation_finished
+	await run_through_event_queue()
+	await menu_exit_tween(dialog_box)
+	scene_animator.play_backwards("EventsStart")
+	await scene_animator.animation_finished
+	await menu_enter_tween(bottom)
+	set_active_party_member()
+	battle_menu.button_focus()		
+	
 func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
 	add_event(party_members_alive[current_player_index], current_action,enemy_button.battle_actor) #add action to list
 	if current_player_index < party_members_alive.size()-1: # if there are still party members
 		go_to_next_player()
 	else:
+		await run_battle_round()
 		#set_all_active_party_members(true)
-		current_player_index = 0 #reset party index and move to enemy actions
-		for enemy in enemies_menu.buttons:
-			add_event(enemy.battle_actor, [event_type.DEFEND, event_type.FIGHT].pick_random(), party_members_alive.pick_random())
-			enemy.animation_player.play("RESET")
 		
-		
-		#shuffle event queue and sort defense to the top
-		event_queue.shuffle()
-		event_queue.sort_custom(sort_defends_to_top)
-	
-		get_viewport().gui_get_focus_owner().release_focus()
-		set_all_active_party_members(true)
-		#animate bottom menus and events
-		#NOTE : Probably do custom animations later
-		await menu_exit_tween(bottom)
-		await run_through_event_queue()
-		await menu_exit_tween(dialog_box)
-		await menu_enter_tween(bottom)
-		set_active_party_member()
-		battle_menu.button_focus()	
 
 func damage_flash(_hp:int, value_change: int = 0):
 	if value_change < 0:

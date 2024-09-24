@@ -4,8 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ck5aopqrr8801" path="res://Assets/Art/Faces/partyface (2).png" id="2_ctm6i"]
 
 [node name="PartyMemberContainer" type="PanelContainer"]
-offset_right = 91.0
-offset_bottom = 36.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_right = 73.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 3
 script = ExtResource("1_paq1v")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

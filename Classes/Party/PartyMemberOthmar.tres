@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=3 format=3 uid="uid://bohdca6t3blql"]
+
+[ext_resource type="Texture2D" uid="uid://bfj0pu5vv0iy3" path="res://Assets/Art/Faces/partyface (8).png" id="1_n03qn"]
+[ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_tnvva"]
+
+[resource]
+script = ExtResource("1_tnvva")
+face_texture = ExtResource("1_n03qn")
+type = "Player"
+name = "Othmar"
+hp_max = 24
+mp_max = 12
+speed = 1
+level = 1
+xp = 0
+gold = 0
+strength = 7
