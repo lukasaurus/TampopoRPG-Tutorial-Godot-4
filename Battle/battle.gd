@@ -13,13 +13,18 @@ enum event_type
 	RUN
 }
 
+enum end_state{
+	VICTORY,
+	DEFEAT
+}
+
 #variables
 var event_queue : Array = []
 var current_action : int = -1
 var current_player_index : int = 0
 var gold_gained : int = 0
 var xp_gained : int = 0
-
+var battle_result : int = -1
 
 
 ##REFERENCES
@@ -121,26 +126,35 @@ func run_through_event_queue() ->void:
 	#clear status effects
 	for node in get_tree().get_nodes_in_group("StatusEffect"):
 		node.queue_free() 
-	#check for defeat
-	var defeated = true
-	for p in Globals.party.party_members:
-		if p.hp > 0:
-			defeated = false
-	if defeated:
-		print_rich("[color=red]!!!DEFEATED!!![/color]")
-		dialog_box.type_dialog("You are defeated.\nYou lose the will to continue...\nThe world fades to black...")
-		await dialog_box.battle_dialog_done
-		animation_player.play("FadeToBlack")
-		await animation_player.animation_finished
-		await get_tree().create_timer(3).timeout
-		get_tree().quit()
-		
+	#check for battle state
+	if party_members_alive.size() == 0:
+		battle_result = end_state.DEFEAT
+	elif enemies_menu.get_buttons().size() == 0:
+		battle_result = end_state.VICTORY
+
+
+	match battle_result:
+		end_state.DEFEAT:
+			battle_result = end_state.DEFEAT
+			print_rich("[color=red]!!!DEFEATED!!![/color]")
+			dialog_box.type_dialog("You are defeated.\nYou lose the will to continue...\nThe world fades to black...")
+			await dialog_box.battle_dialog_done
+			animation_player.play("FadeToBlack")
+			await animation_player.animation_finished
+			await get_tree().create_timer(3).timeout
+			get_tree().quit()
+			
+		end_state.VICTORY:	
 	#check for victory
-	if enemies_menu.get_buttons().size() == 0:
-		print_rich("[color=pink]!!!VICTORY!!![/color]")
-		dialog_box.type_dialog("You are victorious!!\nYou gain "+str(xp_gained)+" XP and "+str(gold_gained)+" Gold!")
-		await dialog_box.battle_dialog_done
-		get_tree().quit()
+
+			battle_result = end_state.VICTORY
+			print_rich("[color=pink]!!!VICTORY!!![/color]")
+			dialog_box.type_dialog("You are victorious!!\nYou gain "+str(xp_gained)+" XP and "+str(gold_gained)+" Gold!")
+			await dialog_box.battle_dialog_done
+			get_tree().quit()
+		
+		_:
+			pass
 	
 	print("--->end of queue",party_members_alive)
 		
@@ -167,10 +181,13 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 	if target.hp <= 0:
 		print_rich("[color=orange]Alert : Target already dead[/color]")
 		if actor.type == "Player":
+			print("Finding New Target")
 			if enemies_menu.get_buttons().size() > 0:
 				while true:
+					print("Randomizing Target")
 					target = enemies_menu.get_buttons().pick_random().battle_actor
 					if target.hp > 0:
+						print("New Target Found")
 						break
 			else:
 				return
