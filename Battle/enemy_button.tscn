@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dcol3wpdm24s8"]
 
-[ext_resource type="Texture2D" uid="uid://iqo8cnw761qd" path="res://icon.svg" id="1_o0fmm"]
+[ext_resource type="Texture2D" uid="uid://blpgc1wnogpt" path="res://Battle/Art/img/enemies/En3_046Minotaur_C05_S2.png" id="1_1b8hx"]
 [ext_resource type="Script" path="res://Battle/enemy_button.gd" id="2_3mtdh"]
 
 [sub_resource type="Animation" id="Animation_rnufh"]
@@ -116,19 +116,18 @@ _data = {
 }
 
 [node name="EnemyButton" type="TextureButton"]
-custom_minimum_size = Vector2(48, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -90.0
-offset_top = -128.0
-offset_right = 38.0
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 24.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-texture_normal = ExtResource("1_o0fmm")
+texture_normal = ExtResource("1_1b8hx")
 stretch_mode = 3
 script = ExtResource("2_3mtdh")
 

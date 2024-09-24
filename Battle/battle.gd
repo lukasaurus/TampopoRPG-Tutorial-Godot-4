@@ -174,6 +174,21 @@ func set_active_party_member():
 		stat_box.modulate.a = 0.3
 		if stat_box.battle_actor == party_members_alive[current_player_index]:
 			stat_box.modulate.a = 1
+
+func enemy_attack_animation(enemy):
+	var enemy_button : TextureButton = null
+	for button in enemies_menu.buttons:
+		if enemy == button.battle_actor:
+			enemy_button = button
+			
+	var tween_attack : Tween = create_tween()
+	tween_attack.tween_property(enemy_button, "scale", Vector2(0.3,0.3),0.2)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y - 10, 0.2)
+	tween_attack.tween_property(enemy_button, "scale", Vector2(1.4,1.4),0.1)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y + 20, 0.2)
+	tween_attack.tween_property(enemy_button, "scale", Vector2(1,1),0.2)
+	tween_attack.parallel().tween_property(enemy_button,"position:y",position.y, 0.2)
+	await tween_attack.finished
 	
 func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
 	if target != null: #target would be null where no target is required
@@ -206,6 +221,8 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			print_rich ("[color=green]"+actor.name+"[/color]" + " hits [color=red]"+ target.name + "[/color]!")
 			await dialog_box.battle_dialog_done
 			dialog_box.hide()
+			if actor.type == "Enemy":
+				await enemy_attack_animation(actor)
 			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
 			dialog_box.show()
 			if target.is_defending:

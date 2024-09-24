@@ -14,7 +14,7 @@ func _ready():
 		return
 	set_battle_actor(Globals.enemy_list.random_enemy())
 	texture_normal = battle_actor.texture
-	
+	pivot_offset = Vector2(texture_normal.get_width()/2,texture_normal.get_height()/2)
 	if animation_player:
 		animation_player.play("RESET")
 		
