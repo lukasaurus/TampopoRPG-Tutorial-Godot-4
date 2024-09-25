@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=4 uid="uid://d33uybxtfwttb"]
+
+[ext_resource type="TileSet" uid="uid://c5dltn26mnnc" path="res://Assets/Art/World/ExteriorTileSets/Exterior.tres" id="1_0dnb4"]
+
+[node name="TileMapWorldTest" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAIAAoAQAABAAAAAAAJAAoAQAACAAAAAAAKAAoAQAACAAAAAAALAAoAQAACAAAAAAAMAAoAQAADAAAAAAALAAsAQAACAAEAAAAKAAsAQAACAAEAAAAJAAsAQAACAAEAAAAIAAsAQAABAAEAAAAMAAsAQAADAAEAAAAMAAwAQAADAAIAAAALAAwAQAACAAIAAAAKAAwAQAACAAIAAAAJAAwAQAACAAIAAAAIAAwAQAABAAIAAAA=")
+tile_set = ExtResource("1_0dnb4")
