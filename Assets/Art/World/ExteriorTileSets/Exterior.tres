@@ -1,0 +1,760 @@
+[gd_resource type="TileSet" load_steps=65 format=3 uid="uid://c5dltn26mnnc"]
+
+[ext_resource type="Texture2D" uid="uid://djl1bgvypx5ht" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/blue_roof_tiles.png" id="1_kdfyh"]
+[ext_resource type="Texture2D" uid="uid://c5rqeto10upkk" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/brown_roof_shingles.png" id="2_v2bki"]
+[ext_resource type="Texture2D" uid="uid://c5mp25utl4xb1" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/brown_roof_tiles.png" id="3_vilqd"]
+[ext_resource type="Texture2D" uid="uid://xmy5d8fqejgn" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/green_roof_tiles.png" id="4_vybyf"]
+[ext_resource type="Texture2D" uid="uid://jd0w0knipgof" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_leaf_roof.png" id="5_kgtc6"]
+[ext_resource type="Texture2D" uid="uid://d2thnajbn6mkf" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_plain_roof.png" id="6_yx03g"]
+[ext_resource type="Texture2D" uid="uid://bwicnij061211" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_roof_shingles.png" id="7_42gsx"]
+[ext_resource type="Texture2D" uid="uid://d1ghgujvfimvo" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_roof_tiles.png" id="8_am4ak"]
+[ext_resource type="Texture2D" uid="uid://doke6hj28ujtq" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_roof_tiles_large.png" id="9_2gusv"]
+[ext_resource type="Texture2D" uid="uid://dfpdy07fvugqt" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/ice_wood_roof.png" id="10_uk5i7"]
+[ext_resource type="Texture2D" uid="uid://cdw0rlyhubgvq" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/jungle_wood_wall.png" id="11_i88b3"]
+[ext_resource type="Texture2D" uid="uid://cqvly31rha5j" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/jungle_wood_wall_with_ice.png" id="12_v7r5m"]
+[ext_resource type="Texture2D" uid="uid://csbqyqacsegx7" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/leaf_roof.png" id="13_sndk4"]
+[ext_resource type="Texture2D" uid="uid://dj0ylrvarit25" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plain_wall_with_stone.png" id="14_n0srl"]
+[ext_resource type="Texture2D" uid="uid://q323gth2fcue" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plain_wall_with_stone_and_ice.png" id="15_1bktr"]
+[ext_resource type="Texture2D" uid="uid://cviionuelso38" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plain_wall_with_wood.png" id="16_vq0eq"]
+[ext_resource type="Texture2D" uid="uid://cnxljh8p1bdmd" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plain_wall_with_wood_and_ice.png" id="17_fu5uc"]
+[ext_resource type="Texture2D" uid="uid://bulj1wcimpjmx" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plank_wall.png" id="18_dsrig"]
+[ext_resource type="Texture2D" uid="uid://yvu0hlwd1ehe" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plank_wall_with_ice.png" id="19_lqyie"]
+[ext_resource type="Texture2D" uid="uid://bwm8dxdry2b64" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plank_wall_with_stone.png" id="20_hwyvt"]
+[ext_resource type="Texture2D" uid="uid://cd53lug1ug7up" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/plank_wall_with_stone_and_ice.png" id="21_p8uuo"]
+[ext_resource type="Texture2D" uid="uid://cro0ms05pbpih" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/red_roof_shingles.png" id="22_a3pao"]
+[ext_resource type="Texture2D" uid="uid://bhuf1sxwb7eju" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/sandstone_brick_wall.png" id="23_47tqn"]
+[ext_resource type="Texture2D" uid="uid://cw1haadem4li2" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/sandstone_roof.png" id="24_bdg32"]
+[ext_resource type="Texture2D" uid="uid://c7wnwr8a02s0g" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/sandstone_rough_roof.png" id="25_atmel"]
+[ext_resource type="Texture2D" uid="uid://docefu3wkvm33" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/sandstone_wall.png" id="26_jewx0"]
+[ext_resource type="Texture2D" uid="uid://btdc1la22ifn7" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/stone_wall_with_stone.png" id="27_717p4"]
+[ext_resource type="Texture2D" uid="uid://cn4bc6456fkq1" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/stone_wall_with_stone_and_ice.png" id="28_7m25m"]
+[ext_resource type="Texture2D" uid="uid://bulemiiw6ix42" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/stone_wall_with_wood.png" id="29_i86fj"]
+[ext_resource type="Texture2D" uid="uid://b6td7h1u3xvd0" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/stone_wall_with_wood_and_ice.png" id="30_5jm5p"]
+[ext_resource type="Texture2D" uid="uid://5d6uldncjjwi" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/thatch_roof.png" id="31_fdyrp"]
+[ext_resource type="Texture2D" uid="uid://difxkjb5hicyf" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings/wood_roof.png" id="32_mgc73"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1es3"]
+texture = ExtResource("1_kdfyh")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0/terrains_peering_bit/right_side = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/left_side = 0
+3:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0/terrains_peering_bit/right_side = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0/terrains_peering_bit/left_side = 0
+3:2/0/terrains_peering_bit/top_side = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0/terrains_peering_bit/right_side = 0
+2:3/0 = 0
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0/terrains_peering_bit/right_side = 0
+2:3/0/terrains_peering_bit/left_side = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0/terrains_peering_bit/left_side = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqx2r"]
+texture = ExtResource("2_v2bki")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxhyf"]
+texture = ExtResource("3_vilqd")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlrof"]
+texture = ExtResource("4_vybyf")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71fic"]
+texture = ExtResource("5_kgtc6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7u6l0"]
+texture = ExtResource("6_yx03g")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_av32i"]
+texture = ExtResource("7_42gsx")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_81eu1"]
+texture = ExtResource("8_am4ak")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u7wc8"]
+texture = ExtResource("9_2gusv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mj2ko"]
+texture = ExtResource("10_uk5i7")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nmx3"]
+texture = ExtResource("11_i88b3")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rsjac"]
+texture = ExtResource("12_v7r5m")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16sym"]
+texture = ExtResource("13_sndk4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mng88"]
+texture = ExtResource("14_n0srl")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hfjv"]
+texture = ExtResource("15_1bktr")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6ja7"]
+texture = ExtResource("16_vq0eq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlx8w"]
+texture = ExtResource("17_fu5uc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ftv1"]
+texture = ExtResource("18_dsrig")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ir0m6"]
+texture = ExtResource("19_lqyie")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1vsqt"]
+texture = ExtResource("20_hwyvt")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h6lr7"]
+texture = ExtResource("21_p8uuo")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnx2g"]
+texture = ExtResource("22_a3pao")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nnuwr"]
+texture = ExtResource("23_47tqn")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1sx3x"]
+texture = ExtResource("24_bdg32")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u68t"]
+texture = ExtResource("25_atmel")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_puhw8"]
+texture = ExtResource("26_jewx0")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qf3fa"]
+texture = ExtResource("27_717p4")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcrbr"]
+texture = ExtResource("28_7m25m")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skc63"]
+texture = ExtResource("29_i86fj")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pvx70"]
+texture = ExtResource("30_5jm5p")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjdww"]
+texture = ExtResource("31_fdyrp")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kj4b2"]
+texture = ExtResource("32_mgc73")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "blue_roof_tiles"
+terrain_set_0/terrain_0/color = Color(0.687019, 0.0293986, 0.415934, 1)
+sources/64 = SubResource("TileSetAtlasSource_q1es3")
+sources/66 = SubResource("TileSetAtlasSource_mqx2r")
+sources/67 = SubResource("TileSetAtlasSource_hxhyf")
+sources/68 = SubResource("TileSetAtlasSource_vlrof")
+sources/69 = SubResource("TileSetAtlasSource_71fic")
+sources/70 = SubResource("TileSetAtlasSource_7u6l0")
+sources/71 = SubResource("TileSetAtlasSource_av32i")
+sources/72 = SubResource("TileSetAtlasSource_81eu1")
+sources/73 = SubResource("TileSetAtlasSource_u7wc8")
+sources/74 = SubResource("TileSetAtlasSource_mj2ko")
+sources/75 = SubResource("TileSetAtlasSource_3nmx3")
+sources/76 = SubResource("TileSetAtlasSource_rsjac")
+sources/77 = SubResource("TileSetAtlasSource_16sym")
+sources/78 = SubResource("TileSetAtlasSource_mng88")
+sources/79 = SubResource("TileSetAtlasSource_2hfjv")
+sources/80 = SubResource("TileSetAtlasSource_n6ja7")
+sources/81 = SubResource("TileSetAtlasSource_dlx8w")
+sources/82 = SubResource("TileSetAtlasSource_3ftv1")
+sources/83 = SubResource("TileSetAtlasSource_ir0m6")
+sources/84 = SubResource("TileSetAtlasSource_1vsqt")
+sources/85 = SubResource("TileSetAtlasSource_h6lr7")
+sources/86 = SubResource("TileSetAtlasSource_dnx2g")
+sources/87 = SubResource("TileSetAtlasSource_nnuwr")
+sources/88 = SubResource("TileSetAtlasSource_1sx3x")
+sources/89 = SubResource("TileSetAtlasSource_6u68t")
+sources/90 = SubResource("TileSetAtlasSource_puhw8")
+sources/91 = SubResource("TileSetAtlasSource_qf3fa")
+sources/92 = SubResource("TileSetAtlasSource_xcrbr")
+sources/93 = SubResource("TileSetAtlasSource_skc63")
+sources/94 = SubResource("TileSetAtlasSource_pvx70")
+sources/95 = SubResource("TileSetAtlasSource_wjdww")
+sources/96 = SubResource("TileSetAtlasSource_kj4b2")
