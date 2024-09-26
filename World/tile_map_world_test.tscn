@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://d33uybxtfwttb"]
 
-[ext_resource type="TileSet" uid="uid://5j1yjmbsghoe" path="res://Assets/Art/World/WorldTilesets/over_world_water.tres" id="1_ildry"]
+[ext_resource type="TileSet" uid="uid://5j1yjmbsghoe" path="res://Assets/Art/World/WorldTilesets/OverworldWater.tres" id="1_ildry"]
 
 [node name="TileMapWorldTest" type="Node2D"]
 
