@@ -301,7 +301,7 @@ color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 metadata/_edit_lock_ = true
 
 [node name="BackgroundSprites" type="Node2D" parent="."]
-position = Vector2(322, 417)
+position = Vector2(322, 411)
 scale = Vector2(0.665, 0.665)
 metadata/_edit_group_ = true
 
@@ -343,9 +343,9 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
-offset_top = 140.0
+offset_top = 145.0
 offset_right = 321.0
-offset_bottom = 206.0
+offset_bottom = 211.0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8

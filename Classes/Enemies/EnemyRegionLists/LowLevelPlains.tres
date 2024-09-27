@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyList" load_steps=5 format=3 uid="uid://ds0ygxh031qa6"]
+[gd_resource type="Resource" script_class="EnemyList" load_steps=8 format=3 uid="uid://ds0ygxh031qa6"]
 
 [ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_lx4bc"]
+[ext_resource type="Texture2D" uid="uid://dywguma2tuwst" path="res://Battle/Art/img/battlebacks1/Clouds.png" id="1_r5fep"]
 [ext_resource type="Resource" uid="uid://6et13eqk3rwk" path="res://Classes/Enemies/EnemyWorm.tres" id="2_gc600"]
 [ext_resource type="Resource" uid="uid://bkf4o5hpnos5i" path="res://Classes/Enemies/EnemyCentaur.tres" id="3_s3fsx"]
 [ext_resource type="Script" path="res://Classes/enemy_list.gd" id="4_q4ude"]
+[ext_resource type="Texture2D" uid="uid://dhi4wxuoxbm57" path="res://Battle/Art/img/battlebacks1/Grassland.png" id="5_ggp0f"]
+[ext_resource type="Texture2D" uid="uid://gvp7mkyq7ein" path="res://Battle/Art/img/battlebacks2/DryHill.png" id="7_q8d45"]
 
 [resource]
 script = ExtResource("4_q4ude")
 enemy_list = Array[ExtResource("1_lx4bc")]([ExtResource("2_gc600"), ExtResource("3_s3fsx")])
+ground = ExtResource("5_ggp0f")
+sky = ExtResource("7_q8d45")
+detail = ExtResource("1_r5fep")

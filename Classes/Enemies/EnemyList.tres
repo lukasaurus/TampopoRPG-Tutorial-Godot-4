@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="EnemyList" load_steps=8 format=3 uid="uid://b2dhfyguqovim"]
+[gd_resource type="Resource" script_class="EnemyList" load_steps=11 format=3 uid="uid://b2dhfyguqovim"]
 
 [ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_6qale"]
+[ext_resource type="Texture2D" uid="uid://dywguma2tuwst" path="res://Battle/Art/img/battlebacks1/Clouds.png" id="1_v57yq"]
 [ext_resource type="Script" path="res://Classes/enemy_list.gd" id="2_e6sc6"]
 [ext_resource type="Resource" uid="uid://duyfo4ybhnf7i" path="res://Classes/Enemies/EnemyMinotaur.tres" id="3_t0yih"]
 [ext_resource type="Resource" uid="uid://6et13eqk3rwk" path="res://Classes/Enemies/EnemyWorm.tres" id="3_y2p1t"]
 [ext_resource type="Resource" uid="uid://bkf4o5hpnos5i" path="res://Classes/Enemies/EnemyCentaur.tres" id="4_xo3wo"]
 [ext_resource type="Resource" uid="uid://bj3xay16bolj1" path="res://Classes/Enemies/EnemyGoblin.tres" id="5_4hyrg"]
 [ext_resource type="Resource" uid="uid://b8tm7rar52w72" path="res://Classes/Enemies/EnemyMummy.tres" id="6_gq0ig"]
+[ext_resource type="Texture2D" uid="uid://bsx6xkms2tndv" path="res://Battle/Art/img/battlebacks1/03dgn_Floor01.png" id="8_rnuiu"]
+[ext_resource type="Texture2D" uid="uid://cfh5avtdomus0" path="res://Battle/Art/img/battlebacks1/00Sky.png" id="10_tj1my"]
 
 [resource]
 script = ExtResource("2_e6sc6")
 enemy_list = Array[ExtResource("1_6qale")]([ExtResource("6_gq0ig"), ExtResource("4_xo3wo"), ExtResource("5_4hyrg"), ExtResource("3_y2p1t"), ExtResource("3_t0yih")])
+ground = ExtResource("8_rnuiu")
+sky = ExtResource("10_tj1my")
+detail = ExtResource("1_v57yq")

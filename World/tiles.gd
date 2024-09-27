@@ -6,3 +6,4 @@ extends Node2D
 func _ready():
 	collisions.hide()
 	enemy_spawns.hide()
+	

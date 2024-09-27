@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyList" load_steps=7 format=3 uid="uid://dn1ql32pybg0j"]
+[gd_resource type="Resource" script_class="EnemyList" load_steps=8 format=3 uid="uid://dn1ql32pybg0j"]
 
 [ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_377ly"]
-[ext_resource type="Texture2D" uid="uid://v2iohhm5uoqi" path="res://Battle/Art/img/battlebacks2/GreenHill.png" id="1_xmqms"]
+[ext_resource type="Texture2D" uid="uid://6axvelbgeoat" path="res://Battle/Art/img/battlebacks2/Clouds.png" id="1_qyew0"]
 [ext_resource type="Script" path="res://Classes/enemy_list.gd" id="2_5tnf1"]
 [ext_resource type="Resource" uid="uid://duyfo4ybhnf7i" path="res://Classes/Enemies/EnemyMinotaur.tres" id="2_nbnii"]
 [ext_resource type="Resource" uid="uid://bj3xay16bolj1" path="res://Classes/Enemies/EnemyGoblin.tres" id="3_658pg"]
-[ext_resource type="Texture2D" uid="uid://ba8gp8687byvw" path="res://Battle/Art/img/battlebacks1/00GreenBase.png" id="5_eqqh7"]
+[ext_resource type="Texture2D" uid="uid://ci5eextjmqjpm" path="res://Battle/Art/img/battlebacks1/Grassland2.png" id="5_t7li7"]
+[ext_resource type="Texture2D" uid="uid://cfh5avtdomus0" path="res://Battle/Art/img/battlebacks1/00Sky.png" id="5_tprj6"]
 
 [resource]
 script = ExtResource("2_5tnf1")
 enemy_list = Array[ExtResource("1_377ly")]([ExtResource("2_nbnii"), ExtResource("3_658pg")])
-ground = ExtResource("5_eqqh7")
-sky = ExtResource("1_xmqms")
-detail = ExtResource("1_xmqms")
+ground = ExtResource("5_t7li7")
+sky = ExtResource("5_tprj6")
+detail = ExtResource("1_qyew0")
