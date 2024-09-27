@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://62k8i7tub6sb"]
+[gd_scene load_steps=10 format=4 uid="uid://62k8i7tub6sb"]
 
+[ext_resource type="Script" path="res://World/overworld.gd" id="1_3owas"]
 [ext_resource type="Script" path="res://World/tiles.gd" id="2_6kjk5"]
 [ext_resource type="TileSet" uid="uid://c7x2ru101lpgc" path="res://Assets/Art/World/WorldTilesets/OverworldGround.tres" id="2_scu45"]
 [ext_resource type="PackedScene" uid="uid://cyb5dci1i5voj" path="res://World/overworld_character.tscn" id="2_trbio"]
@@ -79,13 +80,13 @@ sources/0 = SubResource("TileSetAtlasSource_s6ayq")
 
 [node name="Overworld" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_3owas")
 
-[node name="OverworldCharacter" parent="." node_paths=PackedStringArray("tiles", "enemy_region_tiles") instance=ExtResource("2_trbio")]
+[node name="OverworldCharacter" parent="." node_paths=PackedStringArray("tiles") instance=ExtResource("2_trbio")]
 y_sort_enabled = true
 position = Vector2(200, 96)
 danger_countdown = 50
-tiles = NodePath("../Tiles/OverLand")
-enemy_region_tiles = NodePath("../Tiles/EnemySpawns")
+tiles = NodePath("../Tiles")
 metadata/_edit_group_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="OverworldCharacter"]
