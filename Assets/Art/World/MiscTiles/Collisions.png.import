@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvfsjtjrxcf8a"
-path="res://.godot/imported/Actors_3.png-4331036bdb50555d3d3a69d09b6121ae.ctex"
+uid="uid://lw4r2bp3re8t"
+path="res://.godot/imported/Collisions.png-b1815a57ff2bd76545cfc30c76ba9cd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UneditedImages/Actors_3.png"
-dest_files=["res://.godot/imported/Actors_3.png-4331036bdb50555d3d3a69d09b6121ae.ctex"]
+source_file="res://Assets/Art/World/MiscTiles/Collisions.png"
+dest_files=["res://.godot/imported/Collisions.png-b1815a57ff2bd76545cfc30c76ba9cd7.ctex"]
 
 [params]
 

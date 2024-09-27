@@ -149,7 +149,8 @@ func run_through_event_queue() ->void:
 			animation_player.play("FadeToBlack")
 			await animation_player.animation_finished
 			await get_tree().create_timer(3).timeout
-			get_tree().quit()
+			#get_tree().quit()
+			get_tree().change_scene_to_file("res://World/Overworld.tscn")
 			
 		end_state.VICTORY:	
 	#check for victory
@@ -158,8 +159,8 @@ func run_through_event_queue() ->void:
 			print_rich("[color=pink]!!!VICTORY!!![/color]")
 			dialog_box.type_dialog("You are victorious!!\nYou gain "+str(xp_gained)+" XP and "+str(gold_gained)+" Gold!")
 			await dialog_box.battle_dialog_done
-			get_tree().quit()
-		
+			get_tree().change_scene_to_file("res://World/Overworld.tscn")
+			#get_tree().quit()
 		_:
 			pass
 	
