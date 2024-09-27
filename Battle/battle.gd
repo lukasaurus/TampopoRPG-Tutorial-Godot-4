@@ -42,11 +42,17 @@ var battle_result : int = -1
 @onready var enemy_stat_box: VBoxContainer = %EnemyStatBox
 @onready var party_area: HBoxContainer = %PartyArea/HBoxContainer
 @onready var scene_animator : AnimationPlayer = $AnimationPlayer
+@onready var background_sprites: Node2D = $BackgroundSprites
+@onready var ground: Sprite2D = $BackgroundSprites/Ground
+@onready var details: Sprite2D = $BackgroundSprites/Details
+@onready var sky: Sprite2D = $BackgroundSprites/Sky
+
 var party_members_alive : Array
 var active_party_member : BattleActor
 #PRELOADS
 const ENEMY_STAT_LABELS = preload("res://Battle/enemy_stat_labels.tscn")
 const PARTY_MEMBER_STAT_LABELS = preload("res://Battle/party_member_stat_labels.tscn")
+
 
 func _ready() -> void:
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
@@ -60,6 +66,16 @@ func _ready() -> void:
 			party_members_alive.append(player)
 	add_enemy_stat_boxes() #add the stat boxes to the scene
 	set_active_party_member(party_members_alive[current_player_index])
+	set_background()
+
+func set_background():
+	var bg = Globals.enemy_list.get_background()
+	sky.texture =bg["sky"]
+	
+	ground.texture = bg["ground"] 
+
+	details.texture = bg["detail"] 
+
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

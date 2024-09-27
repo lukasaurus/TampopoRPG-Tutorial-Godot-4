@@ -305,14 +305,15 @@ position = Vector2(322, 417)
 scale = Vector2(0.665, 0.665)
 metadata/_edit_group_ = true
 
-[node name="Cliff" type="Sprite2D" parent="BackgroundSprites"]
+[node name="Sky" type="Sprite2D" parent="BackgroundSprites"]
 texture = ExtResource("3_2p8o8")
 
-[node name="Wasteland" type="Sprite2D" parent="BackgroundSprites"]
+[node name="Ground" type="Sprite2D" parent="BackgroundSprites"]
 position = Vector2(-2, 97)
 texture = ExtResource("3_d3wcf")
 
-[node name="01OutXBridge01" type="Sprite2D" parent="BackgroundSprites"]
+[node name="Details" type="Sprite2D" parent="BackgroundSprites"]
+visible = false
 position = Vector2(-1, 31)
 texture = ExtResource("5_um4kg")
 

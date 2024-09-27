@@ -10,15 +10,20 @@ var cursor : Node = null
 var camera : Camera2D = null
 var cell_size : Vector2 = Vector2.ZERO
 var event_log : Label = null
-
+var terrains_that_only_show_half_the_player_sprite = [
+	"long_grass_OW"
+]
 var dialog_box : DialogBox
-
+var enemy_region_list = preload("res://Classes/Enemies/EnemyRegionLists/EnemyRegionList.tres")
 var enemy_list = preload("res://Classes/Enemies/EnemyList.tres")
 var player : BattleActor= preload("res://Classes/Party/PlayerTest.tres") 
 var party = preload("res://Classes/Party/PartyMembers.tres")
 func _ready():
 	randomize()
 	print(player.hp,"   ", player.hp_max)
+	
+func update_enemy_region_list(id):
+	enemy_list = enemy_region_list.get_region_list(id)
 
 		
 	

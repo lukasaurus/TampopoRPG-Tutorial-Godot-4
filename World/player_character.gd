@@ -4,6 +4,7 @@ class_name OverworldPlayerCharacter extends CharacterBody2D
 @export var move_speed = 100.0
 @export var GRID_SIZE :int = 16
 @export var half_grid_snap : bool = true
+var forest_mask : ShaderMaterial
 var grid_size
 var anim_dir = "SOUTH"
 var anim_names = {
@@ -18,9 +19,20 @@ var target_position :Vector2
 var is_moving: bool = false
 @onready var ray: RayCast2D = $RayCast2D
 
-
+@export var danger_countdown = 250
+@onready var danger_limit: Label = $DebugValues/HBoxContainer/DangerLimit
+@export var tiles : TileMapLayer
+@export var enemy_region_tiles: TileMapLayer
+func check_for_danger():
+	danger_countdown-=1
+	if danger_countdown <= 0 and snapped_to_grid():
+		set_monster_encounter_table()
+		danger_countdown = randi_range(250,500)
+		get_tree().change_scene_to_file("res://Battle/battle.tscn")
+		
 func _ready() -> void:
-
+	forest_mask = animated_sprite_2d.material
+	forest_mask.set_shader_parameter("transparent_rows",0)
 	if half_grid_snap:
 		grid_size = GRID_SIZE / 2
 	else:
@@ -28,8 +40,15 @@ func _ready() -> void:
 	target_position = position  # Initial target is current position
 	ray.target_position = to_local(target_position)
 
+func _process(delta):
+	danger_limit.text = str(danger_countdown)
+	get_current_tile_name_all_layers()
+
+func set_player_visibility(val = 0):
+	forest_mask.set_shader_parameter("transparent_rows",val)
+	
 func _physics_process(delta: float) -> void:
-	print(position, global_position)
+	#print(position, global_position)
 	var direction = Vector2.ZERO
 
 	if Input.is_action_pressed("left"):
@@ -55,15 +74,14 @@ func _physics_process(delta: float) -> void:
 	if is_moving:
 		anim_motion = "WALK"
 		move_towards_target(delta)
-	
+		check_for_danger()
 	if position == target_position:
 		is_moving = false
 		velocity = Vector2.ZERO
 	animated_sprite_2d.play(anim_motion+"_"+anim_dir)
 	
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene_to_file("res://Battle/battle.tscn")
+
 		
 		
 func move_towards_target(delta: float) -> void:
@@ -80,3 +98,25 @@ func move_towards_target(delta: float) -> void:
 func snapped_to_grid() -> bool:
 	# Checks if the player is snapped to the grid (aligned with the grid size)
 	return fmod(position.x , grid_size) == 0 and fmod(position.y , grid_size) == 0
+	
+func get_current_tile_name_all_layers():
+	if tiles:
+		var tile : Vector2i = tiles.local_to_map(global_position)
+		var tile_data = tiles.get_cell_source_id(tile)
+		if tile_data != -1:
+			if tiles.tile_set.get_terrain_name(0,tile_data) in Globals.terrains_that_only_show_half_the_player_sprite:
+				set_player_visibility(4)
+				return
+	set_player_visibility()		
+
+
+	
+
+func set_monster_encounter_table():
+	if enemy_region_tiles:
+		var tile : Vector2i = enemy_region_tiles.local_to_map(global_position)
+		var tile_data = enemy_region_tiles.get_cell_atlas_coords(tile)
+		var id = (tile_data.y+8)*tile_data.y + tile_data.x 
+		Globals.update_enemy_region_list(id)	
+		#set battle background too
+		

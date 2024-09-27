@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyRegionList" load_steps=6 format=3 uid="uid://bdi3pdnx28i3u"]
+
+[ext_resource type="Script" path="res://Classes/enemy_list.gd" id="1_ffkqy"]
+[ext_resource type="Script" path="res://Classes/enemy_region_list.gd" id="2_8hlxt"]
+[ext_resource type="Resource" uid="uid://ds0ygxh031qa6" path="res://Classes/Enemies/EnemyRegionLists/LowLevelPlains.tres" id="2_kh0wg"]
+[ext_resource type="Resource" uid="uid://dn1ql32pybg0j" path="res://Classes/Enemies/EnemyRegionLists/LowLevelGrass.tres" id="3_armxl"]
+[ext_resource type="Resource" uid="uid://bdhva350rtigp" path="res://Classes/Enemies/EnemyRegionLists/LowLevelBeach.tres" id="4_km7b5"]
+
+[resource]
+script = ExtResource("2_8hlxt")
+enemy_lists = Array[ExtResource("1_ffkqy")]([ExtResource("2_kh0wg"), ExtResource("3_armxl"), ExtResource("4_km7b5")])

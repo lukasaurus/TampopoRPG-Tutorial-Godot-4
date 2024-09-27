@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyList" load_steps=6 format=3 uid="uid://bdhva350rtigp"]
+
+[ext_resource type="Script" path="res://Classes/battle_actor.gd" id="1_7b0xe"]
+[ext_resource type="Resource" uid="uid://b8tm7rar52w72" path="res://Classes/Enemies/EnemyMummy.tres" id="2_aq12v"]
+[ext_resource type="Script" path="res://Classes/enemy_list.gd" id="2_jkl5y"]
+[ext_resource type="Texture2D" uid="uid://bxobwgaenvbs6" path="res://Battle/Art/img/battlebacks1/04vcl_Floor17.png" id="3_a7n65"]
+[ext_resource type="Texture2D" uid="uid://ceqkkf5rtqd0x" path="res://Battle/Art/img/battlebacks1/Lake.png" id="5_xtjkw"]
+
+[resource]
+script = ExtResource("2_jkl5y")
+enemy_list = Array[ExtResource("1_7b0xe")]([ExtResource("2_aq12v")])
+ground = ExtResource("3_a7n65")
+sky = ExtResource("5_xtjkw")
