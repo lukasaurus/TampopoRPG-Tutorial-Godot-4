@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://kachq8vnlju7"]
 
-[ext_resource type="PackedScene" path="res://GUI/message_display.tscn" id="1_yicri"]
-[ext_resource type="PackedScene" path="res://GUI/npc_dialog_box.tscn" id="2_5eydi"]
+[ext_resource type="PackedScene" uid="uid://ny8b8jbl5sw5" path="res://GUI/message_display.tscn" id="1_yicri"]
+[ext_resource type="PackedScene" uid="uid://bcl4xjxfvdu8o" path="res://GUI/npc_dialog_box.tscn" id="2_5eydi"]
 
 [sub_resource type="Animation" id="Animation_780fg"]
 resource_name = "FadeIn"
@@ -99,10 +99,12 @@ theme_override_constants/margin_bottom = 2
 [node name="MessageDisplay" parent="MarginContainer" instance=ExtResource("1_yicri")]
 visible = false
 layout_mode = 2
+script = null
 
 [node name="DialogBox" parent="MarginContainer" instance=ExtResource("2_5eydi")]
 visible = false
 layout_mode = 2
+script = null
 
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 3

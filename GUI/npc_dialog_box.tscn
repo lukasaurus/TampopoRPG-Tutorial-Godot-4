@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcl4xjxfvdu8o"]
 
-[ext_resource type="Script" path="res://UI/npc_dialog_box.gd" id="1_oc23j"]
-[ext_resource type="Texture2D" uid="uid://bi4ahy7im7g1w" path="res://Sprites/Face/NPC/face_0.png" id="1_u800s"]
-[ext_resource type="Texture2D" uid="uid://5svlu1rxaej8" path="res://Sprites/Face/sprite_1.png" id="2_0ec0u"]
+[ext_resource type="Script" path="res://GUI/npc_dialog_box.gd" id="1_oc23j"]
+[ext_resource type="Texture2D" uid="uid://b437mv3xhrlvu" path="res://Assets/Art/Faces/partyface (1).png" id="1_u800s"]
+[ext_resource type="Texture2D" uid="uid://ck5aopqrr8801" path="res://Assets/Art/Faces/partyface (2).png" id="2_0ec0u"]
 
 [node name="DialogBox" type="HBoxContainer"]
 process_mode = 3

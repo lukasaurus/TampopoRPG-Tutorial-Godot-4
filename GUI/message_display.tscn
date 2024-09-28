@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ny8b8jbl5sw5"]
 
-[ext_resource type="Script" path="res://UI/message_display.gd" id="1_2m0ug"]
+[ext_resource type="Script" path="res://GUI/message_display.gd" id="1_2m0ug"]
 
 [node name="MessageDisplay" type="MarginContainer"]
 process_mode = 3
