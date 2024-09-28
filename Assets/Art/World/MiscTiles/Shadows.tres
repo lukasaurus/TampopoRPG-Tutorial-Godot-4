@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://gllkke50r7fj"]
+
+[ext_resource type="Texture2D" uid="uid://f66am23rctiw" path="res://Assets/Art/World/MiscTiles/Shadow.png" id="1_1j8fc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oad6"]
+texture = ExtResource("1_1j8fc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_6oad6")

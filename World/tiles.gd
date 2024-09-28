@@ -1,13 +1,15 @@
 extends Node2D
 @onready var tiles: Node2D = $"."
-@onready var collisions: TileMapLayer = $Collisions
-@onready var enemy_spawns: TileMapLayer = $EnemySpawns
+@export var collisions: TileMapLayer
+@export var enemy_spawns: TileMapLayer 
 
-@onready var over_land: TileMapLayer = $OverLand
+@export var over_land: TileMapLayer 
 
 func _ready():
-	collisions.hide()
-	enemy_spawns.hide()
+	if collisions:
+		collisions.hide()
+	if enemy_spawns:
+		enemy_spawns.hide()
 	
 	
 func check_if_tile_hides_player(pos : Vector2i):

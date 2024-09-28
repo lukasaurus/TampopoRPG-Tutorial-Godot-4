@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpf56v5rs0qx0"]
+
+[ext_resource type="PackedScene" uid="uid://cyb5dci1i5voj" path="res://World/overworld_character.tscn" id="1_6dd8j"]
+[ext_resource type="Script" path="res://World/tiles.gd" id="2_3n8u3"]
+[ext_resource type="TileSet" uid="uid://b6qpwbhcptcyr" path="res://Assets/Art/World/ExteriorTileSets/ExteriorGround.tres" id="2_nq2fr"]
+[ext_resource type="TileSet" uid="uid://c5dltn26mnnc" path="res://Assets/Art/World/ExteriorTileSets/ExteriorBuildings.tres" id="3_b24w4"]
+[ext_resource type="TileSet" uid="uid://b86pbl11emhkd" path="res://Assets/Art/World/ExteriorTileSets/ExteriorUpper.tres" id="4_iv057"]
+[ext_resource type="TileSet" uid="uid://cxsoinoh70wbd" path="res://Assets/Art/World/MiscTiles/Misc.tres" id="5_j5n1q"]
+[ext_resource type="TileSet" uid="uid://dc0tfkol1iio1" path="res://Assets/Art/World/MiscTiles/Collisions.tres" id="6_k6qxv"]
+[ext_resource type="TileSet" uid="uid://uo8b8lymijao" path="res://Assets/Art/World/WorldTilesets/OverworldWater.tres" id="6_lxjvc"]
+[ext_resource type="TileSet" uid="uid://gllkke50r7fj" path="res://Assets/Art/World/MiscTiles/Shadows.tres" id="7_4rge2"]
+
+[node name="TownTemplate" type="Node2D"]
+y_sort_enabled = true
+
+[node name="OverworldCharacter" parent="." node_paths=PackedStringArray("tiles") instance=ExtResource("1_6dd8j")]
+y_sort_enabled = true
+tiles = NodePath("../Tiles")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="OverworldCharacter"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tiles" type="Node2D" parent="." node_paths=PackedStringArray("collisions", "over_land")]
+y_sort_enabled = true
+script = ExtResource("2_3n8u3")
+collisions = NodePath("Collisions")
+over_land = NodePath("CoverLayer")
+
+[node name="BaseLayer" type="TileMapLayer" parent="Tiles"]
+z_index = -1
+tile_set = ExtResource("2_nq2fr")
+
+[node name="CoverLayer" type="TileMapLayer" parent="Tiles"]
+tile_set = ExtResource("2_nq2fr")
+
+[node name="BuildingsWalls" type="TileMapLayer" parent="Tiles"]
+y_sort_enabled = true
+tile_set = ExtResource("3_b24w4")
+
+[node name="UpperLayers" type="TileMapLayer" parent="Tiles"]
+y_sort_enabled = true
+tile_set = ExtResource("4_iv057")
+
+[node name="Details" type="TileMapLayer" parent="Tiles"]
+y_sort_enabled = true
+tile_set = ExtResource("5_j5n1q")
+
+[node name="Water" type="TileMapLayer" parent="Tiles"]
+y_sort_enabled = true
+tile_set = ExtResource("6_lxjvc")
+
+[node name="Collisions" type="TileMapLayer" parent="Tiles"]
+y_sort_enabled = true
+tile_set = ExtResource("6_k6qxv")
+
+[node name="Shadows" type="TileMapLayer" parent="Tiles"]
+modulate = Color(1, 1, 1, 0.5)
+y_sort_enabled = true
+tile_set = ExtResource("7_4rge2")

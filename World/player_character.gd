@@ -22,10 +22,12 @@ var is_moving: bool = false
 @export var danger_countdown = 250
 @onready var danger_limit: Label = $DebugValues/HBoxContainer/DangerLimit
 @export var tiles : Node2D
-
+@export var can_battle : bool = true
 signal battle_begin
 
 func check_for_danger():
+	if not can_battle:
+		return
 	danger_countdown-=1
 	if danger_countdown <= 0 and snapped_to_grid():
 		#set_monster_encounter_table()

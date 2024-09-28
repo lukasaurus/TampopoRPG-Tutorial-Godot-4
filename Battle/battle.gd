@@ -315,6 +315,14 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 				go_to_next_player()
 			else:
 				await run_battle_round()
+		"RUN":
+			queue_free()
+			#print("attempting to run")
+			#dialog_box.type_dialog("You attempt to run...")
+			#await dialog_box.battle_dialog_done
+			#await get_tree().create_timer(1)
+			#dialog_box.type_dialog("You succeed")
+			#await dialog_box.battle_dialog_done
 			
 
 func run_battle_round():

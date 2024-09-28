@@ -153,6 +153,7 @@ process_mode = 3
 stream = ExtResource("3_3e3cl")
 
 [node name="ScreenFlash" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_gyufd")
 offset_left = -8.0
 offset_right = 648.0
