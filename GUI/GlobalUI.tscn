@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://kachq8vnlju7"]
 
-[ext_resource type="PackedScene" uid="uid://ny8b8jbl5sw5" path="res://UI/message_display.tscn" id="1_yicri"]
-[ext_resource type="PackedScene" uid="uid://bcl4xjxfvdu8o" path="res://UI/npc_dialog_box.tscn" id="2_5eydi"]
+[ext_resource type="PackedScene" path="res://GUI/message_display.tscn" id="1_yicri"]
+[ext_resource type="PackedScene" path="res://GUI/npc_dialog_box.tscn" id="2_5eydi"]
 
 [sub_resource type="Animation" id="Animation_780fg"]
 resource_name = "FadeIn"
