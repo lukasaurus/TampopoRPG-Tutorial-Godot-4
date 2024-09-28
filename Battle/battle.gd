@@ -55,6 +55,7 @@ const PARTY_MEMBER_STAT_LABELS = preload("res://Battle/party_member_stat_labels.
 
 
 func _ready() -> void:
+	
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
 	enemies_menu.enemy_dead.connect(add_rewards)
@@ -65,8 +66,9 @@ func _ready() -> void:
 		if player.hp > 0:
 			party_members_alive.append(player)
 	add_enemy_stat_boxes() #add the stat boxes to the scene
-	set_active_party_member(party_members_alive[current_player_index])
 	set_background()
+	set_active_party_member(party_members_alive[current_player_index])
+	
 
 func set_background():
 	var bg = Globals.enemy_list.get_background()
@@ -362,3 +364,7 @@ func sort_defends_to_top(a,b)->bool:
 			return true
 	else:
 		return false
+
+
+func _on_timer_timeout() -> void:
+	battle_menu.button_focus() # Replace with function body.

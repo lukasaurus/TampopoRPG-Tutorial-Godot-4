@@ -57,15 +57,15 @@ func set_player_visibility(hide:bool):
 func _physics_process(delta: float) -> void:
 	#print(position, global_position)
 	var direction = Vector2.ZERO
-
-	if Input.is_action_pressed("left"):
-		direction = Vector2.LEFT
-	elif Input.is_action_pressed("right"):
-		direction = Vector2.RIGHT
-	elif Input.is_action_pressed("up"):
-		direction = Vector2.UP
-	elif Input.is_action_pressed("down"):
-		direction = Vector2.DOWN
+	if Globals.player_enabled:
+		if Input.is_action_pressed("left"):
+			direction = Vector2.LEFT
+		elif Input.is_action_pressed("right"):
+			direction = Vector2.RIGHT
+		elif Input.is_action_pressed("up"):
+			direction = Vector2.UP
+		elif Input.is_action_pressed("down"):
+			direction = Vector2.DOWN
 
 
 	

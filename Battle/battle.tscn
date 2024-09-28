@@ -40,7 +40,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("ScreenAnimator/55Encounter02:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -306,12 +306,17 @@ position = Vector2(322, 411)
 scale = Vector2(0.665, 0.665)
 metadata/_edit_group_ = true
 
-[node name="Sky" type="Sprite2D" parent="BackgroundSprites"]
-texture = ExtResource("3_2p8o8")
-
 [node name="Ground" type="Sprite2D" parent="BackgroundSprites"]
-position = Vector2(-2, 97)
+position = Vector2(-1.99997, -236.834)
 texture = ExtResource("3_d3wcf")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 93)
+
+[node name="Sky" type="Sprite2D" parent="BackgroundSprites"]
+position = Vector2(0, -300.752)
+texture = ExtResource("3_2p8o8")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 96)
 
 [node name="Details" type="Sprite2D" parent="BackgroundSprites"]
 visible = false
@@ -327,9 +332,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -320.0
-offset_top = -180.0
+offset_top = 4.0
 offset_right = 318.0
-offset_bottom = -72.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 5
@@ -343,10 +348,10 @@ theme_override_constants/separation = 10
 [node name="EnemiesMenu" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 2.0
-offset_top = 145.0
-offset_right = 321.0
-offset_bottom = 211.0
+offset_left = 650.0
+offset_top = 140.0
+offset_right = 969.0
+offset_bottom = 206.0
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -361,9 +366,9 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(184, 22.595)
 layout_mode = 2
 offset_left = 417.0
-offset_top = 54.0
+offset_top = -106.0
 offset_right = 601.0
-offset_bottom = 77.0
+offset_bottom = -83.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 metadata/_edit_group_ = true
@@ -381,9 +386,9 @@ theme_override_constants/separation = 0
 [node name="Bottom" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 7.0
+offset_left = -113.0
 offset_top = 54.0
-offset_right = 98.0
+offset_right = -22.0
 offset_bottom = 182.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -407,7 +412,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("4_hjlfr")
-focus_on_start = true
 
 [node name="BtnFight" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
@@ -469,7 +473,6 @@ autoplay = "BattleStart"
 
 [node name="XDeviruchi-DecisiveBattle(loop)" type="AudioStreamPlayer" parent="ScreenAnimator"]
 stream = ExtResource("13_bjo67")
-volume_db = -80.0
 
 [node name="55Encounter02" type="AudioStreamPlayer" parent="ScreenAnimator"]
 stream = ExtResource("13_1eoyd")
@@ -485,3 +488,9 @@ libraries = {
 "": SubResource("AnimationLibrary_j0xal")
 }
 autoplay = "BattleStart"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

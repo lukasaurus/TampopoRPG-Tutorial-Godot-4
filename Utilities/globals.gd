@@ -6,6 +6,7 @@ const CELL_SIZE:Vector2 = Vector2(16,16)
 const NULL_CELL : Vector2 = Vector2(-9999,-9999)
 const HEALTH_POINTS_PER_HEART : int = 2
 
+var player_enabled : bool = true
 var cursor : Node = null
 var camera : Camera2D = null
 var cell_size : Vector2 = Vector2.ZERO
