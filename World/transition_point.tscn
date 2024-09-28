@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl1a717bw8t5h"]
+
+[ext_resource type="Script" path="res://World/transition_point.gd" id="1_iq7jy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5waay"]
+size = Vector2(16, 16)
+
+[node name="TransitionPoint" type="Area2D" groups=["TransitionPoint", "TransitionPpint"]]
+script = ExtResource("1_iq7jy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5waay")
+
+[node name="DropPoint" type="Marker2D" parent="."]
+position = Vector2(16, 0)

@@ -8,3 +8,6 @@ signal battle_menu_option_selected(selected_resource)
 signal message_finished
 
 signal update_camera_limits(limits)
+
+signal battle_begin
+signal load_battle

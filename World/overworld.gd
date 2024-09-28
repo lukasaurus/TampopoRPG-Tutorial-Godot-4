@@ -1,10 +1,10 @@
 extends Node2D
 
-@onready var overworld_character: OverworldPlayerCharacter = $OverworldCharacter
+#@onready var overworld_character: OverworldPlayerCharacter = $OverworldCharacter
 @onready var tiles: Node2D = $Tiles
 signal load_battle
 func _ready():
-	overworld_character.battle_begin.connect(battle_begin)
+	Events.battle_begin.connect(battle_begin)
 	
 func battle_begin(player_position: Vector2i):
 	print("battle begin")

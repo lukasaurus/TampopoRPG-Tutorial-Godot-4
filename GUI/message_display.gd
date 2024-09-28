@@ -12,8 +12,7 @@ func _input(event):
 		if display_text.visible_characters < display_text.get_total_character_count():
 			display_text.visible_characters = display_text.get_total_character_count()
 		else:
-			if Stash.menu_open == false:
-				get_tree().paused = false
+#
 			get_viewport().set_input_as_handled()
 			hide()
 			Events.emit_signal("message_finished")

@@ -85,6 +85,11 @@ script = ExtResource("1_3owas")
 
 [node name="OverworldCharacter" parent="." instance=ExtResource("2_trbio")]
 position = Vector2(200, 120)
+move_speed = 100.0
+GRID_SIZE = 16
+half_grid_snap = true
+danger_countdown = 250
+can_battle = true
 
 [node name="Tiles" type="Node2D" parent="." node_paths=PackedStringArray("collisions", "over_land")]
 y_sort_enabled = true
@@ -122,4 +127,3 @@ tile_set = SubResource("TileSet_cp6j2")
 
 [node name="TransitionPoint" parent="." instance=ExtResource("8_6f4vf")]
 position = Vector2(216, 152)
-new_area = "res://World/Towns/Town0.tscn"

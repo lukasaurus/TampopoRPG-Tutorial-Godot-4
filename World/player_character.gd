@@ -1,4 +1,4 @@
-class_name OverworldPlayerCharacter extends CharacterBody2D
+class_name PlayerCharacter extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var move_speed = 100.0
@@ -21,8 +21,10 @@ var is_moving: bool = false
 
 @export var danger_countdown = 250
 @onready var danger_limit: Label = $DebugValues/HBoxContainer/DangerLimit
-@export var tiles : Node2D
+#@export var tiles : Node2D
 @export var can_battle : bool = true
+var last_transition_point_connection = -1
+
 signal battle_begin
 
 func check_for_danger():
@@ -34,7 +36,9 @@ func check_for_danger():
 		danger_countdown = randi_range(250,500)
 		emit_signal("battle_begin", global_position)
 		
-		
+func _init():
+	if LevelSwapper.player is PlayerCharacter:
+		queue_free()		
 		
 func _ready() -> void:
 	forest_mask = animated_sprite_2d.material
@@ -48,13 +52,13 @@ func _ready() -> void:
 
 func _process(delta):
 	danger_limit.text = str(danger_countdown)
-	set_player_visibility(tiles.check_if_tile_hides_player(self.global_position))
+	#set_player_visibility(tiles.check_if_tile_hides_player(self.global_position))
 
-func set_player_visibility(hide:bool):
-	if hide:
-		forest_mask.set_shader_parameter("transparent_rows",4)
-	else:
-		forest_mask.set_shader_parameter("transparent_rows",0)
+#func set_player_visibility(hide:bool):
+	#if hide:
+		#forest_mask.set_shader_parameter("transparent_rows",4)
+	#else:
+		#forest_mask.set_shader_parameter("transparent_rows",0)
 	
 func _physics_process(delta: float) -> void:
 	#print(position, global_position)
@@ -108,24 +112,29 @@ func snapped_to_grid() -> bool:
 	# Checks if the player is snapped to the grid (aligned with the grid size)
 	return fmod(position.x , grid_size) == 0 and fmod(position.y , grid_size) == 0
 	
-#func get_current_tile_name_all_layers():
-	#if tiles:
-		#var tile : Vector2i = tiles.local_to_map(global_position)
-		#var tile_data = tiles.get_cell_source_id(tile)
-		#if tile_data != -1:
-			#if tiles.tile_set.get_terrain_name(0,tile_data) in Globals.terrains_that_only_show_half_the_player_sprite:
-				#set_player_visibility(4)
-				#return
-	#set_player_visibility()		
 
 
+
+func _on_terrain_detector_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_terrain_detector_body_exited(body: Node2D) -> void:
+	pass
 	
+func go_to_new_area(new_area_path:String, dungeon_entrance:bool):
+	danger_countdown = 500
+	if dungeon_entrance:
+		LevelSwapper.enter_dungeon(self,new_area_path)
+	else:
+		LevelSwapper.level_swap(self,new_area_path)
 
-#func set_monster_encounter_table():
-	#if enemy_region_tiles:
-		#var tile : Vector2i = enemy_region_tiles.local_to_map(global_position)
-		#var tile_data = enemy_region_tiles.get_cell_atlas_coords(tile)
-		#var id = (tile_data.y+8)*tile_data.y + tile_data.x 
-		#Globals.update_enemy_region_list(id)	
-		##set battle background too
-		#
+
+func _on_transition_detector_area_entered(transition_point: Area2D) -> void:
+	if not transition_point is TransitionPoint:
+		return
+	if not transition_point.new_area:
+		print("invalid")
+		return
+	last_transition_point_connection = transition_point.connection
+	call_deferred("go_to_new_area",transition_point.new_area, transition_point.dungeon_entrance)

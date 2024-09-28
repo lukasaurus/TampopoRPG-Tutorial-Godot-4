@@ -13,9 +13,7 @@
 [node name="TownTemplate" type="Node2D"]
 y_sort_enabled = true
 
-[node name="OverworldCharacter" parent="." node_paths=PackedStringArray("tiles") instance=ExtResource("1_6dd8j")]
-y_sort_enabled = true
-tiles = NodePath("../Tiles")
+[node name="OverworldCharacter" parent="." instance=ExtResource("1_6dd8j")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="OverworldCharacter"]
 remote_path = NodePath("../../Camera2D")

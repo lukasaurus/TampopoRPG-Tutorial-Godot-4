@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyb5dci1i5voj"]
+[gd_scene load_steps=20 format=3 uid="uid://cyb5dci1i5voj"]
 
 [ext_resource type="Script" path="res://World/player_character.gd" id="1_hutjw"]
 [ext_resource type="Shader" path="res://World/forest.gdshader" id="2_djhu8"]
@@ -166,7 +166,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="OverworldCharacter" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gg8w"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t883c"]
+size = Vector2(8, 8)
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_hutjw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -201,3 +208,20 @@ text = "D:"
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "DANGER"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="TerrainDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector"]
+shape = SubResource("RectangleShape2D_4gg8w")
+
+[node name="TransitionDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDetector"]
+shape = SubResource("RectangleShape2D_t883c")
+
+[connection signal="body_entered" from="TerrainDetector" to="." method="_on_terrain_detector_body_entered"]
+[connection signal="body_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_exited"]
+[connection signal="area_entered" from="TransitionDetector" to="." method="_on_transition_detector_area_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://kachq8vnlju7"]
+[gd_scene load_steps=8 format=3 uid="uid://kachq8vnlju7"]
 
 [ext_resource type="PackedScene" uid="uid://ny8b8jbl5sw5" path="res://GUI/message_display.tscn" id="1_yicri"]
 [ext_resource type="PackedScene" uid="uid://bcl4xjxfvdu8o" path="res://GUI/npc_dialog_box.tscn" id="2_5eydi"]
+[ext_resource type="PackedScene" uid="uid://csewetmkhqjr" path="res://GUI/screen_effects.tscn" id="3_q18vi"]
 
 [sub_resource type="Animation" id="Animation_780fg"]
 resource_name = "FadeIn"
@@ -109,11 +110,13 @@ script = null
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 3
 visible = false
-offset_right = 486.0
-offset_bottom = 276.0
+offset_right = 656.0
+offset_bottom = 488.0
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 libraries = {
 "": SubResource("AnimationLibrary_0ehiy")
 }
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_q18vi")]
