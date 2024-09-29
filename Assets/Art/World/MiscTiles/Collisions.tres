@@ -5,22 +5,31 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5uxj"]
 texture = ExtResource("1_ei1ko")
 0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0.5)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 0, 8, 0, 8, 8, 0, 8)
 1:0/0 = 0
+1:0/0/modulate = Color(1, 1, 1, 0.5)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 0, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/modulate = Color(1, 1, 1, 0.5)
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 0, 0, 0, 8, -8, 8)
 0:1/0 = 0
+0:1/0/modulate = Color(1, 1, 1, 0.5)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 8, 0, 8)
 1:1/0 = 0
+1:1/0/modulate = Color(1, 1, 1, 0.5)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/modulate = Color(1, 1, 1, 0.5)
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 0, 8, -8, 8)
 0:2/0 = 0
+0:2/0/modulate = Color(1, 1, 1, 0.5)
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, 8, -8, 8, 0, 0, 0)
 1:2/0 = 0
+1:2/0/modulate = Color(1, 1, 1, 0.5)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
 2:2/0 = 0
+2:2/0/modulate = Color(1, 1, 1, 0.5)
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0, -8, 0, 0, -8, 0)
 
 [resource]

@@ -40,7 +40,11 @@ func check_for_danger():
 		
 func _init():
 	if LevelSwapper.player is PlayerCharacter:
-		queue_free()		
+		queue_free()	
+			
+func set_facing(direction):
+	
+	animated_sprite_2d.play(direction)
 		
 func _ready() -> void:
 	enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
@@ -127,6 +131,7 @@ func _on_terrain_detector_body_exited(body: Node2D) -> void:
 	
 func go_to_new_area(new_area_path:String, dungeon_entrance:bool):
 	danger_countdown = 500
+	Globals.player_enabled = false
 	if dungeon_entrance:
 		LevelSwapper.enter_dungeon(self,new_area_path)
 	else:

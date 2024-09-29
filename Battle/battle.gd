@@ -321,7 +321,10 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 			else:
 				await run_battle_round()
 		"RUN":
-			queue_free()
+			await GlobalUI.fade_out()
+			SceneStack.pop()
+			await GlobalUI.fade_in()
+			#queue_free()
 			#print("attempting to run")
 			#dialog_box.type_dialog("You attempt to run...")
 			#await dialog_box.battle_dialog_done

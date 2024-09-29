@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvx786pef8whe"]
+
+[ext_resource type="Script" path="res://World/set_facing.gd" id="1_2s68f"]
+[ext_resource type="TileSet" uid="uid://eflu2dmmffph" path="res://Assets/Art/World/InteriorTilesets/InteriorFloor.tres" id="2_6dfyc"]
+[ext_resource type="TileSet" uid="uid://dufmrfxptqxox" path="res://Assets/Art/World/InteriorTilesets/InteriorWalls.tres" id="3_wng0l"]
+[ext_resource type="TileSet" uid="uid://dcgvg58ccyo75" path="res://Assets/Art/World/InteriorTilesets/InteriorUpper.tres" id="4_t2pvd"]
+[ext_resource type="TileSet" uid="uid://uo8b8lymijao" path="res://Assets/Art/World/WorldTilesets/OverworldWater.tres" id="5_dvk5i"]
+[ext_resource type="TileSet" uid="uid://cxsoinoh70wbd" path="res://Assets/Art/World/MiscTiles/Misc.tres" id="6_f57b1"]
+[ext_resource type="TileSet" uid="uid://gllkke50r7fj" path="res://Assets/Art/World/MiscTiles/Shadows.tres" id="7_ibw66"]
+[ext_resource type="TileSet" uid="uid://dc0tfkol1iio1" path="res://Assets/Art/World/MiscTiles/Collisions.tres" id="8_pb8ol"]
+[ext_resource type="PackedScene" uid="uid://dl1a717bw8t5h" path="res://World/transition_point.tscn" id="9_hfd8e"]
+
+[node name="TownInteriorTemplate" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_2s68f")
+spawn_facing = "NORTH"
+
+[node name="FloorLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_6dfyc")
+
+[node name="WallLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("3_wng0l")
+
+[node name="UpperLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("4_t2pvd")
+
+[node name="WaterLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("5_dvk5i")
+
+[node name="DecorativeLayerLower" type="TileMapLayer" parent="."]
+tile_set = ExtResource("6_f57b1")
+
+[node name="DecorativeLayerUpper" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("6_f57b1")
+
+[node name="Shadows" type="TileMapLayer" parent="."]
+tile_set = ExtResource("7_ibw66")
+
+[node name="Collisions" type="TileMapLayer" parent="."]
+tile_set = ExtResource("8_pb8ol")
+
+[node name="TransitionPoint" parent="." instance=ExtResource("9_hfd8e")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -512.0
+offset_top = -392.0
+offset_right = 1440.0
+offset_bottom = 968.0
+color = Color(0, 0, 0, 1)

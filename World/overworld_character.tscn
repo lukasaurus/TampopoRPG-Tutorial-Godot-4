@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyb5dci1i5voj"]
+[gd_scene load_steps=21 format=3 uid="uid://cyb5dci1i5voj"]
 
 [ext_resource type="Script" path="res://World/player_character.gd" id="1_hutjw"]
 [ext_resource type="Shader" path="res://World/forest.gdshader" id="2_djhu8"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bpppk1v3up6as" path="res://Assets/Art/Characters/SpriteFrames/actor_05.png" id="12_xkhuu"]
 [ext_resource type="Texture2D" uid="uid://bjitp3b7573ye" path="res://Assets/Art/Characters/SpriteFrames/actor_15.png" id="13_qivim"]
 [ext_resource type="Texture2D" uid="uid://dnls02acirr7o" path="res://Assets/Art/Characters/SpriteFrames/actor_17.png" id="14_ed6un"]
+[ext_resource type="Script" path="res://World/overworld_camera.gd" id="15_5mfb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ip18i"]
 size = Vector2(0, 0)
@@ -172,7 +173,7 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t883c"]
 size = Vector2(8, 8)
 
-[node name="PlayerCharacter" type="CharacterBody2D"]
+[node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 script = ExtResource("1_hutjw")
 
@@ -192,6 +193,7 @@ position = Vector2(0, 4)
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
 [node name="DebugValues" type="Node2D" parent="."]
+visible = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DebugValues"]
 offset_left = 16.0
@@ -209,8 +211,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "DANGER"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="OverworldCamera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+script = ExtResource("15_5mfb3")
 
 [node name="TerrainDetector" type="Area2D" parent="."]
 

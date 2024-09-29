@@ -151,7 +151,6 @@ autoplay = "fade_in"
 
 [node name="55Encounter02" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qnher")
-stream_paused = true
 
 [node name="ScreenFlash" type="ColorRect" parent="."]
 visible = false

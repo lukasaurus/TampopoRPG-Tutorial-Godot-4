@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqklsrsxckpex"]
+
+[ext_resource type="Script" path="res://Dungeons/3DMovementController/player.gd" id="1_o86xq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_juqpg"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_sln78"]
+radius = 0.1
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_obkgk"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_o86xq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+mesh = SubResource("CapsuleMesh_juqpg")
+
+[node name="CamPivot" type="Marker3D" parent="MeshInstance3D"]
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/CamPivot"]
+current = true
+fov = 85.2
+near = 0.038
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D/CamPivot"]
+spot_range = 3.0
+spot_angle = 78.8648
+
+[node name="ForwardRay" type="RayCast3D" parent="MeshInstance3D/CamPivot"]
+target_position = Vector3(0, 0, -1)
+
+[node name="BackRay" type="RayCast3D" parent="MeshInstance3D/CamPivot"]
+target_position = Vector3(0, 0, 1)
+
+[node name="LeftRay" type="RayCast3D" parent="MeshInstance3D/CamPivot"]
+target_position = Vector3(-1, 0, 0)
+
+[node name="RightRay" type="RayCast3D" parent="MeshInstance3D/CamPivot"]
+target_position = Vector3(1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/CamPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.457349)
+visible = false
+mesh = SubResource("SphereMesh_sln78")
+
+[node name="ExitDetector" type="Area3D" parent="MeshInstance3D/CamPivot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/CamPivot/ExitDetector"]
+shape = SubResource("SphereShape3D_obkgk")
+
+[connection signal="area_entered" from="MeshInstance3D/CamPivot/ExitDetector" to="." method="_on_exit_detector_area_entered"]
