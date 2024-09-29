@@ -39,7 +39,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -151,6 +151,7 @@ autoplay = "fade_in"
 
 [node name="55Encounter02" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_qnher")
+stream_paused = true
 
 [node name="ScreenFlash" type="ColorRect" parent="."]
 visible = false
@@ -163,4 +164,4 @@ color = Color(0, 0, 0, 1)
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 656.0
 offset_bottom = 504.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)

@@ -43,6 +43,7 @@ enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/tile_bit
 
 StatusEffect=""
 TransitionPoint=""
+EnemySet=""
 
 [gui]
 

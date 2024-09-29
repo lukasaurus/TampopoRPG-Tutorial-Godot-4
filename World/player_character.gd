@@ -18,7 +18,7 @@ var anim_to_play = "IDLE_SOUTH"
 var target_position :Vector2
 var is_moving: bool = false
 @onready var ray: RayCast2D = $RayCast2D
-
+var enemy_region_tiles : TileMapLayer
 @export var danger_countdown = 250
 @onready var danger_limit: Label = $DebugValues/HBoxContainer/DangerLimit
 #@export var tiles : Node2D
@@ -32,15 +32,18 @@ func check_for_danger():
 		return
 	danger_countdown-=1
 	if danger_countdown <= 0 and snapped_to_grid():
-		#set_monster_encounter_table()
+		enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
+		if set_monster_encounter_table():
+			SceneStack.push("res://Battle/battle.tscn")
+			emit_signal("battle_begin", global_position)
 		danger_countdown = randi_range(250,500)
-		emit_signal("battle_begin", global_position)
 		
 func _init():
 	if LevelSwapper.player is PlayerCharacter:
 		queue_free()		
 		
 func _ready() -> void:
+	enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
 	forest_mask = animated_sprite_2d.material
 	forest_mask.set_shader_parameter("transparent_rows",0)
 	if half_grid_snap:
@@ -138,3 +141,17 @@ func _on_transition_detector_area_entered(transition_point: Area2D) -> void:
 		return
 	last_transition_point_connection = transition_point.connection
 	call_deferred("go_to_new_area",transition_point.new_area, transition_point.dungeon_entrance)
+	
+func set_monster_encounter_table():
+	if enemy_region_tiles:
+		
+		print("updating enemy")
+		var tile : Vector2i = enemy_region_tiles.local_to_map(global_position)
+		var tile_data = enemy_region_tiles.get_cell_atlas_coords(tile)
+		var id = (tile_data.y+8)*tile_data.y + tile_data.x 
+		Globals.update_enemy_region_list(id)	
+		return true
+		#set battle background too
+	else:
+		print("enemy region tiles missing")
+		return false

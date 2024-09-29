@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://kachq8vnlju7"]
+[gd_scene load_steps=9 format=3 uid="uid://kachq8vnlju7"]
 
+[ext_resource type="Script" path="res://GUI/global_ui.gd" id="1_uki4h"]
 [ext_resource type="PackedScene" uid="uid://ny8b8jbl5sw5" path="res://GUI/message_display.tscn" id="1_yicri"]
 [ext_resource type="PackedScene" uid="uid://bcl4xjxfvdu8o" path="res://GUI/npc_dialog_box.tscn" id="2_5eydi"]
 [ext_resource type="PackedScene" uid="uid://csewetmkhqjr" path="res://GUI/screen_effects.tscn" id="3_q18vi"]
@@ -72,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ehiy"]
@@ -84,6 +85,7 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 26
+script = ExtResource("1_uki4h")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 12
@@ -109,14 +111,14 @@ script = null
 
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 3
-visible = false
 offset_right = 656.0
 offset_bottom = 488.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 libraries = {
 "": SubResource("AnimationLibrary_0ehiy")
 }
+autoplay = "RESET"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_q18vi")]
