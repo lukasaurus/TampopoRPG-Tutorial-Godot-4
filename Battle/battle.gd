@@ -27,7 +27,7 @@ var gold_gained : int = 0
 var xp_gained : int = 0
 var battle_result : int = -1
 
-
+@export var dungeon_battle:bool = false
 ##REFERENCES
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
@@ -46,16 +46,17 @@ var battle_result : int = -1
 @onready var ground: Sprite2D = $BackgroundSprites/Ground
 @onready var details: Sprite2D = $BackgroundSprites/Details
 @onready var sky: Sprite2D = $BackgroundSprites/Sky
-
+@export var max_enemy_count : int = 5
 var party_members_alive : Array
 var active_party_member : BattleActor
 #PRELOADS
 const ENEMY_STAT_LABELS = preload("res://Battle/enemy_stat_labels.tscn")
 const PARTY_MEMBER_STAT_LABELS = preload("res://Battle/party_member_stat_labels.tscn")
 
+signal combat_complete
 
 func _ready() -> void:
-	
+	#enemies_menu.max_enemy_count = max_enemy_count
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
 	enemies_menu.enemy_dead.connect(add_rewards)
@@ -167,9 +168,12 @@ func run_through_event_queue() ->void:
 			animation_player.play("FadeToBlack")
 			await animation_player.animation_finished
 			await get_tree().create_timer(3).timeout
-			await GlobalUI.fade_out()
-			SceneStack.pop()
-			await GlobalUI.fade_in()
+			if dungeon_battle:
+				emit_signal("combat_complete")
+			else:
+				await GlobalUI.fade_out()
+				SceneStack.pop()
+				await GlobalUI.fade_in()
 			#queue_free()
 			#get_tree().change_scene_to_file("res://World/Overworld.tscn")
 			
@@ -180,9 +184,12 @@ func run_through_event_queue() ->void:
 			print_rich("[color=pink]!!!VICTORY!!![/color]")
 			dialog_box.type_dialog("You are victorious!!\nYou gain "+str(xp_gained)+" XP and "+str(gold_gained)+" Gold!")
 			await dialog_box.battle_dialog_done
-			await GlobalUI.fade_out()
-			SceneStack.pop()
-			await GlobalUI.fade_in()
+			if dungeon_battle:
+				emit_signal("combat_complete")
+			else:
+				await GlobalUI.fade_out()
+				SceneStack.pop()
+				await GlobalUI.fade_in()
 			#queue_free()
 			#get_tree().change_scene_to_file("res://World/Overworld.tscn")
 			#get_tree().quit()

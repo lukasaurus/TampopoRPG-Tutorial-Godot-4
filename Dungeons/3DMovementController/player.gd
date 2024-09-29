@@ -33,7 +33,7 @@ func check_combat():
 	print("check combat")
 	if step_counter > min_step_counter_until_next_combat:
 		print("chance of combat")
-		if randi_range(0,combat_chance)==0:
+		if randi_range(0,combat_chance)==0 and not f_ray.is_colliding():
 			emit_signal("combat_begin")
 			print("combat begin")
 			in_combat = true

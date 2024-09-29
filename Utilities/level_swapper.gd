@@ -17,10 +17,16 @@ func enter_dungeon(player_to_stash:CharacterBody2D, new_level_string:String):
 	get_tree().change_scene_to_file(new_level_string)
 	
 func exit_dungeon(new_level_string):
-	animator.play("FadeIn")
+	animator.play("FadeOut")
 	await animator.animation_finished
 	get_tree().change_scene_to_file(new_level_string)
+	await get_tree().process_frame
 	drop_player()
+	animator.play("FadeIn")
+	await animator.animation_finished
+	
+	
+	
 
 func level_swap (player_to_stash:CharacterBody2D,new_level_string:String):
 	Globals.player_enabled = false

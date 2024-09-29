@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwyrkopdajlpj"]
+
+[ext_resource type="Script" path="res://Dungeons/Dungeons/dungeon_exit.gd" id="1_nb88r"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p453h"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6r2ep"]
+
+[node name="DungeonExit" type="Area3D" groups=["Exit"]]
+script = ExtResource("1_nb88r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_p453h")
+
+[node name="DungeonExit" type="Node3D" parent="."]
+
+[node name="Exit" type="MeshInstance3D" parent="DungeonExit"]
+mesh = SubResource("BoxMesh_6r2ep")

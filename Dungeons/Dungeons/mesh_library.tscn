@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4fdonvcku2ks"]
+[gd_scene load_steps=4 format=3 uid="uid://c4fdonvcku2ks"]
 
 [ext_resource type="ArrayMesh" uid="uid://c257epn5mhn3r" path="res://Dungeons/3DModels/DungeonWallTest.vox" id="1_vdx0y"]
+[ext_resource type="ArrayMesh" uid="uid://bgmhuxrwyomr5" path="res://Dungeons/3DModels/DungeonFloorTest.vox" id="2_61knh"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nd8fc"]
 points = PackedVector3Array(1.93735, 4, 2, -2, 0.00039481, -2, -2, 0.00039481, 2, 2, 0.00039481, 2, 2, 0.00039481, -2, -2, 3.99961, -2, 1.93735, 4, -2, -2, 3.99961, 2)
@@ -15,3 +16,7 @@ mesh = ExtResource("1_vdx0y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DungeonWallTest/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_nd8fc")
+
+[node name="DungeonFloorTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.5, 0)
+mesh = ExtResource("2_61knh")

@@ -134,6 +134,19 @@ scale = Vector2(0.8, 0.8)
 [node name="DropPoint" parent="TransitionPoint" index="1"]
 position = Vector2(-16, 0)
 
+[node name="TransitionPoint2" parent="." instance=ExtResource("8_6f4vf")]
+position = Vector2(184, 240)
+new_area = "res://Dungeons/Dungeons/dungeon_test.tscn"
+connection = 1
+dungeon_entrance = true
+
+[node name="CollisionShape2D" parent="TransitionPoint2" index="0"]
+position = Vector2(-16, 0)
+scale = Vector2(0.8, 0.8)
+
+[node name="DropPoint" parent="TransitionPoint2" index="1"]
+position = Vector2(-16, 8)
+
 [node name="CameraLimits" parent="." instance=ExtResource("9_6lkm8")]
 visible = false
 offset_right = 816.0
@@ -141,3 +154,4 @@ offset_bottom = 576.0
 color = Color(0.771, 0.154, 0.487, 0.735)
 
 [editable path="TransitionPoint"]
+[editable path="TransitionPoint2"]
