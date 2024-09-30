@@ -3,6 +3,7 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var move_speed = 100.0
 @export var GRID_SIZE :int = 16
+const RAY_DISTANCE = 10
 @export var half_grid_snap : bool = true
 var forest_mask : ShaderMaterial
 var grid_size
@@ -24,9 +25,21 @@ var enemy_region_tiles : TileMapLayer
 #@export var tiles : Node2D
 @export var can_battle : bool = true
 var last_transition_point_connection = -1
+@onready var interactable_detector: RayCast2D = $InteractionDetector
 
 signal battle_begin
 
+func _unhandled_input(event : InputEvent):
+	print("hhhh")
+	if event.is_action_pressed("ui_accept"):
+		print("checking interaction")
+		var interactable = interactable_detector.get_collider()
+		if interactable:
+			print("got a collision")
+			if interactable.is_in_group("Interactable"):
+				print("running interaction")
+				interactable._run_interaction()
+				
 func check_for_danger():
 	if not can_battle:
 		return
@@ -47,7 +60,7 @@ func set_facing(direction):
 	animated_sprite_2d.play(direction)
 		
 func _ready() -> void:
-	enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
+	#enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
 	forest_mask = animated_sprite_2d.material
 	forest_mask.set_shader_parameter("transparent_rows",0)
 	if half_grid_snap:
@@ -59,6 +72,7 @@ func _ready() -> void:
 
 func _process(delta):
 	danger_limit.text = str(danger_countdown)
+	
 	#set_player_visibility(tiles.check_if_tile_hides_player(self.global_position))
 
 #func set_player_visibility(hide:bool):
@@ -80,7 +94,8 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_pressed("down"):
 			direction = Vector2.DOWN
 
-
+	if direction:
+		interactable_detector.target_position = direction.normalized() * RAY_DISTANCE
 	
 	if direction != Vector2.ZERO and not is_moving and snapped_to_grid() and direction in anim_names:
 		anim_dir = anim_names[direction]

@@ -7,6 +7,7 @@ func _ready():
 	Events.update_camera_limits.connect(update_camera_limits)
 	
 func update_camera_limits(limits):
+	print("updating limits",limits)
 	limit_left = limits.position.x
 	limit_right = limits.end.x
 	limit_top = limits.position.y

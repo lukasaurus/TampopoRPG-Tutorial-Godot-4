@@ -151,6 +151,7 @@ position = Vector2(-16, 8)
 visible = false
 offset_right = 816.0
 offset_bottom = 576.0
+mouse_filter = 2
 color = Color(0.771, 0.154, 0.487, 0.735)
 
 [node name="TerrainHider" type="Area2D" parent="." groups=["TerrainHider"]]

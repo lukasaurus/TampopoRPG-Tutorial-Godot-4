@@ -227,6 +227,8 @@ shape = SubResource("RectangleShape2D_4gg8w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDetector"]
 shape = SubResource("RectangleShape2D_t883c")
 
+[node name="InteractionDetector" type="RayCast2D" parent="."]
+
 [connection signal="area_entered" from="TerrainDetector" to="." method="_on_terrain_detector_area_entered"]
 [connection signal="area_exited" from="TerrainDetector" to="." method="_on_terrain_detector_area_exited"]
 [connection signal="area_entered" from="TransitionDetector" to="." method="_on_transition_detector_area_entered"]

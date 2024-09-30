@@ -19,6 +19,7 @@ var enemy_region_list = preload("res://Classes/Enemies/EnemyRegionLists/EnemyReg
 var enemy_list = preload("res://Classes/Enemies/EnemyList.tres")
 var player : BattleActor= preload("res://Classes/Party/PlayerTest.tres") 
 var party = preload("res://Classes/Party/PartyMembers.tres")
+var main_character_face = preload("res://Assets/Art/Faces/partyface (2).png")
 func _ready():
 	randomize()
 	print(player.hp,"   ", player.hp_max)

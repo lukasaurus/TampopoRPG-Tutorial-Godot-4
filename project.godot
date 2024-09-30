@@ -48,6 +48,7 @@ import/blender/enabled=false
 StatusEffect=""
 TransitionPoint=""
 EnemySet=""
+Interactable=""
 
 [gui]
 

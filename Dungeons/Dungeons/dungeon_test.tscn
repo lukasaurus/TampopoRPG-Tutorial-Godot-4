@@ -25,7 +25,7 @@ script = ExtResource("1_8uo2n")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1)
 
 [node name="Camera3D" parent="Player/MeshInstance3D/CamPivot" index="0"]
-near = 0.4
+near = 0.195
 far = 119.41
 
 [node name="SpotLight3D" parent="Player/MeshInstance3D/CamPivot" index="1"]

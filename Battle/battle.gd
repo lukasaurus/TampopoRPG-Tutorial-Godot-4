@@ -328,9 +328,12 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 			else:
 				await run_battle_round()
 		"RUN":
-			await GlobalUI.fade_out()
-			SceneStack.pop()
-			await GlobalUI.fade_in()
+			if dungeon_battle:
+				emit_signal("combat_complete")
+			else:
+				await GlobalUI.fade_out()
+				SceneStack.pop()
+				await GlobalUI.fade_in()
 			#queue_free()
 			#print("attempting to run")
 			#dialog_box.type_dialog("You attempt to run...")
