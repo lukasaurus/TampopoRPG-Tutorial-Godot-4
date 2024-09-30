@@ -216,6 +216,8 @@ zoom = Vector2(3, 3)
 script = ExtResource("15_5mfb3")
 
 [node name="TerrainDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TerrainDetector"]
 shape = SubResource("RectangleShape2D_4gg8w")
@@ -225,6 +227,6 @@ shape = SubResource("RectangleShape2D_4gg8w")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionDetector"]
 shape = SubResource("RectangleShape2D_t883c")
 
-[connection signal="body_entered" from="TerrainDetector" to="." method="_on_terrain_detector_body_entered"]
-[connection signal="body_exited" from="TerrainDetector" to="." method="_on_terrain_detector_body_exited"]
+[connection signal="area_entered" from="TerrainDetector" to="." method="_on_terrain_detector_area_entered"]
+[connection signal="area_exited" from="TerrainDetector" to="." method="_on_terrain_detector_area_exited"]
 [connection signal="area_entered" from="TransitionDetector" to="." method="_on_transition_detector_area_entered"]

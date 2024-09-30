@@ -153,5 +153,12 @@ offset_right = 816.0
 offset_bottom = 576.0
 color = Color(0.771, 0.154, 0.487, 0.735)
 
+[node name="TerrainHider" type="Area2D" parent="." groups=["TerrainHider"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainHider"]
+polygon = PackedVector2Array(184, 124, 185, 136, 183, 167, 152, 169, 151, 182, 123, 182, 123, 170, 150, 164, 167, 164, 168, 138, 179, 137)
+
 [editable path="TransitionPoint"]
 [editable path="TransitionPoint2"]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cl8r5jo81u2dw"
+path="res://.godot/imported/MagicaVoxelOBJTest.obj-df176b534ae63cf84c713137755d114d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/MagicaVoxelOBJTest.obj-df176b534ae63cf84c713137755d114d.mesh"]
+
+source_file="res://UneditedImages/MagicaVoxelOBJTest.obj"
+dest_files=["res://.godot/imported/MagicaVoxelOBJTest.obj-df176b534ae63cf84c713137755d114d.mesh", "res://.godot/imported/MagicaVoxelOBJTest.obj-df176b534ae63cf84c713137755d114d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

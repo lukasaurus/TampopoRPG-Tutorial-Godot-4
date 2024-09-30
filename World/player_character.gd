@@ -123,10 +123,14 @@ func snapped_to_grid() -> bool:
 
 
 func _on_terrain_detector_body_entered(body: Node2D) -> void:
+	print("hide")
+
 	pass # Replace with function body.
 
 
 func _on_terrain_detector_body_exited(body: Node2D) -> void:
+	print("show")
+	
 	pass
 	
 func go_to_new_area(new_area_path:String, dungeon_entrance:bool):
@@ -160,3 +164,11 @@ func set_monster_encounter_table():
 	else:
 		print("enemy region tiles missing")
 		return false
+
+
+func _on_terrain_detector_area_entered(area: Area2D) -> void:
+	forest_mask.set_shader_parameter("transparent_rows",3)
+
+
+func _on_terrain_detector_area_exited(area: Area2D) -> void:
+	forest_mask.set_shader_parameter("transparent_rows",0)

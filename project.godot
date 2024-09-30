@@ -37,7 +37,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/MagicaVoxel_Importer_with_Extensions/plugin.cfg")
+enabled=PackedStringArray("res://addons/MagicaVoxel_Importer_with_Extensions/plugin.cfg")
 
 [filesystem]
 
@@ -92,6 +92,11 @@ slide_right={
 "deadzone": 0.5,
 "events": []
 }
+
+[layer_names]
+
+2d_physics/layer_1="Normal"
+2d_physics/layer_2="TerrainHider"
 
 [rendering]
 
