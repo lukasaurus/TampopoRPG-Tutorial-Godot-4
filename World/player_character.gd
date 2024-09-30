@@ -36,9 +36,13 @@ func _unhandled_input(event : InputEvent):
 		var interactable = interactable_detector.get_collider()
 		if interactable:
 			print("got a collision")
-			if interactable.is_in_group("Interactable"):
+			if interactable is Interactable:
 				print("running interaction")
-				interactable._run_interaction()
+				if interactable is NPC:
+					if interactable.check_facing(): #check if the NPC is facing the character
+						interactable._run_interaction()
+				else:
+					interactable._run_interaction()
 				
 func check_for_danger():
 	if not can_battle:

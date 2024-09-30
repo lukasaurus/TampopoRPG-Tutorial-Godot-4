@@ -1,5 +1,5 @@
 @tool
-class_name Interactable extends Node
+class_name Interactable extends CharacterBody2D
 
 
 func _run_interaction()->void:
