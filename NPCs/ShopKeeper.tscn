@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8w47i02o502d"]
+
+[ext_resource type="Script" path="res://NPCs/shop_keeper.gd" id="1_gf4cf"]
+[ext_resource type="Resource" uid="uid://kgum0jom04pi" path="res://Classes/Inventory/ShopkeeperInventories/Town0_Shopkeeper.tres" id="2_iip2j"]
+[ext_resource type="Texture2D" uid="uid://cg0f8c56ltc6r" path="res://NPCs/NPCFaces/Fa_Monster07_r0_c1.png" id="3_6uing"]
+[ext_resource type="Texture2D" uid="uid://c27sd3l80ctwi" path="res://NPCs/Sprites/tile_r0_c0 (13).png" id="3_mr6yx"]
+[ext_resource type="Texture2D" uid="uid://xdr74ffkwqo2" path="res://NPCs/Sprites/tile_r1_c3.png" id="4_wsffp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bttvw"]
+size = Vector2(8, 8)
+
+[node name="ShopeKeeper" type="CharacterBody2D" groups=["Interactable"]]
+collision_layer = 5
+script = ExtResource("1_gf4cf")
+inventory = ExtResource("2_iip2j")
+character = ExtResource("3_6uing")
+sprite_sheet = ExtResource("4_wsffp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_bttvw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("3_mr6yx")
+hframes = 3
+vframes = 4
+frame = 1
+region_rect = Rect2(0, 0, 48, 84)
+
+[node name="Facing" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(0, 25)
+collision_mask = 4
+
+[node name="Move" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[node name="MovePosition" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="Move" to="." method="_on_move_timeout"]

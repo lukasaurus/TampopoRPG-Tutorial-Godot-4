@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c6rwcyktiq2wm"]
+
+[ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_r7dg5"]
+
+[resource]
+script = ExtResource("1_r7dg5")
+is_stackable = true
+name = "Potion"
+quantity = 1
+quantity_max = 99

@@ -175,6 +175,7 @@ size = Vector2(8, 8)
 
 [node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
+collision_layer = 5
 script = ExtResource("1_hutjw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -228,6 +229,10 @@ shape = SubResource("RectangleShape2D_4gg8w")
 shape = SubResource("RectangleShape2D_t883c")
 
 [node name="InteractionDetector" type="RayCast2D" parent="."]
+collision_mask = 4
+
+[node name="AudioListener2D2" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="area_entered" from="TerrainDetector" to="." method="_on_terrain_detector_area_entered"]
 [connection signal="area_exited" from="TerrainDetector" to="." method="_on_terrain_detector_area_exited"]

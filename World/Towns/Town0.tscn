@@ -36,6 +36,7 @@ spawn_facing = "EAST"
 position = Vector2(296, 168)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_qxdm5")
 
 [node name="Tiles" type="Node2D" parent="NavigationRegion2D" node_paths=PackedStringArray("collisions", "over_land")]
@@ -76,12 +77,12 @@ tile_set = ExtResource("8_habkn")
 
 [node name="Details" type="TileMapLayer" parent="NavigationRegion2D/Tiles"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAMAAwAAAAGAAYAAAAWAA0AAAAGAAYAAAAFAA8AAAAGAAkAAAAFABAAAAAGAAoAAAAGAAwAAAAGAAkAAAAGAA0AAAAGAAoAAAAEAAkAAAAGAAkAAAAEAAoAAAAGAAoAAAAGAAgAAAAGAAkAAAAGAAkAAAAGAAoAAAAHAAQAAAAGAAkAAAAHAAUAAAAGAAoAAAAIAAIAAAAGAAkAAAAIAAMAAAAGAAoAAAAKAAQAAAAGAAkAAAAKAAUAAAAGAAoAAAASAAMAAAAGAAkAAAASAAQAAAAGAAoAAAAUAAIAAAAGAAkAAAAUAAMAAAAGAAoAAAAXAAEAAAAGAAkAAAAXAAIAAAAGAAoAAAAaAAEAAAAGAAkAAAAaAAIAAAAGAAoAAAAcAAIAAAAGAAkAAAAcAAMAAAAGAAoAAAAeAAIAAAAGAAkAAAAeAAMAAAAGAAoAAAAhAAIAAAAGAAkAAAAhAAMAAAAGAAoAAAAiAAIAAAAGAAkAAAAiAAMAAAAGAAoAAAAkAAMAAAAGAAkAAAAkAAQAAAAGAAoAAAAlAAMAAAAGAAkAAAAlAAQAAAAGAAoAAAAGABQAAAAGAAkAAAAGABUAAAAGAAoAAAAFABMAAAAGAAkAAAAFABQAAAAGAAoAAAAHABEAAAAGAAkAAAAHABIAAAAGAAoAAAAjABoAAAAHAAcAAAAlABkAAAAHAAcAAAAmABgAAAAHAAcAAAAmABsAAAAHAAcAAAAgABkAAQAAAAYAAAAgABoAAQAAAAcAAAA=")
+tile_map_data = PackedByteArray("AAAMAAwAAAAGAAYAAAAWAA0AAAAGAAYAAAAFAA8AAAAGAAkAAAAFABAAAAAGAAoAAAAGAAwAAAAGAAkAAAAGAA0AAAAGAAoAAAAEAAkAAAAGAAkAAAAEAAoAAAAGAAoAAAAGAAgAAAAGAAkAAAAGAAkAAAAGAAoAAAAHAAQAAAAGAAkAAAAHAAUAAAAGAAoAAAAIAAIAAAAGAAkAAAAIAAMAAAAGAAoAAAAKAAQAAAAGAAkAAAAKAAUAAAAGAAoAAAASAAMAAAAGAAkAAAASAAQAAAAGAAoAAAAUAAIAAAAGAAkAAAAUAAMAAAAGAAoAAAAXAAEAAAAGAAkAAAAXAAIAAAAGAAoAAAAaAAEAAAAGAAkAAAAaAAIAAAAGAAoAAAAcAAIAAAAGAAkAAAAcAAMAAAAGAAoAAAAeAAIAAAAGAAkAAAAeAAMAAAAGAAoAAAAhAAIAAAAGAAkAAAAhAAMAAAAGAAoAAAAiAAIAAAAGAAkAAAAiAAMAAAAGAAoAAAAkAAMAAAAGAAkAAAAkAAQAAAAGAAoAAAAlAAMAAAAGAAkAAAAlAAQAAAAGAAoAAAAGABQAAAAGAAkAAAAGABUAAAAGAAoAAAAFABMAAAAGAAkAAAAFABQAAAAGAAoAAAAHABEAAAAGAAkAAAAHABIAAAAGAAoAAAAjABoAAAAHAAcAAAAlABkAAAAHAAcAAAAmABgAAAAHAAcAAAAmABsAAAAHAAcAAAAgABkAAQAAAAYAAAAgABoAAQAAAAcAAAAQAA4AAAAGAAkAAAAQAA8AAAAGAAoAAAARAA4AAAAGAAkAAAARAA8AAAAGAAoAAAA=")
 tile_set = ExtResource("8_56jam")
 
 [node name="DetailsInFront" type="TileMapLayer" parent="NavigationRegion2D/Tiles"]
 z_index = 2
-tile_map_data = PackedByteArray("AAAbABUAAQAAAA8AAAAcABUAAQABAA8AAAAbABQAAQAAAA4AAAAcABQAAQABAA4AAAAbABMAAQACAA4AAAAcABMAAQADAA4AAAAbABEAAQAAAAoAAAAbABIAAQAAAAsAAAAcABEAAQABAAoAAAAcABIAAQABAAsAAAAQAA4AAAAGAAkAAAAQAA8AAAAGAAoAAAARAA4AAAAGAAkAAAARAA8AAAAGAAoAAAAkAAsAAAAGAAkAAAAkAAwAAAAGAAoAAAAiAAsAAAAGAAkAAAAiAAwAAAAGAAoAAAA=")
+tile_map_data = PackedByteArray("AAAbABUAAQAAAA8AAAAcABUAAQABAA8AAAAbABQAAQAAAA4AAAAcABQAAQABAA4AAAAbABMAAQACAA4AAAAcABMAAQADAA4AAAAbABEAAQAAAAoAAAAbABIAAQAAAAsAAAAcABEAAQABAAoAAAAcABIAAQABAAsAAAAkAAsAAAAGAAkAAAAkAAwAAAAGAAoAAAAiAAsAAAAGAAkAAAAiAAwAAAAGAAoAAAA=")
 tile_set = ExtResource("8_56jam")
 
 [node name="DetailsBehind" type="TileMapLayer" parent="NavigationRegion2D/Tiles"]
@@ -144,24 +145,31 @@ offset_bottom = 592.0
 
 [node name="Sprite2D" parent="." instance=ExtResource("13_uci0x")]
 y_sort_enabled = true
-position = Vector2(72, 224)
-anim = "SOUTH_IDLE"
+position = Vector2(72, 216)
 sprite_sheet = ExtResource("14_xiwep")
 
 [node name="NPC" parent="." instance=ExtResource("13_uci0x")]
-position = Vector2(184, 208)
-anim = "SOUTH_IDLE"
+position = Vector2(176, 216)
 character = ExtResource("14_58xm2")
 sprite_sheet = ExtResource("15_4prq7")
 dialog = Array[String](["Calamet is a nice Island. I've only every visited the mainland once. I like it here. "])
 
+[node name="NPC6" parent="." instance=ExtResource("13_uci0x")]
+position = Vector2(152, 288)
+anim = "EAST_IDLE"
+character = ExtResource("14_58xm2")
+sprite_sheet = ExtResource("15_4prq7")
+dialog = Array[String](["Fighting monsters is no job for a young lady. You ought to be ashamed of yourself, galavanting about with weapons. You need to settle down and marry. "])
+response = Array[String](["*Ahem*"])
+respond = true
+
 [node name="NPC2" parent="." instance=ExtResource("13_uci0x")]
-position = Vector2(376, 256)
+position = Vector2(376, 248)
 anim = "EAST_IDLE"
 character = ExtResource("14_gc4kr")
 sprite_sheet = ExtResource("15_lq2gb")
 dialog = Array[String](["You're too cute to go fighting monsters. My mum says that you should already be married."])
-response = Array[String](["Yes, your mum is always telling me that too. I haven't met the right man yet. "])
+response = Array[String](["Your mum is always telling me that too, but I haven't met the right man yet. "])
 respond = true
 
 [node name="NPC3" parent="." instance=ExtResource("13_uci0x")]
@@ -174,7 +182,6 @@ response = Array[String](["Yes, your mum is always telling me that too. I haven'
 
 [node name="NPC4" parent="." instance=ExtResource("13_uci0x")]
 position = Vector2(24, 216)
-anim = "SOUTH_IDLE"
 character = ExtResource("19_2t8ko")
 sprite_sheet = ExtResource("20_2ib7t")
 dialog = Array[String](["You've lived here your whole life. You know it can be dangerous outside. Make sure to come back safe. Lately, monsters have been heading into the cave to the south. ", "You probably won't encounter many monsters in there, but the ones you do might be tougher. Be careful. "])
@@ -182,8 +189,7 @@ response = Array[String](["Thanks, I'll make sure I don't venture too far withou
 respond = true
 
 [node name="NPC5" parent="." instance=ExtResource("13_uci0x")]
-position = Vector2(216, 240)
-anim = "SOUTH_IDLE"
+position = Vector2(216, 224)
 
 [editable path="TransitionPoint2"]
 [editable path="TransitionPoint3"]

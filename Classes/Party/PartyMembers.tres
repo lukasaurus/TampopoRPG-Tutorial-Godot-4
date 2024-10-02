@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PartyMembers" load_steps=7 format=3 uid="uid://chxir7hfiacu1"]
+[gd_resource type="Resource" script_class="PartyMembers" load_steps=8 format=3 uid="uid://chxir7hfiacu1"]
 
 [ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_euveq"]
+[ext_resource type="Resource" uid="uid://l67kw8vqcyb5" path="res://Classes/Inventory/PartyInventory.tres" id="1_x7n6t"]
 [ext_resource type="Script" path="res://Classes/party_list.gd" id="2_0tspu"]
 [ext_resource type="Resource" uid="uid://cs407qt82sgk4" path="res://Classes/Party/PartyMemberErin.tres" id="2_mmgac"]
 [ext_resource type="Resource" uid="uid://c1lmp74devv4b" path="res://Classes/Party/PartyMemberIvan.tres" id="3_15k2e"]
@@ -10,3 +11,4 @@
 [resource]
 script = ExtResource("2_0tspu")
 party_members = Array[ExtResource("1_euveq")]([ExtResource("2_mmgac"), ExtResource("3_15k2e"), ExtResource("4_cejuh"), ExtResource("5_yws0v")])
+inventory = ExtResource("1_x7n6t")

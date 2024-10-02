@@ -98,6 +98,7 @@ slide_right={
 
 2d_physics/layer_1="Normal"
 2d_physics/layer_2="TerrainHider"
+2d_physics/layer_3="Interactables"
 
 [rendering]
 

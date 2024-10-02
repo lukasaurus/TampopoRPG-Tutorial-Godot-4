@@ -3,7 +3,7 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var move_speed = 100.0
 @export var GRID_SIZE :int = 16
-const RAY_DISTANCE = 10
+const RAY_DISTANCE = 30
 @export var half_grid_snap : bool = true
 var forest_mask : ShaderMaterial
 var grid_size
@@ -30,7 +30,6 @@ var last_transition_point_connection = -1
 signal battle_begin
 
 func _unhandled_input(event : InputEvent):
-	print("hhhh")
 	if event.is_action_pressed("ui_accept"):
 		print("checking interaction")
 		var interactable = interactable_detector.get_collider()
