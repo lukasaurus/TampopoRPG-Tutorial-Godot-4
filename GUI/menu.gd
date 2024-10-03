@@ -16,7 +16,7 @@ signal button_deleted(button)
 signal enemy_dead(button)
 
 func _ready() -> void:
-	
+	await get_tree().process_frame
 	set_buttons()
 	#get_neighbours()
 func set_buttons() ->void:

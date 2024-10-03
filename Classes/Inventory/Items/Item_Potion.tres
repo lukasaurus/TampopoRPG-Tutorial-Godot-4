@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_r7dg5")
 is_stackable = true
-name = "Potion"
+item_name = "Mega Potion"
 quantity = 1
 quantity_max = 99
+price = 100

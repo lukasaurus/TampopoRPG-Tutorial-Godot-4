@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8w47i02o502d"]
+[gd_scene load_steps=7 format=3 uid="uid://c8w47i02o502d"]
 
 [ext_resource type="Script" path="res://NPCs/shop_keeper.gd" id="1_gf4cf"]
-[ext_resource type="Resource" uid="uid://kgum0jom04pi" path="res://Classes/Inventory/ShopkeeperInventories/Town0_Shopkeeper.tres" id="2_iip2j"]
+[ext_resource type="Resource" uid="uid://kgum0jom04pi" path="res://Classes/Inventory/ShopkeeperInventories/Town0_ShopkeeperInventory.tres" id="2_iip2j"]
 [ext_resource type="Texture2D" uid="uid://cg0f8c56ltc6r" path="res://NPCs/NPCFaces/Fa_Monster07_r0_c1.png" id="3_6uing"]
 [ext_resource type="Texture2D" uid="uid://xdr74ffkwqo2" path="res://NPCs/Sprites/tile_r1_c3.png" id="4_wsffp"]
+[ext_resource type="PackedScene" uid="uid://baklbi3ixa8sj" path="res://GUI/shop_gui.tscn" id="5_8gakk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bttvw"]
 size = Vector2(8, 8)
@@ -44,10 +45,6 @@ wait_time = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ShopGUI" parent="CanvasLayer" instance=ExtResource("5_8gakk")]
 
 [connection signal="timeout" from="Move" to="." method="_on_move_timeout"]

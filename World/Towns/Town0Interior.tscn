@@ -99,8 +99,7 @@ offset_right = 80.0
 offset_bottom = 8.0
 
 [node name="ShopeKeeper" parent="." instance=ExtResource("12_6oscf")]
-position = Vector2(48, 120)
-shop_name = null
+position = Vector2(56, 120)
 
 [editable path="TransitionPoint"]
 [editable path="TransitionPoint2"]
