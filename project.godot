@@ -24,6 +24,7 @@ GlobalUI="*res://GUI/GlobalUI.tscn"
 Events="*res://Utilities/events.gd"
 LevelSwapper="*res://Utilities/level_swapper.gd"
 SceneStack="*res://Utilities/scene_stack.gd"
+BattleTransition="*res://World/battle_transition.tscn"
 
 [debug]
 

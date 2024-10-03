@@ -111,6 +111,7 @@ layout_mode = 2
 
 [node name="Fader" type="ColorRect" parent="."]
 process_mode = 3
+visible = false
 offset_right = 656.0
 offset_bottom = 488.0
 mouse_filter = 2

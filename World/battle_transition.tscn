@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://ysqx1d8tj25w"]
+
+[ext_resource type="Script" path="res://World/battle_transition.gd" id="1_cn0qt"]
+[ext_resource type="AudioStream" uid="uid://ct3adujr762cc" path="res://Battle/SFX/55_Encounter_02.wav" id="1_o378w"]
+[ext_resource type="Shader" path="res://battle_start.gdshader" id="2_h3ro8"]
+
+[sub_resource type="Animation" id="Animation_grc7h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTransition/ScreenFlash:material:shader_parameter/max_drag_distance")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mxhoo"]
+resource_name = "battle_flash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BattleTransition/ScreenFlash:material:shader_parameter/max_drag_distance")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BattleTransition/ScreenFlash")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"show"
+}, {
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BattleTransition/55Encounter02:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aksh3"]
+_data = {
+"RESET": SubResource("Animation_grc7h"),
+"battle_flash": SubResource("Animation_mxhoo")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gyufd"]
+shader = ExtResource("2_h3ro8")
+shader_parameter/max_drag_distance = 0.0
+shader_parameter/samples = 20
+shader_parameter/contrast = 1.0
+
+[node name="BattleTransition" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cn0qt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_aksh3")
+}
+autoplay = "RESET"
+
+[node name="55Encounter02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_o378w")
+
+[node name="ScreenFlash" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gyufd")
+offset_left = -8.0
+offset_right = 648.0
+offset_bottom = 496.0
+color = Color(0, 0, 0, 1)

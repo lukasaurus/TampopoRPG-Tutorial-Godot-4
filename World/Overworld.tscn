@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://62k8i7tub6sb"]
+[gd_scene load_steps=13 format=4 uid="uid://62k8i7tub6sb"]
 
 [ext_resource type="Script" path="res://World/set_facing.gd" id="1_3owas"]
 [ext_resource type="Script" path="res://World/tiles.gd" id="2_6kjk5"]
+[ext_resource type="PackedScene" uid="uid://ysqx1d8tj25w" path="res://World/battle_transition.tscn" id="2_ds3p7"]
 [ext_resource type="TileSet" uid="uid://c7x2ru101lpgc" path="res://Assets/Art/World/WorldTilesets/OverworldGround.tres" id="2_scu45"]
 [ext_resource type="PackedScene" uid="uid://cyb5dci1i5voj" path="res://World/overworld_character.tscn" id="2_trbio"]
 [ext_resource type="TileSet" uid="uid://dc0tfkol1iio1" path="res://Assets/Art/World/MiscTiles/Collisions.tres" id="4_uhco1"]
@@ -84,6 +85,8 @@ sources/0 = SubResource("TileSetAtlasSource_s6ayq")
 y_sort_enabled = true
 script = ExtResource("1_3owas")
 
+[node name="BattleTransition" parent="." instance=ExtResource("2_ds3p7")]
+
 [node name="OverworldCharacter" parent="." instance=ExtResource("2_trbio")]
 position = Vector2(200, 120)
 
@@ -161,5 +164,6 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TerrainHider"]
 polygon = PackedVector2Array(184, 124, 185, 136, 183, 167, 152, 169, 151, 182, 123, 182, 123, 170, 150, 164, 167, 164, 168, 138, 179, 137)
 
+[editable path="BattleTransition"]
 [editable path="TransitionPoint"]
 [editable path="TransitionPoint2"]

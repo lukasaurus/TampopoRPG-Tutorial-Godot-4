@@ -50,8 +50,12 @@ func check_for_danger():
 	if danger_countdown <= 0 and snapped_to_grid():
 		enemy_region_tiles = get_tree().get_first_node_in_group("EnemySet")
 		if set_monster_encounter_table():
-			SceneStack.push("res://Battle/battle.tscn")
+			Globals.player_enabled = false
+			BattleTransition.battle_flash()
+			danger_countdown = randi_range(250,500)
+			await BattleTransition.animation_player.animation_finished
 			emit_signal("battle_begin", global_position)
+			SceneStack.push("res://Battle/battle.tscn")
 		danger_countdown = randi_range(250,500)
 		
 func _init():

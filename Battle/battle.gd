@@ -188,8 +188,10 @@ func run_through_event_queue() ->void:
 				emit_signal("combat_complete")
 			else:
 				await GlobalUI.fade_out()
+				Globals.player_enabled = true
 				SceneStack.pop()
 				await GlobalUI.fade_in()
+				
 			#queue_free()
 			#get_tree().change_scene_to_file("res://World/Overworld.tscn")
 			#get_tree().quit()
@@ -332,8 +334,10 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 				emit_signal("combat_complete")
 			else:
 				await GlobalUI.fade_out()
+				Globals.player_enabled = true
 				SceneStack.pop()
 				await GlobalUI.fade_in()
+
 			#queue_free()
 			#print("attempting to run")
 			#dialog_box.type_dialog("You attempt to run...")

@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=3 uid="uid://baklbi3ixa8sj"]
+
+[ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_d77x3"]
+[ext_resource type="Texture2D" uid="uid://l4yja4wgcsct" path="res://NPCs/NPCFaces/Fa_Actor4_r1_c2.png" id="2_gamfm"]
+
+[node name="Shop UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d77x3")
+metadata/_edit_vertical_guides_ = [320.0, 463.0, 185.0]
+metadata/_edit_horizontal_guides_ = [468.0, 12.0]
+
+[node name="PanelNPCName" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 349.0
+offset_right = 303.0
+offset_bottom = 385.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelNPCName"]
+layout_mode = 2
+
+[node name="NPCName" type="Label" parent="PanelNPCName/MarginContainer"]
+layout_mode = 2
+text = "ARMORER"
+
+[node name="PanelMoney" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 12.0
+offset_right = 625.0
+offset_bottom = 48.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelMoney"]
+layout_mode = 2
+
+[node name="Money" type="Label" parent="PanelMoney/MarginContainer"]
+layout_mode = 2
+text = "3576"
+horizontal_alignment = 2
+
+[node name="PanelShopItems" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 12.0
+offset_right = 463.0
+offset_bottom = 124.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelShopItems"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelShopItems/MarginContainer"]
+layout_mode = 2
+
+[node name="ShopItems" type="VBoxContainer" parent="PanelShopItems/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemNameCola" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CAN OF COLA"
+
+[node name="ItemNameCola2" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CAN OF COLA"
+
+[node name="ItemNameCola3" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CAN OF COLA"
+
+[node name="ItemNameCola4" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItems"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CAN OF COLA"
+
+[node name="ShopItemsPrice" type="VBoxContainer" parent="PanelShopItems/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ItemCost" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItemsPrice"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ItemCost2" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItemsPrice"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ItemCost3" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItemsPrice"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="ItemCost4" type="Label" parent="PanelShopItems/MarginContainer/HBoxContainer/ShopItemsPrice"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+
+[node name="PanelCharacterDialogue" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 394.0
+offset_right = 463.0
+offset_bottom = 468.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelCharacterDialogue"]
+layout_mode = 2
+
+[node name="Dialog" type="RichTextLabel" parent="PanelCharacterDialogue/MarginContainer"]
+layout_mode = 2
+text = "WELCOME TO THE SHOP, WHAT WOULD YOU LIKE TO BUY?"
+
+[node name="PanelItemDescription" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 132.0
+offset_right = 463.0
+offset_bottom = 190.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelItemDescription"]
+layout_mode = 2
+
+[node name="Dialog" type="RichTextLabel" parent="PanelItemDescription/MarginContainer"]
+layout_mode = 2
+text = "A SWEET COLA - RESTORES 5 HIT POINTS. "
+
+[node name="PanelCharacterPic" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 316.0
+offset_right = 165.0
+offset_bottom = 468.0
+metadata/_edit_group_ = true
+
+[node name="CharacterPic" type="TextureRect" parent="PanelCharacterPic"]
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+texture = ExtResource("2_gamfm")
+flip_h = true
