@@ -22,7 +22,7 @@ metadata/_edit_horizontal_guides_ = [468.0, 12.0]
 layout_mode = 0
 offset_left = 185.0
 offset_top = 349.0
-offset_right = 303.0
+offset_right = 273.0
 offset_bottom = 385.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelNPCName"]
@@ -44,7 +44,7 @@ layout_mode = 2
 
 [node name="Money" type="Label" parent="PanelMoney/MarginContainer"]
 layout_mode = 2
-text = "3576"
+text = "3576 OTM"
 horizontal_alignment = 2
 
 [node name="PanelShopItems" type="PanelContainer" parent="."]
@@ -65,7 +65,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("3_if75q")
-focus_on_start = true
 
 [node name="ShopItemsPrice" type="VBoxContainer" parent="PanelShopItems/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -95,15 +94,15 @@ offset_bottom = 190.0
 [node name="MarginContainer" type="MarginContainer" parent="PanelItemDescription"]
 layout_mode = 2
 
-[node name="Dialog" type="RichTextLabel" parent="PanelItemDescription/MarginContainer"]
+[node name="ItemDescription" type="RichTextLabel" parent="PanelItemDescription/MarginContainer"]
 layout_mode = 2
 text = "A SWEET COLA - RESTORES 5 HIT POINTS. "
 
 [node name="PanelCharacterPic" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 22.0
 offset_top = 316.0
-offset_right = 165.0
+offset_right = 174.0
 offset_bottom = 468.0
 metadata/_edit_group_ = true
 
@@ -112,3 +111,39 @@ custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 texture = ExtResource("2_gamfm")
 flip_h = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 349.0
+offset_right = 463.0
+offset_bottom = 385.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="ShopOptions" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("3_if75q")
+
+[node name="Buy" type="Button" parent="PanelContainer/MarginContainer/ShopOptions"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BUY"
+alignment = 2
+
+[node name="Sell" type="Button" parent="PanelContainer/MarginContainer/ShopOptions"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SELL"
+alignment = 2
+
+[node name="Exit" type="Button" parent="PanelContainer/MarginContainer/ShopOptions"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "EXIT"
+alignment = 2

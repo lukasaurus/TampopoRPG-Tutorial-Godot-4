@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://i1ri82ci7t4l"]
+
+[ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_lqbcl"]
+
+[resource]
+script = ExtResource("1_lqbcl")
+item_type = "ARMOR"
+sub_type = "TORSO"
+is_stackable = false
+item_name = "Iron Armor"
+quantity = 1
+quantity_max = 1
+price = 200
+description = "A shiny metal suit of armor. "

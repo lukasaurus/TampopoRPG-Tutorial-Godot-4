@@ -8,9 +8,8 @@ func _ready()->void:
 	shop_gui.set_inventory(inventory)
 	
 func _run_interaction()->void:
-	print(inventory)
-	for item in inventory.get_items():
-		print(item)
+	#print(inventory)
+	inventory.print_items()
 	pass
 	shop_gui.show()
 	shop_gui.focus()

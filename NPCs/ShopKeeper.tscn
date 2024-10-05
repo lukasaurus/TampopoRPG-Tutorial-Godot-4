@@ -46,5 +46,6 @@ wait_time = 5.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ShopGUI" parent="CanvasLayer" instance=ExtResource("5_8gakk")]
+visible = false
 
 [connection signal="timeout" from="Move" to="." method="_on_move_timeout"]

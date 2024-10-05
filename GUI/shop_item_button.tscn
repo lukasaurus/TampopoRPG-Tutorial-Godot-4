@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cytj6fou15kis"]
+
+[ext_resource type="Script" path="res://GUI/shop_item_button.gd" id="1_3513e"]
+
+[node name="ShopItemButton" type="Button"]
+alignment = 0
+script = ExtResource("1_3513e")

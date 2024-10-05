@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c6rwcyktiq2wm"]
+
+[ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_u7hc4"]
+
+[resource]
+script = ExtResource("1_u7hc4")
+item_type = "CONSUMABLE"
+sub_type = "RESTORATIVE"
+is_stackable = true
+item_name = "Potion"
+quantity = 1
+quantity_max = 99
+price = 20
+description = "A red coloured potion. Restores 20HP."

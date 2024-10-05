@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bkdn7lwhpvyea"]
+
+[ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_55u4g"]
+
+[resource]
+script = ExtResource("1_55u4g")
+item_type = "CONSUMABLE"
+sub_type = "RESTORATIVE"
+is_stackable = true
+item_name = "Burger"
+quantity = 1
+quantity_max = 99
+price = 40
+description = "A juicy looking burger. Restores 40HP."

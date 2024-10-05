@@ -7,6 +7,7 @@ func _init():
 	
 func _ready():
 	LevelSwapper.player_facing = spawn_facing
+	print(Globals.party.inventory.get_items())
 
 ##@onready var overworld_character: OverworldPlayerCharacter = $OverworldCharacter
 #@onready var tiles: Node2D = $Tiles
