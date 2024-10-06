@@ -1,0 +1,251 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgemlmxu1hnht"]
+
+[ext_resource type="Script" path="res://GUI/statusmenus/status_menu.gd" id="1_8wxhg"]
+[ext_resource type="Script" path="res://GUI/menu.gd" id="1_nqwus"]
+[ext_resource type="Texture2D" uid="uid://ck5aopqrr8801" path="res://Assets/Art/Faces/partyface (2).png" id="3_eyv7u"]
+
+[node name="StatusMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8wxhg")
+
+[node name="MainMenuContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 86.0
+offset_bottom = 142.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuContainer"]
+layout_mode = 2
+
+[node name="MenuOptions" type="VBoxContainer" parent="MainMenuContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_nqwus")
+focus_on_start = true
+
+[node name="Status" type="Button" parent="MainMenuContainer/MarginContainer/MenuOptions"]
+layout_mode = 2
+text = "Status"
+alignment = 0
+
+[node name="Magic" type="Button" parent="MainMenuContainer/MarginContainer/MenuOptions"]
+layout_mode = 2
+text = "MAGIC"
+alignment = 0
+
+[node name="Items" type="Button" parent="MainMenuContainer/MarginContainer/MenuOptions"]
+layout_mode = 2
+text = "ITEMS"
+alignment = 0
+
+[node name="Search" type="Button" parent="MainMenuContainer/MarginContainer/MenuOptions"]
+layout_mode = 2
+text = "SEARCH"
+alignment = 0
+
+[node name="Save" type="Button" parent="MainMenuContainer/MarginContainer/MenuOptions"]
+layout_mode = 2
+text = "SAVE"
+alignment = 0
+
+[node name="PartyStatusContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PartyStatusContainer"]
+layout_mode = 2
+
+[node name="PartyStatusSelect" type="VBoxContainer" parent="PartyStatusContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_nqwus")
+
+[node name="StatusWindow" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PartyMemberStatusInfoContainer" type="PanelContainer" parent="StatusWindow"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 11.0
+offset_right = 444.0
+offset_bottom = 195.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusWindow/PartyMemberStatusInfoContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBox" type="HBoxContainer" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterPortrait" type="TextureRect" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_eyv7u")
+expand_mode = 5
+
+[node name="CharacterName" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ERIN"
+horizontal_alignment = 1
+
+[node name="LabelVbox" type="VBoxContainer" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "LEVEL"
+
+[node name="Label2" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "EXP"
+
+[node name="Label3" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "ATTACK"
+
+[node name="Label4" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "DEFENSE"
+
+[node name="Label5" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "Max HP"
+
+[node name="Label6" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/LabelVbox"]
+layout_mode = 2
+text = "Max MP"
+
+[node name="CharacterVariables" type="VBoxContainer" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="ExperienceLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="AttackLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="DefenseLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="MaxHPLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="MaxMPLabel" type="Label" parent="StatusWindow/PartyMemberStatusInfoContainer/MarginContainer/VBoxContainer/HBox/CharacterVariables"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0000"
+horizontal_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="StatusWindow"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 210.0
+offset_right = 444.0
+offset_bottom = 294.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="StatusWindow/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatusWindow/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="EquipList" type="VBoxContainer" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipList"]
+layout_mode = 2
+text = "Weapon "
+
+[node name="Label2" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipList"]
+layout_mode = 2
+text = "SHIELD"
+
+[node name="Label3" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipList"]
+layout_mode = 2
+text = "ARMOR"
+
+[node name="EquipItems" type="VBoxContainer" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weapon" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipItems"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Laser SWORD"
+horizontal_alignment = 2
+
+[node name="Shield" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipItems"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LASER SHIELD"
+horizontal_alignment = 2
+
+[node name="Armor" type="Label" parent="StatusWindow/PanelContainer/MarginContainer/HBoxContainer/EquipItems"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DIAMOND ARMOR"
+horizontal_alignment = 2
+
+[node name="MagicSelectContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 10.0
+offset_right = 175.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MagicSelectContainer"]
+layout_mode = 2
+
+[node name="MagicPartySelect" type="VBoxContainer" parent="MagicSelectContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_nqwus")

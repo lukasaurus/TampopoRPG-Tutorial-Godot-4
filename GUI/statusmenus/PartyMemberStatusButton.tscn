@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi334cvacic4t"]
+
+[ext_resource type="Script" path="res://GUI/statusmenus/party_member_status_button.gd" id="1_43db4"]
+
+[node name="Button" type="Button"]
+alignment = 0
+script = ExtResource("1_43db4")

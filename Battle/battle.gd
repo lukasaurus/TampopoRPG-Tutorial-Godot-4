@@ -56,6 +56,7 @@ const PARTY_MEMBER_STAT_LABELS = preload("res://Battle/party_member_stat_labels.
 signal combat_complete
 
 func _ready() -> void:
+	AudioController.fade_to_track("BATTLE_LOOP")
 	#enemies_menu.max_enemy_count = max_enemy_count
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
@@ -187,7 +188,9 @@ func run_through_event_queue() ->void:
 			if dungeon_battle:
 				emit_signal("combat_complete")
 			else:
+				AudioController.play_previous_track()
 				await GlobalUI.fade_out()
+				
 				Globals.player_enabled = true
 				SceneStack.pop()
 				await GlobalUI.fade_in()
@@ -332,8 +335,10 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 		"RUN":
 			if dungeon_battle:
 				emit_signal("combat_complete")
+				AudioController.play_previous_track()
 			else:
 				await GlobalUI.fade_out()
+				AudioController.play_previous_track()
 				Globals.player_enabled = true
 				SceneStack.pop()
 				await GlobalUI.fade_in()

@@ -1,13 +1,16 @@
 extends Node2D
 
 @export_enum("NORTH","SOUTH","EAST","WEST") var spawn_facing = "SOUTH"
-#
+#var tracks = AudioPlayer.tracks.keys()
+@export var audio_track : String #check audio player for names
 func _init():
 	LevelSwapper.player_facing = spawn_facing
 	
 func _ready():
 	LevelSwapper.player_facing = spawn_facing
 	print(Globals.party.inventory.get_items())
+	if audio_track:
+		AudioController.fade_to_track(audio_track)
 
 ##@onready var overworld_character: OverworldPlayerCharacter = $OverworldCharacter
 #@onready var tiles: Node2D = $Tiles

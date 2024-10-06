@@ -12,6 +12,7 @@ func start_combat():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("you aree in dungeon")
+	AudioController.fade_to_track("ICY_CAVE")
 	GlobalUI.fade_in()
 	player.combat_begin.connect(start_combat)
 	#Stash.dungeon_battle = true

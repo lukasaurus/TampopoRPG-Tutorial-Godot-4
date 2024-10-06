@@ -21,7 +21,7 @@ class_name BattleActor extends Resource
 	set(value):
 		gold = level * value
 		
-@export var strength : int = 1
+@export var attack : int = 1
 
 
 
@@ -43,7 +43,7 @@ func _initialize(_animation_player = null)->void:
 	animation_player = _animation_player
 
 func damage_roll()->int:
-	var dmg = strength + randi_range(-2,2)
+	var dmg = attack + randi_range(-2,2)
 	dmg = clampi(dmg,1,100000)
 	return dmg
 

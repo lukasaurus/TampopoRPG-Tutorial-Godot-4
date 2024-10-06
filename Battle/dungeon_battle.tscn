@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ohdx0r5vmdnv"]
+[gd_scene load_steps=19 format=3 uid="uid://ohdx0r5vmdnv"]
 
 [ext_resource type="Theme" uid="uid://30p747w8edx" path="res://Assets/Theme/RPGTheme.tres" id="1_m0qi0"]
 [ext_resource type="Script" path="res://Battle/battle.gd" id="2_3e6nd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Battle/enemies_menu.gd" id="6_dog85"]
 [ext_resource type="Script" path="res://GUI/menu.gd" id="7_aw3jx"]
 [ext_resource type="PackedScene" uid="uid://71k8pvo5dkn2" path="res://GUI/dialogue.tscn" id="8_pwg1i"]
-[ext_resource type="AudioStream" uid="uid://dkfarmsfx72oa" path="res://Music/Decisive Battle/xDeviruchi - Decisive Battle (Loop).wav" id="9_lb4bd"]
 [ext_resource type="AudioStream" uid="uid://ct3adujr762cc" path="res://Battle/SFX/55_Encounter_02.wav" id="10_oqoum"]
 
 [sub_resource type="Animation" id="Animation_vscek"]
@@ -28,23 +27,11 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ScreenAnimator/XDeviruchi-DecisiveBattle(loop):playing")
+tracks/1/enabled = false
+tracks/1/path = NodePath("ScreenAnimator/55Encounter02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("ScreenAnimator/55Encounter02:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.1, 0.166667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -98,23 +85,11 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("ScreenAnimator/XDeviruchi-DecisiveBattle(loop):playing")
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScreenAnimator/55Encounter02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ScreenAnimator/55Encounter02:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -482,9 +457,6 @@ libraries = {
 "": SubResource("AnimationLibrary_soap6")
 }
 autoplay = "BattleStart"
-
-[node name="XDeviruchi-DecisiveBattle(loop)" type="AudioStreamPlayer" parent="ScreenAnimator"]
-stream = ExtResource("9_lb4bd")
 
 [node name="55Encounter02" type="AudioStreamPlayer" parent="ScreenAnimator"]
 stream = ExtResource("10_oqoum")

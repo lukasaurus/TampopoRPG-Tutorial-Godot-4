@@ -85,6 +85,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "WELCOME TO THE SHOP, WHAT WOULD YOU LIKE TO BUY? I SELL ARMOR."
+scroll_active = false
+autowrap_mode = 2
+visible_characters_behavior = 1
 script = ExtResource("4_g8r5n")
 
 [node name="PanelItemDescription" type="PanelContainer" parent="."]

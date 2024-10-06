@@ -84,6 +84,7 @@ sources/0 = SubResource("TileSetAtlasSource_s6ayq")
 [node name="Overworld" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_3owas")
+audio_track = "JOURNEY_BEGINS"
 
 [node name="BattleTransition" parent="." instance=ExtResource("2_ds3p7")]
 

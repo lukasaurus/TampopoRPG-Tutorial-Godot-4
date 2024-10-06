@@ -89,3 +89,4 @@ func _physics_process(delta):
 func _on_exit_detector_area_entered(area):
 	if area.is_in_group("Exit"):
 		LevelSwapper.exit_dungeon(area.new_area)
+		AudioController.play_previous_track()
