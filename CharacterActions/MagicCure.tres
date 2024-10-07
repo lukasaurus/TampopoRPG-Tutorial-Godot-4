@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=2 format=3 uid="uid://o5styer6dyou"]
+
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="1_m6by3"]
+
+[resource]
+script = ExtResource("1_m6by3")
+action_type = "SPELL"
+battle_spell_only = false
+action_name = "Cure"
+action_value = 0
+mp_cost = 0

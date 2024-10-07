@@ -51,6 +51,7 @@ StatusEffect=""
 TransitionPoint=""
 EnemySet=""
 Interactable=""
+Menu=""
 
 [gui]
 

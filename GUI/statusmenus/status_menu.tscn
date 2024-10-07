@@ -13,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8wxhg")
+metadata/_edit_vertical_guides_ = [86.0, 100.0, 176.0, 190.0, 266.0, 280.0]
+metadata/_edit_horizontal_guides_ = [10.0]
 
 [node name="MainMenuContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -76,6 +78,7 @@ script = ExtResource("1_nqwus")
 
 [node name="StatusWindow" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -234,11 +237,10 @@ horizontal_alignment = 2
 
 [node name="MagicSelectContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 99.0
+offset_left = 100.0
 offset_top = 10.0
-offset_right = 175.0
+offset_right = 176.0
 offset_bottom = 34.0
 metadata/_edit_group_ = true
 
@@ -246,6 +248,40 @@ metadata/_edit_group_ = true
 layout_mode = 2
 
 [node name="MagicPartySelect" type="VBoxContainer" parent="MagicSelectContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_nqwus")
+
+[node name="SpellSelectContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 190.0
+offset_top = 10.0
+offset_right = 266.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectContainer"]
+layout_mode = 2
+
+[node name="SpellSelect" type="VBoxContainer" parent="SpellSelectContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_nqwus")
+
+[node name="MargicTargetSelectContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 280.0
+offset_top = 10.0
+offset_right = 356.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MargicTargetSelectContainer"]
+layout_mode = 2
+
+[node name="MagicTargetSelect" type="VBoxContainer" parent="MargicTargetSelectContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("1_nqwus")

@@ -29,7 +29,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		
 func on_viewport_gui_focus_changed(node:Control):
 	if focus_print:
-		print_rich('[color=yellow]###Focus Change : [/color]' , node.name)
+		pass
+		#print_rich('[color=yellow]###Focus Change : [/color]' , node.name)
 	
 func toggle_fullscreen():
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:

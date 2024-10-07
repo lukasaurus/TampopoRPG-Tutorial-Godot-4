@@ -14,15 +14,17 @@ signal button_pressed(button)
 signal button_focused(button)
 signal button_deleted(button)
 signal enemy_dead(button)
-
+signal buttons_removed
 func _ready() -> void:
+	add_to_group("Menu")
 	await get_tree().process_frame
 	set_buttons()
 	#get_neighbours()
+	
 func set_buttons() ->void:
 	buttons = get_children()
 	for button in buttons:
-		print(name)
+		#print(name)
 		button.focus_entered.connect(on_button_focused.bind(button))
 		button.focus_exited.connect(on_button_focus_exited.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
@@ -35,6 +37,12 @@ func set_buttons() ->void:
 		button_focus()
 	elif disable_on_focus_exit:
 		set_button_focus_mode(FOCUS_NONE)
+
+func remove_all_buttons():
+	if get_children().size()>0:
+		for child in get_children():
+			child.queue_free()
+	emit_signal("buttons_removed")
 
 func on_button_hidden(button):
 	buttons.erase(button)

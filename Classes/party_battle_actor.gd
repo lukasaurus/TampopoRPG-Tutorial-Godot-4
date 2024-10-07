@@ -6,3 +6,5 @@ class_name PartyBattleActor extends BattleActor
 @export var weapon : Item
 @export var armor : Item
 @export var shield : Item
+
+@export var spell_list : Array[BattleAction] = []
