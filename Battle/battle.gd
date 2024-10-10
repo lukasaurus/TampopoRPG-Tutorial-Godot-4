@@ -31,6 +31,11 @@ var battle_result : int = -1
 ##REFERENCES
 @onready var enemies_menu = %EnemiesMenu
 @onready var battle_menu_options : Array = %BattleMenu.get_children()
+@onready var spell_select_container: PanelContainer = %SpellSelectContainer
+@onready var spell_select: Menu = %SpellSelect
+@onready var margic_target_select_container: PanelContainer = %MargicTargetSelectContainer
+@onready var magic_target_select: Menu = %MagicTargetSelect
+
 @onready var battle_menu = %BattleMenu
 @onready var bottom: HBoxContainer = %Bottom
 @onready var bottom_pos : int = 188
@@ -49,9 +54,12 @@ var battle_result : int = -1
 @export var max_enemy_count : int = 5
 var party_members_alive : Array
 var active_party_member : BattleActor
+var spell_selected : BattleAction
 #PRELOADS
 const ENEMY_STAT_LABELS = preload("res://Battle/enemy_stat_labels.tscn")
 const PARTY_MEMBER_STAT_LABELS = preload("res://Battle/party_member_stat_labels.tscn")
+const SPELL_BUTTON = preload("res://GUI/statusmenus/spell_button.tscn")
+const PARTY_MEMBER_STATUS_BUTTON = preload("res://GUI/statusmenus/PartyMemberStatusButton.tscn")
 
 signal combat_complete
 
@@ -61,6 +69,8 @@ func _ready() -> void:
 	enemies_menu.button_pressed.connect(on_EnemiesMenu_button_pressed)
 	battle_menu.button_pressed.connect(on_BattleMenu_button_pressed)
 	enemies_menu.enemy_dead.connect(add_rewards)
+	spell_select.button_pressed.connect(on_SpellMenu_button_pressed)
+	magic_target_select.button_pressed.connect(on_MagicTarget_button_pressed)
 	for player : PartyBattleActor in Globals.party.party_members:
 		player.defeated.connect(update_party_members_alive)
 		player.hp_changed.connect(damage_flash)
@@ -94,6 +104,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if enemies_menu.is_focused():
 			go_to_next_player(0)
 			pass
+		if spell_select.is_focused():
+			go_to_next_player(0)
+			spell_select_container.hide()
 	else:
 
 		return
@@ -301,6 +314,9 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			await dialog_box.battle_dialog_done
 			
+		event_type.MAGIC:
+			print("magic attack")
+			
 func player_attack_animation(actor:PartyBattleActor, target:BattleActor):
 	var anim :AnimatedSprite2D = actor.weapon.animation.instantiate()
 	
@@ -358,6 +374,31 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 				Globals.player_enabled = true
 				SceneStack.pop()
 				await GlobalUI.fade_in()
+		"MAGIC":
+			print("magic selected")
+			current_action = event_type.MAGIC
+			#magic_caster = party_member_button.party_member_actor
+			var party_member = party_members_alive[current_player_index]
+			spell_select.remove_all_buttons()
+			
+			await get_tree().process_frame
+			await get_tree().process_frame
+			#await get_tree().process_frame #temporary hack to remove buttons and not cause a glitch
+			#print(spell_select.get_buttons())
+			if party_member.spell_list.size() <= 0:
+				return
+			for spell :BattleAction in party_member.spell_list:
+				if spell.battle_spell_only:
+					pass
+				else:
+					add_button(spell_select, spell)
+			
+			#await get_tree().process_frame
+			spell_select.set_buttons()
+			if spell_select.get_buttons().size() <= 0:
+				return
+			spell_select_container.show()
+			spell_select.button_focus()
 
 			#queue_free()
 			#print("attempting to run")
@@ -366,7 +407,60 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 			#await get_tree().create_timer(1)
 			#dialog_box.type_dialog("You succeed")
 			#await dialog_box.battle_dialog_done
-			
+func on_SpellMenu_button_pressed(button:SpellButton):
+	print(button, button.spell_action.action_name)
+	spell_selected = button.spell_action
+	if spell_selected.needs_target:
+		if spell_selected.can_target_ally:
+			magic_target_select.remove_all_buttons()
+			await get_tree().process_frame
+			await get_tree().process_frame
+			add_party_member_buttons(magic_target_select)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			margic_target_select_container.show()
+			magic_target_select.set_buttons()
+			magic_target_select.button_focus()
+			#show targetable allies
+			#display allies list
+			pass
+		elif spell_selected.can_target_enemy:
+			#show targetable enemies
+			#got to enemies menu
+			enemies_menu.button_focus()
+			pass
+		else:
+			#cast spell, no target
+			pass
+	pass
+
+func add_party_member_buttons(node : Menu):
+	for party_member in party_members_alive:
+		var new_button = PARTY_MEMBER_STATUS_BUTTON.instantiate()
+		new_button.party_member_actor = party_member
+		new_button.text = party_member.name
+		node.add_child(new_button)
+		print("adding", new_button.text)
+	
+func on_MagicTarget_button_pressed(button:PartyMemberSelectButton):
+	add_event(party_members_alive[current_player_index], current_action,button.party_member_actor) #add action to list
+	if current_player_index < party_members_alive.size()-1: # if there are still party members
+		battle_menu.index = 0
+		margic_target_select_container.hide()
+		go_to_next_player()
+	else:
+		margic_target_select_container.hide()
+		spell_select_container.hide()
+		get_viewport().gui_release_focus()
+		await run_battle_round()
+	pass
+	#add event			
+func add_button(node:Menu, spell : BattleAction)->void:
+	pass
+	var new_button = SPELL_BUTTON.instantiate()
+	new_button.text = spell.action_name
+	new_button.spell_action = spell
+	node.add_child(new_button)			
 
 func run_battle_round():
 	current_player_index = 0 #reset party index and move to enemy actions

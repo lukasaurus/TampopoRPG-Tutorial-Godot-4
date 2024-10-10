@@ -6,6 +6,10 @@
 script = ExtResource("1_imqrm")
 action_type = "SPELL"
 battle_spell_only = false
+out_of_combat_only = false
+needs_target = true
+can_target_enemy = false
+can_target_ally = true
 action_name = "Heal"
 action_value = 10
 mp_cost = 2
