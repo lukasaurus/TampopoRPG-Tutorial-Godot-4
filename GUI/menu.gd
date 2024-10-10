@@ -24,13 +24,15 @@ func _ready() -> void:
 func set_buttons() ->void:
 	buttons = get_children()
 	for button in buttons:
-		#print(name)
+			
 		button.focus_entered.connect(on_button_focused.bind(button))
 		button.focus_exited.connect(on_button_focus_exited.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
 		button.tree_exiting.connect(on_button_deleted.bind(button))
 		if button.has_signal("dead"):
 			button.dead.connect(on_button_hidden.bind(button))
+
+
 
 		
 	if focus_on_start:
@@ -71,7 +73,10 @@ func is_focused() -> bool:
 func set_button_focus_mode(mode:int)->void:
 	#can_focus = on
 	for button in buttons:
-		button.focus_mode = mode
+		if button.visible == false:
+			button.focus_mode = FOCUS_NONE
+		else:
+			button.focus_mode = mode
 		
 func connect_buttons(object : Object)-> void:
 	for button in buttons: #this will be called from the battle script

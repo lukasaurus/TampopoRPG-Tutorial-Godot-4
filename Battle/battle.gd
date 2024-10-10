@@ -274,6 +274,8 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			dialog_box.hide()
 			if actor.type == "Enemy":
 				await enemy_attack_animation(actor,target)
+			else:
+				await player_attack_animation(actor,target)
 			var dmg = await target.heal_hurt(-actor.damage_roll()) #damage target by strength amount
 			dialog_box.show()
 			if target.is_defending:
@@ -299,7 +301,21 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			print_rich('[color=blue]'+actor.name + " Defends[/color]")
 			await dialog_box.battle_dialog_done
 			
-
+func player_attack_animation(actor:PartyBattleActor, target:BattleActor):
+	var anim :AnimatedSprite2D = actor.weapon.animation.instantiate()
+	
+	for button: EnemyButton in enemies_menu.get_buttons():
+		if button.battle_actor == target:
+			var button_offset = Vector2(button.size.x * button.scale.x, button.size.y * button.scale.y)
+			anim.global_position = button.global_position +  button_offset
+			anim.scale = Vector2(2,2)
+			
+		else:
+			pass
+	add_child(anim)
+	anim.play("default")
+	await anim.animation_finished
+	anim.queue_free()
 	
 func menu_exit_tween(menu):
 	#NOTE : Probably change this to individual animations later

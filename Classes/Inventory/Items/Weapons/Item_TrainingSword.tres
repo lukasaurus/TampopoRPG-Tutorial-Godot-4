@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bujk61jyi828n"]
+
+[ext_resource type="PackedScene" uid="uid://cubxy21g5g28b" path="res://CharacterActions/Attacks/AttackAnimations/BasicAttack.tscn" id="1_26r0f"]
+[ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_u5wis"]
+
+[resource]
+script = ExtResource("1_u5wis")
+item_type = "WEAPON"
+sub_type = "SWORD"
+is_stackable = false
+is_equipable = true
+is_targetable = false
+item_name = "Training Sword"
+quantity = 1
+quantity_max = 1
+price = -1
+description = "A nice item."
+multi_purpose_value = -1
+animation = ExtResource("1_26r0f")

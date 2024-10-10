@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://l67kw8vqcyb5"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=7 format=3 uid="uid://l67kw8vqcyb5"]
 
 [ext_resource type="Script" path="res://Classes/Inventory/item.gd" id="1_2y8y7"]
+[ext_resource type="Resource" uid="uid://bkdn7lwhpvyea" path="res://Classes/Inventory/Items/Consumables/Item_Burger.tres" id="2_evl3g"]
 [ext_resource type="Script" path="res://Classes/Inventory/inventory.gd" id="2_r5gsm"]
+[ext_resource type="Resource" uid="uid://k7nf5xbjdv5v" path="res://Classes/Inventory/Items/Consumables/Item_Cola.tres" id="3_4pcog"]
+[ext_resource type="Resource" uid="uid://c6rwcyktiq2wm" path="res://Classes/Inventory/Items/Consumables/Item_Potion.tres" id="4_5j20a"]
+[ext_resource type="Resource" uid="uid://i1ri82ci7t4l" path="res://Classes/Inventory/Items/Armor/Item_IronArmor.tres" id="5_x3rht"]
 
 [resource]
 script = ExtResource("2_r5gsm")
-items = Array[ExtResource("1_2y8y7")]([])
+items = Array[ExtResource("1_2y8y7")]([ExtResource("2_evl3g"), ExtResource("3_4pcog"), ExtResource("4_5j20a"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht"), ExtResource("5_x3rht")])

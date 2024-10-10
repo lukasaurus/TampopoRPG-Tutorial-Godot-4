@@ -1,1 +1,1 @@
-add enemy
+NEXT : Add items menu to status

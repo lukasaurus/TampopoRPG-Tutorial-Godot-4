@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=2 format=3 uid="uid://cjq65g237knms"]
+
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="1_oekr0"]
+
+[resource]
+script = ExtResource("1_oekr0")
+action_type = "SPELL"
+battle_spell_only = false
+out_of_combat_only = true
+needs_target = false
+action_name = "Revert"
+action_value = 0
+mp_cost = 2

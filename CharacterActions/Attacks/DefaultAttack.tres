@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=3 format=3 uid="uid://bryjl2sba85sj"]
+
+[ext_resource type="PackedScene" uid="uid://cubxy21g5g28b" path="res://CharacterActions/Attacks/AttackAnimations/BasicAttack.tscn" id="1_4gejx"]
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="1_whs6y"]
+
+[resource]
+script = ExtResource("1_whs6y")
+action_type = "WEAPON"
+battle_spell_only = true
+out_of_combat_only = false
+needs_target = true
+action_name = "DefaultAttack"
+action_value = 0
+mp_cost = 0
+action_animation = ExtResource("1_4gejx")

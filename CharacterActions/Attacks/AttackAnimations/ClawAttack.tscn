@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bocpf2l8asrqn"]
+
+[ext_resource type="PackedScene" uid="uid://c161vij6yr7qg" path="res://CharacterActions/Attacks/AttackAnimations/Template.tscn" id="1_jjpv6"]
+[ext_resource type="Texture2D" uid="uid://ercb4a8w14ky" path="res://Assets/SpellAttackAnimations/Ani_claw.png" id="2_ml4md"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrbgt"]
+atlas = ExtResource("2_ml4md")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou25b"]
+atlas = ExtResource("2_ml4md")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qinuw"]
+atlas = ExtResource("2_ml4md")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_802if"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrbgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou25b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qinuw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AttackAnimation" instance=ExtResource("1_jjpv6")]
+sprite_frames = SubResource("SpriteFrames_802if")

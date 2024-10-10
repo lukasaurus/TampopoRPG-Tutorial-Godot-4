@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://djdjobk26x0ym"]
+
+[ext_resource type="Texture2D" uid="uid://cl7mkrqtpihis" path="res://Assets/SpellAttackAnimations/Ani_slash.png" id="1_pabwi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kanp4"]
+atlas = ExtResource("1_pabwi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcy8p"]
+atlas = ExtResource("1_pabwi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nraax"]
+atlas = ExtResource("1_pabwi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ajx3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kanp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcy8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nraax")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SlashAttack" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ajx3j")

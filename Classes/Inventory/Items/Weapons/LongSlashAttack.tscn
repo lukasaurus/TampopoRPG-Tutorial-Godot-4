@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh24oo54fpatm"]
+
+[ext_resource type="PackedScene" uid="uid://c161vij6yr7qg" path="res://CharacterActions/Attacks/AttackAnimations/Template.tscn" id="1_wyye4"]
+[ext_resource type="Texture2D" uid="uid://dg0p1jdr5eyd4" path="res://Assets/SpellAttackAnimations/Ani_slash2.png" id="2_nlkhi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojfos"]
+atlas = ExtResource("2_nlkhi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj5oa"]
+atlas = ExtResource("2_nlkhi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61k8y"]
+atlas = ExtResource("2_nlkhi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fe8p"]
+atlas = ExtResource("2_nlkhi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jinew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojfos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj5oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61k8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fe8p")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AttackAnimation" instance=ExtResource("1_wyye4")]
+sprite_frames = SubResource("SpriteFrames_jinew")
+frame = 3
+frame_progress = 1.0

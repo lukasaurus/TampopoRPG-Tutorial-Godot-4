@@ -1,11 +1,18 @@
-[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=3 format=3 uid="uid://bohdca6t3blql"]
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=6 format=3 uid="uid://bohdca6t3blql"]
 
 [ext_resource type="Texture2D" uid="uid://bfj0pu5vv0iy3" path="res://Assets/Art/Faces/partyface (8).png" id="1_n03qn"]
 [ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_tnvva"]
+[ext_resource type="PackedScene" uid="uid://cubxy21g5g28b" path="res://CharacterActions/Attacks/AttackAnimations/BasicAttack.tscn" id="1_xgffi"]
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="4_byht0"]
+[ext_resource type="Resource" uid="uid://bujk61jyi828n" path="res://Classes/Inventory/Items/Weapons/Item_TrainingSword.tres" id="5_hppgj"]
 
 [resource]
 script = ExtResource("1_tnvva")
 face_texture = ExtResource("1_n03qn")
+defense = 1
+weapon = ExtResource("5_hppgj")
+default_attack_animation = ExtResource("1_xgffi")
+spell_list = Array[ExtResource("4_byht0")]([])
 type = "Player"
 name = "Othmar"
 hp_max = 24
@@ -14,4 +21,4 @@ speed = 1
 level = 1
 xp = 0
 gold = 0
-strength = 7
+attack = 1

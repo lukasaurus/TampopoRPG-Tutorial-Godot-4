@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=3 format=3 uid="uid://c1lmp74devv4b"]
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=5 format=3 uid="uid://c1lmp74devv4b"]
 
 [ext_resource type="Texture2D" uid="uid://cr0n32gme5172" path="res://Assets/Art/Faces/partyface (6).png" id="1_3lkah"]
 [ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_mnb3t"]
+[ext_resource type="Resource" uid="uid://bujk61jyi828n" path="res://Classes/Inventory/Items/Weapons/Item_TrainingSword.tres" id="4_aesb1"]
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="4_j84ir"]
 
 [resource]
 script = ExtResource("1_mnb3t")
 face_texture = ExtResource("1_3lkah")
+defense = 1
+weapon = ExtResource("4_aesb1")
+spell_list = Array[ExtResource("4_j84ir")]([])
 type = "Player"
 name = "Ivan"
 hp_max = 40
@@ -14,4 +19,4 @@ speed = 1
 level = 1
 xp = 0
 gold = 0
-strength = 5
+attack = 1

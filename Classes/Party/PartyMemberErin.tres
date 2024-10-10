@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=5 format=3 uid="uid://cs407qt82sgk4"]
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=8 format=3 uid="uid://cs407qt82sgk4"]
 
 [ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_2qkoo"]
+[ext_resource type="PackedScene" uid="uid://cubxy21g5g28b" path="res://CharacterActions/Attacks/AttackAnimations/BasicAttack.tscn" id="1_afdl2"]
 [ext_resource type="Texture2D" uid="uid://ck5aopqrr8801" path="res://Assets/Art/Faces/partyface (2).png" id="1_mc704"]
 [ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="3_6gkgo"]
-[ext_resource type="Resource" uid="uid://wjhf8r8oetkh" path="res://CharacterActions/MagicHeal.tres" id="4_jifl6"]
+[ext_resource type="Resource" uid="uid://wjhf8r8oetkh" path="res://CharacterActions/Spells/MagicHeal.tres" id="4_r5w4h"]
+[ext_resource type="Resource" uid="uid://cjq65g237knms" path="res://CharacterActions/Spells/MagicRevert.tres" id="5_rnadg"]
+[ext_resource type="Resource" uid="uid://bujk61jyi828n" path="res://Classes/Inventory/Items/Weapons/Item_TrainingSword.tres" id="7_xx4lt"]
 
 [resource]
 script = ExtResource("1_2qkoo")
 face_texture = ExtResource("1_mc704")
 defense = 1
-spell_list = Array[ExtResource("3_6gkgo")]([ExtResource("4_jifl6")])
+weapon = ExtResource("7_xx4lt")
+default_attack_animation = ExtResource("1_afdl2")
+spell_list = Array[ExtResource("3_6gkgo")]([ExtResource("4_r5w4h"), ExtResource("5_rnadg")])
 type = "Player"
 name = "Erin"
 hp_max = 10

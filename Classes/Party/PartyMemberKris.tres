@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=5 format=3 uid="uid://duy05a1xiaqtx"]
+[gd_resource type="Resource" script_class="PartyBattleActor" load_steps=8 format=3 uid="uid://duy05a1xiaqtx"]
 
 [ext_resource type="Script" path="res://Classes/party_battle_actor.gd" id="1_aolmb"]
+[ext_resource type="PackedScene" uid="uid://cubxy21g5g28b" path="res://CharacterActions/Attacks/AttackAnimations/BasicAttack.tscn" id="1_ehlro"]
 [ext_resource type="Texture2D" uid="uid://bxqqvwtpts1cm" path="res://Assets/Art/Faces/partyface (7).png" id="1_exrxm"]
-[ext_resource type="Resource" uid="uid://wjhf8r8oetkh" path="res://CharacterActions/MagicHeal.tres" id="3_n580c"]
-[ext_resource type="Resource" uid="uid://o5styer6dyou" path="res://CharacterActions/MagicCure.tres" id="4_wsps5"]
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="3_kqdmk"]
+[ext_resource type="Resource" uid="uid://wjhf8r8oetkh" path="res://CharacterActions/Spells/MagicHeal.tres" id="3_n580c"]
+[ext_resource type="Resource" uid="uid://o5styer6dyou" path="res://CharacterActions/Spells/MagicCure.tres" id="4_wsps5"]
+[ext_resource type="Resource" uid="uid://bujk61jyi828n" path="res://Classes/Inventory/Items/Weapons/Item_TrainingSword.tres" id="7_2wu37"]
 
 [resource]
 script = ExtResource("1_aolmb")
 face_texture = ExtResource("1_exrxm")
 defense = 1
-spell_list = [ExtResource("3_n580c"), ExtResource("4_wsps5")]
+weapon = ExtResource("7_2wu37")
+default_attack_animation = ExtResource("1_ehlro")
+spell_list = Array[ExtResource("3_kqdmk")]([ExtResource("3_n580c"), ExtResource("4_wsps5")])
 type = "Player"
 name = "Kris"
 hp_max = 12
