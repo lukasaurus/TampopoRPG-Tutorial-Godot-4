@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bcbikp7syt1oo"]
+
+[node name="AttackAnimation" type="AnimatedSprite2D"]

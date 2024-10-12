@@ -146,9 +146,9 @@ func add_enemy_stat_boxes():
 		#connect hp changed so that it updates when hp changes
 		battle_actor.hp_changed.connect(new_enemy_label.update_stats)
 		
-func add_event(actor:BattleActor, type : event_type, target : BattleActor)-> void:
+func add_event(actor:BattleActor, type : event_type, target : BattleActor,spell : BattleAction = null)-> void:
 	#add event to the event queue
-	event_queue.append([actor,type,target])
+	event_queue.append([actor,type,target, spell])
 
 func add_rewards(button):
 	#add rewards when an enemy is defeated
@@ -160,7 +160,7 @@ func run_through_event_queue() ->void:
 	print("--->start of queue",party_members_alive)
 	await menu_enter_tween(dialog_box)
 	for event in event_queue:
-		await run_event(event[0], event[1], event[2])
+		await run_event(event[0], event[1], event[2], event[3])
 	
 	event_queue.clear()
 
@@ -250,7 +250,7 @@ func enemy_attack_animation(enemy, target):
 	await tween_attack.finished
 	
 	
-func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void:
+func run_event(actor:BattleActor, type : event_type, target : BattleActor, spell : BattleAction = null)->void:
 	if target != null: #target would be null where no target is required
 		print_rich("[color=cyan]"+actor.name+" targets " + target.name+ " [/color]")
 		if actor.hp <= 0:
@@ -315,8 +315,42 @@ func run_event(actor:BattleActor, type : event_type, target : BattleActor)->void
 			await dialog_box.battle_dialog_done
 			
 		event_type.MAGIC:
-			print("magic attack")
+			if actor.type == "Enemy":
+				set_active_party_member(target)
+				pass
+				#ALERT not implemented yet
+			else:
+				set_active_party_member(actor)
 			
+			dialog_box.type_dialog(actor.name+ " casts "+ spell.action_name+ " on "+ target.name)
+			print_rich ("[color=green]"+actor.name+ " casts "+ spell.action_name+ " on "+ target.name + "[/color]!")
+			await dialog_box.battle_dialog_done
+			dialog_box.hide()
+			if actor.type == "Enemy":
+				pass
+				#ALERT not implemented yet
+			elif target.type == "Enemy":
+				#NOTE Ally targeting enemy
+				if spell.action_intent == "OFFENSIVE":
+					await create_spell_animation(actor, target, spell)
+					var dmg = await target.heal_hurt(-spell.action_value) #damage target by strength amount
+					dialog_box.show()
+					if target.is_defending:
+						dialog_box.type_dialog(target.name + " is defending and takes "+ str(abs(dmg))+" damage")
+					else:
+						dialog_box.type_dialog(target.name + " takes "+str(abs(dmg))+" damage")
+					await dialog_box.battle_dialog_done
+					
+					if target.hp <= 0:
+						dialog_box.type_dialog(target.name + " is defeated!!")
+						await dialog_box.battle_dialog_done
+					set_all_active_party_members(true)
+				
+			else:
+				#NOTE Ally casting spell on ally OR
+				#ALERT create animation
+				#ALERT await animation
+				pass
 func player_attack_animation(actor:PartyBattleActor, target:BattleActor):
 	var anim :AnimatedSprite2D = actor.weapon.animation.instantiate()
 	
@@ -324,7 +358,7 @@ func player_attack_animation(actor:PartyBattleActor, target:BattleActor):
 		if button.battle_actor == target:
 			var button_offset = Vector2(button.size.x * button.scale.x, button.size.y * button.scale.y)
 			anim.global_position = button.global_position +  button_offset
-			anim.scale = Vector2(2,2)
+			anim.scale = button.get_parent().scale
 			
 		else:
 			pass
@@ -332,7 +366,27 @@ func player_attack_animation(actor:PartyBattleActor, target:BattleActor):
 	anim.play("default")
 	await anim.animation_finished
 	anim.queue_free()
+
+func create_spell_animation(actor:BattleActor, target:BattleActor, spell : BattleAction):
+	var anim :AnimatedSprite2D = spell.action_animation.instantiate()
+	if target.type == "Enemy":
+		for button: EnemyButton in enemies_menu.get_buttons():
+			if button.battle_actor == target:
+				var button_offset = Vector2(button.size.x * button.scale.x, button.size.y * button.scale.y)
+				anim.global_position = button.global_position +  button_offset
+				anim.scale = button.get_parent().scale
+				#if dungeon_battle : 
+					#anim.scale = Vector2(3,3)
+				#else: 
+					#anim.scale = Vector2(2,2)
+				
 	
+	add_child(anim)
+	anim.play("default")
+	await anim.animation_finished
+	anim.queue_free()
+
+
 func menu_exit_tween(menu):
 	#NOTE : Probably change this to individual animations later
 	tween = create_tween()
@@ -388,7 +442,7 @@ func on_BattleMenu_button_pressed(button:BaseButton) -> void:
 			if party_member.spell_list.size() <= 0:
 				return
 			for spell :BattleAction in party_member.spell_list:
-				if spell.battle_spell_only:
+				if spell.out_of_combat_only:
 					pass
 				else:
 					add_button(spell_select, spell)
@@ -443,7 +497,7 @@ func add_party_member_buttons(node : Menu):
 		print("adding", new_button.text)
 	
 func on_MagicTarget_button_pressed(button:PartyMemberSelectButton):
-	add_event(party_members_alive[current_player_index], current_action,button.party_member_actor) #add action to list
+	add_event(party_members_alive[current_player_index], current_action,button.party_member_actor,) #add action to list
 	if current_player_index < party_members_alive.size()-1: # if there are still party members
 		battle_menu.index = 0
 		margic_target_select_container.hide()
@@ -489,7 +543,7 @@ func run_battle_round():
 	battle_menu.button_focus()		
 	
 func on_EnemiesMenu_button_pressed(enemy_button:BaseButton) -> void:
-	add_event(party_members_alive[current_player_index], current_action,enemy_button.battle_actor) #add action to list
+	add_event(party_members_alive[current_player_index], current_action,enemy_button.battle_actor, spell_selected) #add action to list
 	if current_player_index < party_members_alive.size()-1: # if there are still party members
 		go_to_next_player()
 	else:

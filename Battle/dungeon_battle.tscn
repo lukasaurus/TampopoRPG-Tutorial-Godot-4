@@ -480,6 +480,7 @@ autostart = true
 [node name="SpellSelectContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 88.0
 offset_top = 13.0
 offset_right = 164.0
@@ -497,6 +498,7 @@ script = ExtResource("7_aw3jx")
 [node name="MargicTargetSelectContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
+layout_mode = 0
 offset_left = 280.0
 offset_top = 10.0
 offset_right = 356.0

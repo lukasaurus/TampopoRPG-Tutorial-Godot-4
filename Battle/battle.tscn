@@ -401,7 +401,7 @@ alignment = 0
 
 [node name="BtnTech" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
 layout_mode = 2
-text = "TECH"
+text = "MAGIC"
 alignment = 0
 
 [node name="BtnItem" type="Button" parent="Bottom/Options/MarginContainer/BattleMenu"]
@@ -468,5 +468,41 @@ autoplay = "BattleStart"
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="SpellSelectContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 88.0
+offset_top = 13.0
+offset_right = 164.0
+offset_bottom = 37.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="SpellSelectContainer"]
+layout_mode = 2
+
+[node name="SpellSelect" type="VBoxContainer" parent="SpellSelectContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_hjlfr")
+
+[node name="MargicTargetSelectContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 280.0
+offset_top = 10.0
+offset_right = 356.0
+offset_bottom = 34.0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MargicTargetSelectContainer"]
+layout_mode = 2
+
+[node name="MagicTargetSelect" type="VBoxContainer" parent="MargicTargetSelectContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("4_hjlfr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

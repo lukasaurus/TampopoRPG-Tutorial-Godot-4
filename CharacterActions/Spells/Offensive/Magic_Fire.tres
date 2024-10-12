@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BattleAction" load_steps=3 format=3 uid="uid://cobo8qlymwshn"]
+
+[ext_resource type="Script" path="res://CharacterActions/BattleAction.gd" id="1_p4ehk"]
+[ext_resource type="PackedScene" uid="uid://bh3xp0iurfhdr" path="res://CharacterActions/Spells/Offensive/Animations/Magic_Fire.tscn" id="1_vb4aa"]
+
+[resource]
+script = ExtResource("1_p4ehk")
+action_type = "SPELL"
+action_intent = "OFFENSIVE"
+battle_spell_only = true
+out_of_combat_only = false
+needs_target = true
+can_target_enemy = true
+can_target_ally = false
+action_name = "Fire"
+action_value = 5
+mp_cost = 0
+action_animation = ExtResource("1_vb4aa")

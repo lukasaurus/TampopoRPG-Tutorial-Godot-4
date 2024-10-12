@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh3xp0iurfhdr"]
+
+[ext_resource type="Texture2D" uid="uid://blmxwl1tpfdje" path="res://Assets/SpellAttackAnimations/Ani_fire1.png" id="1_446s6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t1ll"]
+atlas = ExtResource("1_446s6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbwej"]
+atlas = ExtResource("1_446s6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frcbg"]
+atlas = ExtResource("1_446s6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw14n"]
+atlas = ExtResource("1_446s6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvce8"]
+atlas = ExtResource("1_446s6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bd7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t1ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbwej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frcbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw14n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvce8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AttackAnimation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7bd7n")
+frame = 4
+frame_progress = 1.0
